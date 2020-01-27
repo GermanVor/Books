@@ -9,7 +9,36 @@ class AuthorService {
 	 */
 	static async getAll() {
 		try {
-			return await database.author.findAll({});
+			return await database.author.count({});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	/**
+	 * Requests info database
+	 *
+	 * @returns {Promise<*>}
+	 */
+	static async getInfo() {
+		try {
+			return await database.author.findAndCountAll({});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	/**
+	 * Requests party of available authors from the database
+	 *
+	 * @returns {Promise<*>}
+	 */
+	static async getParty({limit, page}) {
+		try {
+			return await database.author.findAll({
+				limit,
+				offset: page*limit
+			});
 		} catch (error) {
 			throw error;
 		}

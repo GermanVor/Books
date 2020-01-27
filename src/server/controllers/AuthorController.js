@@ -29,6 +29,56 @@ class AuthorController {
 	}
 
 	/**
+	 * get info of db 
+	 *
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getInfo(req, res) {
+		try {
+			const {count} = await AuthorService.getInfo();
+
+			util.setSuccess(200, 'Authors Received',count);
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
+	/**
+	 * get party of authors control - validate and catch error
+	 *
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getParty(req, res) {
+		try {
+			const limit = Number(req.query.limit),
+						page = Number(req.query.page)
+			
+			if( !(limit >= 1 && page >= 0) ) {
+				util.setError(400, 'Invalid req.query');
+				return util.send(res);
+			}
+			
+			const authors = await AuthorService.getParty({limit, page});
+
+			if (authors.length > 0)
+				util.setSuccess(200, 'Authors Received', authors);
+			else util.setSuccess(200, 'No Author found');
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
+	/**
 	 * add author control - validate and catch error
 	 *
 	 * @param {Object} req - request
@@ -36,12 +86,10 @@ class AuthorController {
 	 * @returns {Promise<*>}
 	 */
 	static async add(req, res) {
-
 		if (!req.body.name || !req.body.description) {
 			util.setError(400, 'Incomplete information');
 			return util.send(res);
 		}
-
 		try {
 			const author = await AuthorService.add(req.body);
 			util.setSuccess(201, 'Author Added', author);

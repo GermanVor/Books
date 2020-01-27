@@ -16,6 +16,22 @@ class BookService {
 	}
 
 	/**
+	 * Requests party of available books from the database
+	 *
+	 * @returns {Promise<*>}
+	 */
+	static async getParty({limit, page}) {
+		try {
+			return await database.book.findAll({
+				limit,
+				Offset: page*limit
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	/**
 	 * Adds the book to the database.
 	 *
 	 * @param {Object} data - book information

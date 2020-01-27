@@ -37,8 +37,6 @@ app.get('/', (req, res, next) => {
 
 const PORT = process.env.PORT || 8080;
 
-//import biba from './routes/biba';
-// app.use('/api/biba', biba)
 app.use('/api/book', bookRoutes);
 app.use('/api/author', authorRoutes);
 

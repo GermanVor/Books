@@ -23,6 +23,37 @@ class BookController {
 			return util.send(res);
 		}
 	}
+
+	/**
+	 * get party of books control - validate and catch error
+	 *
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getParty(req, res) {
+		try {
+			const limit = Number(req.query.limit),
+						page = Number(req.query.page)
+			
+			if( !(limit >= 1 && page >= 0) ) {
+				util.setError(400, 'Invalid req.query');
+				return util.send(res);
+			}
+			
+			const authors = await BookService.getParty({limit, page});
+
+			if (authors.length > 0)
+				util.setSuccess(200, 'Books Received', authors);
+			else util.setSuccess(200, 'No Books found');
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
 	/**
 	 * add book control - validate and catch error
 	 * @param {Object} req - request

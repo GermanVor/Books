@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Main from './js/Main'
-
+import Toggle from './js/Toggle'
+import './css/Author.css'
 
 ReactDOM.render(
-  <Main />,
+  <Toggle />,
   document.getElementById('react-container') // eslint-disable-line no-undef
 )
 
