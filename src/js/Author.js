@@ -12,19 +12,23 @@ class Author extends Component {
     }
     this.PopUpClick = this.PopUpClick.bind(this);
     this.sortAZ = this.sortAZ.bind(this);
+    this.sortZA = this.sortZA.bind(this)
   }
   /**
 	 * @returns Array
 	 */
-  sort(arr, key){
+  sort(arr, key, isIncrease = 1){
     return arr.sort( function (a, b) {
-      if (a[key] > b[key]) return 1;
-      if (a[key] < b[key]) return -1;
+      if (a[key] > b[key]) return isIncrease;
+      if (a[key] < b[key]) return -isIncrease;
       return 0;
     } )
   }
   sortAZ(){
     this.setState({ authors: this.sort(this.state.authors, 'name') })
+  }
+  sortZA(){
+    this.setState({ authors: this.sort(this.state.authors, 'name', -1) })
   }
   componentDidMount(){
     // fetch('/api/author', {
@@ -100,8 +104,10 @@ class Author extends Component {
             )
           }</ul>
         </div>
+        <br/>
         <div className='sortBox'>
           <button onClick={this.sortAZ} >A...Z</button>
+          <button onClick={this.sortZA} >Z...A</button>
         </div>
       </div>
     )
