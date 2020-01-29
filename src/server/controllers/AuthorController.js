@@ -49,6 +49,26 @@ class AuthorController {
 	}
 
 	/**
+	 * get info of db 
+	 *
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getSearchInfo(req, res) {
+		try {
+			const arr = await AuthorService.getSearchInfo();
+
+			util.setSuccess(200, 'Authors Received', arr);
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
+	/**
 	 * get party of authors control - validate and catch error
 	 *
 	 * @param {Object} req - request

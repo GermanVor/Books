@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "78e19c6289e13b6911a7";
+/******/ 	var hotCurrentHash = "d0fb931dac2d3d0ff45b";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -1167,7 +1167,7 @@ ansiHTML.reset()
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "ul.hr {\r\n  margin: 0; /* Обнуляем значение отступов */\r\n  padding: 4px; /* Значение полей */\r\n }\r\n ul.hr li {\r\n  display: inline; /* Отображать как строчный элемент */\r\n  margin-right: 5px; /* Отступ слева */\r\n  border: 1px solid #000; /* Рамка вокруг текста */\r\n  padding: 3px; /* Поля вокруг текста */\r\n }", ""]);
+exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.activPopUp {\r\n  border: 1px solid rgb(226, 57, 57);\r\n} \r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n.NoOne {\r\n  display: none;\r\n}", ""]);
 
 
 /***/ }),
@@ -32447,6 +32447,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_Chosen__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Chosen */ "./src/js/components/Chosen.js");
+
 
 
 
@@ -32471,10 +32473,13 @@ function (_Component) {
       popUpCount: [],
       limit: 5,
       page: 0,
-      authorDBSize: 0
+      authorDBSize: 0,
+      activPopUp: undefined,
+      SeachValue: ''
     };
     _this.PopUpClick = _this.PopUpClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.sortAZ = _this.sortAZ.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.sortZA = _this.sortZA.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
   }
   /**
@@ -32485,9 +32490,10 @@ function (_Component) {
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Author, [{
     key: "sort",
     value: function sort(arr, key) {
+      var isIncrease = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
       return arr.sort(function (a, b) {
-        if (a[key] > b[key]) return 1;
-        if (a[key] < b[key]) return -1;
+        if (a[key] > b[key]) return isIncrease;
+        if (a[key] < b[key]) return -isIncrease;
         return 0;
       });
     }
@@ -32496,6 +32502,13 @@ function (_Component) {
     value: function sortAZ() {
       this.setState({
         authors: this.sort(this.state.authors, 'name')
+      });
+    }
+  }, {
+    key: "sortZA",
+    value: function sortZA() {
+      this.setState({
+        authors: this.sort(this.state.authors, 'name', -1)
       });
     }
   }, {
@@ -32544,12 +32557,20 @@ function (_Component) {
     }
   }, {
     key: "PopUpClick",
-    value: function PopUpClick() {
+    value: function PopUpClick(event) {
       var _this3 = this;
 
       var ind = arguments[1] === 0 ? 0 : arguments[1] || this.state.page;
-      var limit = this.state.limit;
-      console.log(limit);
+      var limit = this.state.limit; // существует только потому что не стал писать отдельную функцию для div.LimitMenu button
+
+      if (event) {
+        if (this.state.activPopUp) this.state.activPopUp.classList.remove('activPopUp');
+        this.setState({
+          activPopUp: event.target
+        });
+        event.target.classList.add('activPopUp');
+      }
+
       fetch('/api/author?limit=' + limit + '&page=' + ind).then(function (response) {
         return response.json();
       }).then(function (res) {
@@ -32577,16 +32598,12 @@ function (_Component) {
     value: function render() {
       var _this4 = this;
 
-      // console.log(this.state)
-      // fetch('/api/author?limit=40&page=0')
-      // .then(response => response.json())
-      // .then(res => console.log( res.data))
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "Author"
       }, "Author", react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "AuthorMenu"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "LimitMenu"
+        className: "LimitMenu box"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick() {
           return _this4.setState({
@@ -32607,7 +32624,18 @@ function (_Component) {
             _this4.PopUpClick();
           });
         }
-      }, "5"))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, this.state.authors.map(function (el, ind) {
+      }, "5")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "sortBox box"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        onClick: this.sortAZ
+      }, "A...Z"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        onClick: this.sortZA
+      }, "Z...A")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Chosen__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        onChange: function onChange(value) {
+          return console.log(value);
+        },
+        ArrMenu: ['абвгде', 'абв', 'аабв', 'л'].sort()
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, this.state.authors.map(function (el, ind) {
         return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", {
           key: 'book-key-' + ind,
           author_id: el.author_id
@@ -32625,11 +32653,7 @@ function (_Component) {
             return _this4.PopUpClick(event, ind);
           }
         }, ind));
-      }))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "sortBox"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        onClick: this.sortAZ
-      }, "A...Z")));
+      }))), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", null));
     }
   }]);
 
@@ -32760,6 +32784,100 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Toggle);
+
+/***/ }),
+
+/***/ "./src/js/components/Chosen.js":
+/*!*************************************!*\
+  !*** ./src/js/components/Chosen.js ***!
+  \*************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+var Chosen =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Chosen, _Component);
+
+  function Chosen(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Chosen);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Chosen).call(this, props));
+    _this.state = {
+      SeachValue: ''
+    };
+    _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Chosen, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "handleChangeSearch",
+    value: function handleChangeSearch(event) {
+      var value = event.target.value;
+      this.setState({
+        SeachValue: value
+      });
+      var arr = this.props.ArrMenu.filter(function (x) {
+        return x.toLowerCase().indexOf(value.toLowerCase()) == 0;
+      });
+      console.log(arr);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "search box"
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
+        type: "text",
+        value: this.state.SeachValue,
+        onChange: this.handleChangeSearch,
+        autoComplete: "off",
+        name: "contributor_text",
+        placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
+        "aria-autocomplete": "list",
+        "aria-haspopup": "false",
+        "aria-expanded": "false"
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, this.props.ArrMenu.map(function (a) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", {
+          className: "NloOne"
+        }, a);
+      })));
+    }
+  }]);
+
+  return Chosen;
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Chosen);
 
 /***/ }),
 

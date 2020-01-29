@@ -28,6 +28,16 @@ class AuthorService {
 		}
 	}
 
+	static async getSearchInfo() {
+		try {
+			return await database.author.findAll({
+					attributes: ['name', 'author_id']
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
+
 	/**
 	 * Requests party of available authors from the database
 	 *

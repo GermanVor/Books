@@ -8,4 +8,19 @@ ul.hr li {
   border: 1px solid #000; 
   padding: 3px;  
 }
- 
+.activPopUp {
+  border: 1px solid rgb(226, 57, 57);
+} 
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.AuthorMenu div.box {
+  position: relative;
+  margin: 5px 10px;
+}
+.NoOne {
+  display: none;
+}

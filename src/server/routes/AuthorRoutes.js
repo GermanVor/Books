@@ -9,7 +9,9 @@ const router = Router();
 // router.get('/', AuthorController.getAll);
 
 router.get('/', AuthorController.getParty);
-router.get('/info', AuthorController.getInfo)
+router.get('/info', AuthorController.getInfo);
+router.get('/searchInfo', AuthorController.getSearchInfo);
+
 router.post('/', AuthorController.add);
 router.get('/:id', AuthorController.get);
 router.put('/:id', AuthorController.update);
