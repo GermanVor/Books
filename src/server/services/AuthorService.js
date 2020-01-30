@@ -1,4 +1,6 @@
 import database from '../src/models';
+import Sequelize from 'sequelize';
+const Op = Sequelize.Op
 
 class AuthorService {
 
@@ -28,10 +30,11 @@ class AuthorService {
 		}
 	}
 
-	static async getSearchInfo() {
+	static async getSearchInfo(value) {
 		try {
 			return await database.author.findAll({
-					attributes: ['name', 'author_id']
+				where:{ 'name' : { [Op.iRegexp]: '^('+value+')' } },
+				attributes: ['name', 'author_id']
 			});
 		} catch (error) {
 			throw error;

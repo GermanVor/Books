@@ -57,10 +57,10 @@ class AuthorController {
 	 */
 	static async getSearchInfo(req, res) {
 		try {
-			const arr = await AuthorService.getSearchInfo();
-
+			
+			const arr = req.query.value? await AuthorService.getSearchInfo(req.query.value) : [];
+			
 			util.setSuccess(200, 'Authors Received', arr);
-
 			return util.send(res);
 		} catch (error) {
 			util.setError(400, error);
@@ -158,7 +158,7 @@ class AuthorController {
 	 */
 	static async get(req, res) {
 		const {id} = req.params;
-
+		console.log( id )
 		if (!id || !isUUID(id)) {
 			util.setError(400, 'Invalid UUID');
 			return util.send(res);
