@@ -12,11 +12,9 @@ class Pagination extends Component {
     this.PaginLenght = this.PaginLenght.bind(this)
   }
   componentDidMount(){
-    // console.log( this.props.DBSize )
     this.PaginLenght()
   }
   PaginLenght(){
-    console.log( this.props.DBSize )
     let arr = [], a = Math.ceil(this.props.DBSize/this.state.limit);
     while(a--) arr.push('');
     this.setState({ PaginCount: arr });

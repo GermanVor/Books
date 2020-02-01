@@ -6,6 +6,7 @@ const router = Router();
 /**
  * Book API routes
  */
+router.get('/authorbooks/:id', BookController.getByAuthor)
 router.get('/', BookController.getAll);
 router.post('/', BookController.add);
 router.get('/:id', BookController.get);

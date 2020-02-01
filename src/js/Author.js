@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Chosen from './components/Chosen'
 import Pagination from './components/Pagination'
 
+import PopUp from './components/authorPopUp'
+
 class Author extends Component {
   constructor(props){
     super(props);
@@ -9,11 +11,13 @@ class Author extends Component {
       authors: [],
       authorDBSize: 0,
       SeachValue: '',
-      limit: 5
+      limit: 5,
+      popup: ''
     }
     this.PaginClick = this.PaginClick.bind(this);
     this.sortAZ = this.sortAZ.bind(this);
     this.sortZA = this.sortZA.bind(this);
+    this.InfoPopUp = this.InfoPopUp.bind(this);
   }
   /**
 	 * @returns Array
@@ -32,16 +36,7 @@ class Author extends Component {
     this.setState({ authors: this.sort(this.state.authors, 'name', -1) })
   }
   componentDidMount(){
-    // fetch('/api/author', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8'
-    //   },
-    //   body: JSON.stringify({name: 'ziga', description: 99})
-    // })
-    // .then(response => response.json())
-    // .then(console.log)
-    //let setState = this.setState.bind(this);  
+    
     let limit = this.state.limit;
     fetch('/api/author?limit='+limit+'&page=0')
     .then(response => response.json())
@@ -58,9 +53,27 @@ class Author extends Component {
     .then(response => response.json())
     .then( res=>this.setState({ authors : res.data }) )
   } 
-  
+  async InfoPopUp(event){
+    let target = event.target;
+    let id = target.getAttribute('author_id');
+
+    let author;
+    let books;
+    await fetch('/api/author/'+id)
+    .then(response => response.json())
+    .then( res => {author = res.data})
+    
+    await fetch('/api/book/authorbooks/'+id)
+    .then(response => response.json())
+    .then( res => {books = res.data})
+
+    this.setState({ popup: <PopUp
+        author = { author }
+        del = { ()=> this.setState({popup: ''})}
+        books = { books }
+    />}) 
+  }
   render(){
-    console.log(this.state)
     return (
       <div className="Author">
         Author
@@ -73,10 +86,12 @@ class Author extends Component {
             <Chosen onChange={value => console.log(value)} searchRef={'/api/author/searchInfo?value='}/>
            
         </div>
+        {this.state.popup}
         <ul>{
           this.state.authors.map( (el, ind) => 
-            <li key={'book-key-'+ind} author_id = {el.author_id} >
-              {el.name +' '+ el.description +' '+ el.author_id}
+            <li key={'book-key-'+ind}  >
+              {el.name +' '+ el.description }
+              <button onClick={this.InfoPopUp} author_id = {el.author_id} >больше информации</button>
             </li>
           )
         }</ul>
@@ -88,9 +103,21 @@ class Author extends Component {
         />: ''}
 
         <br/>
+        {/* <PopUp /> */}
       </div>
     )
   }
 }
 
 export default Author
+
+// fetch('/api/author', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=utf-8'
+    //   },
+    //   body: JSON.stringify({name: 'ziga', description: 99})
+    // })
+    // .then(response => response.json())
+    // .then(console.log)
+    //let setState = this.setState.bind(this);  

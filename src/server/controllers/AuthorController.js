@@ -158,7 +158,7 @@ class AuthorController {
 	 */
 	static async get(req, res) {
 		const {id} = req.params;
-		console.log( id )
+		
 		if (!id || !isUUID(id)) {
 			util.setError(400, 'Invalid UUID');
 			return util.send(res);

@@ -14,6 +14,22 @@ class BookService {
 			throw error;
 		}
 	}
+	
+	/**
+	 * Requests authors available books from the database
+	 *
+	 * @returns {Promise<*>}
+	 */
+	static async getByAuthor(author_id) {
+		try {
+			return await database.book.findAll({
+				where:{ 'author_id' : author_id },
+				//attributes: ['name', 'author_id']
+			});
+		} catch (error) {
+			throw error;
+		}
+	}
 
 	/**
 	 * Requests party of available books from the database

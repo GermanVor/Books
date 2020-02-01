@@ -55,6 +55,31 @@ class BookController {
 	}
 
 	/**
+	 * get author books control - validate and catch error
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getByAuthor(req, res) {
+		try {
+			const {id} = req.params;
+
+			if (!id || !isUUID(id)) {
+				util.setError(400, 'Invalid UUID');
+				return util.send(res);
+			}
+			
+			const books = await BookService.getByAuthor(id);
+			util.setSuccess(200, 'Books Received', books);
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
+	/**
 	 * add book control - validate and catch error
 	 * @param {Object} req - request
 	 * @param {Object} res - response
