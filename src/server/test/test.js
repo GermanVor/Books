@@ -1,8 +1,8 @@
-import chai from 'chai';
-import chatHttp from 'chai-http';
-import 'chai/register-should';
-import app from '../server-dev';
-import {waterfall} from 'async';
+const chai = require('chai');
+const chatHttp = require('chai-http');
+require('chai/register-should');
+const app =  require('../server-dev');
+const {waterfall} =  require('async');
 
 chai.use(chatHttp);
 
