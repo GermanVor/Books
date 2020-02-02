@@ -1,13 +1,6 @@
-// import fs from 'fs';
-//import path from 'path';
 import Sequelize from 'sequelize';
 import configs from '../config/config';
 
-
-// const Sequelize = require("sequelize");
-// const path = require("path");
-// const configs = require("../config/config");
-// const fs = require('fs')
 const env = process.env.NODE_ENV.trim() || 'development',
 //	basename = path.basename(__filename),
 	config = configs[env];
@@ -30,11 +23,13 @@ try {
 }
 
 const db = {};
-db['book'] = require('./book')(sequelize, Sequelize);
-db['author'] = require('./author')(sequelize, Sequelize);
+db['Book'] = require('./book')(sequelize, Sequelize);
+db['Author'] = require('./author')(sequelize, Sequelize);
+db['Enrolment'] = require('./enrolment')(sequelize, Sequelize);
 
 Object.keys(db).forEach(modelName =>
 	db[modelName].associate && db[modelName].associate(db));
+
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

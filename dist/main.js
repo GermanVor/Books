@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "a9dda3443ab8dab15616";
+/******/ 	var hotCurrentHash = "933155f266b50d364f00";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -37400,7 +37400,7 @@ function (_Component) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
-          authors: res.data
+          authors: res.data || []
         });
       });
       fetch('/api/author/info').then(function (response) {
@@ -37455,11 +37455,9 @@ function (_Component) {
                 });
 
               case 6:
-                console.log(books);
                 this.setState({
                   popup: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_authorPopUp__WEBPACK_IMPORTED_MODULE_11__["default"], {
-                    description: author.description,
-                    name: author.name,
+                    author: author,
                     del: function del() {
                       return _this4.setState({
                         popup: ''
@@ -37469,7 +37467,7 @@ function (_Component) {
                   })
                 });
 
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -37506,9 +37504,9 @@ function (_Component) {
       })), this.state.popup, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("ul", null, this.state.authors.map(function (el, ind) {
         return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", {
           key: 'book-key-' + ind
-        }, el.name + ' ' + el.description, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        }, el.name + ' ' + el.description + '  |  ' + el.id + ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
           onClick: _this5.InfoPopUp,
-          author_id: el.author_id
+          author_id: el.id
         }, "\u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438"));
       })), this.state.authorDBSize ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Pagination__WEBPACK_IMPORTED_MODULE_10__["default"], {
         DBSize: this.state.authorDBSize,
@@ -37522,15 +37520,29 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Author); // fetch('/api/author', {
-//   method: 'POST',
-//   headers: {
-//     'Content-Type': 'application/json;charset=utf-8'
-//   },
-//   body: JSON.stringify({name: 'ziga', description: 99})
-// })
-// .then(response => response.json())
-// .then(console.log)
-//let setState = this.setState.bind(this);
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({name: 'acfbbn', description: 'FAEqbz'})
+//     })
+// fetch('/api/book', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        title : 'Biba',
+//        rating: 4,
+//        genre: 'Ужас',
+//        description: 'Ужасный ужастик',
+//        authors: [
+//          {name: 'Артем', description: 'описание артема'},
+//          {name: 'Женя', description: 'описание жени'}
+//        ]
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)
 
 /***/ }),
 
@@ -37748,6 +37760,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      console.log(this.state.pool);
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "search box Chosen"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
@@ -37969,6 +37982,9 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this$props$author = this.props.author,
+          description = _this$props$author.description,
+          name = _this$props$author.name;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "b-popup PopUp"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
@@ -37978,9 +37994,9 @@ function (_Component) {
         ref: this.ref
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", {
         className: "PopUpHead"
-      }, this.props.name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "info"
-      }, this.props.description), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      }, description), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "Books"
       })));
     }

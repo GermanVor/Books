@@ -2,8 +2,8 @@ module.exports = (sequelize, DataTypes) => {
 	/**
 	 * Book model
 	 */
-	const book = sequelize.define('book', {
-		book_id: {allowNull: false, primaryKey: true, type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4},
+	const Book = sequelize.define('Book', {
+		id: {allowNull: false, primaryKey: true, type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4},
 		title: DataTypes.STRING,
 		description: DataTypes.STRING,
 		genre: DataTypes.STRING,
@@ -13,8 +13,11 @@ module.exports = (sequelize, DataTypes) => {
 	/**
 	 * For associations
 	 */
-	book.associate = models =>
-		book.belongsTo(models.author, {foreignKey: 'author_id'});
+	// Book.associate = models =>
+	// 	Book.belongsTo(models.author, {foreignKey: 'author_id'});
+	Book.associate = models => {
+		Book.belongsToMany(models.Author, { through: 'Enrolment' });
+  };
 
-	return book;
+	return Book;
 };

@@ -11,7 +11,7 @@ class AuthorService {
 	 */
 	static async getAll() {
 		try {
-			return await database.author.count({});
+			return await database.Author.count({});
 		} catch (error) {
 			throw error;
 		}
@@ -24,7 +24,7 @@ class AuthorService {
 	 */
 	static async getInfo() {
 		try {
-			return await database.author.findAndCountAll({});
+			return await database.Author.findAndCountAll({});
 		} catch (error) {
 			throw error;
 		}
@@ -32,9 +32,9 @@ class AuthorService {
 
 	static async getSearchInfo(value) {
 		try {
-			return await database.author.findAll({
+			return await database.Author.findAll({
 				where:{ 'name' : { [Op.iRegexp]: '^('+value+')' } },
-				attributes: ['name', 'author_id']
+				attributes: ['name', 'id']
 			});
 		} catch (error) {
 			throw error;
@@ -48,7 +48,7 @@ class AuthorService {
 	 */
 	static async getParty({limit, page}) {
 		try {
-			return await database.author.findAll({
+			return await database.Author.findAll({
 				limit,
 				offset: page*limit
 			});
@@ -58,31 +58,31 @@ class AuthorService {
 	}
 
 	/**
-	 * Adds the author to the database.
+	 * Adds the Author to the database.
 	 *
-	 * @param {Object} data - author information
+	 * @param {Object} data - Author information
 	 * @returns {Promise<*>}
 	 */
 	static async add(data) {
 		try {
-			return await database.author.create(data);
+			return await database.Author.create(data);
 		} catch (error) {
 			throw error;
 		}
 	}
 
 	/**
-	 * Updates the author with the given id with new information
+	 * Updates the Author with the given id with new information
 	 *
-	 * @param {String} author_id - author id
-	 * @param {Object} data - author information
+	 * @param {String} id - Author id
+	 * @param {Object} data - Author information
 	 * @returns {Promise<*>}
 	 */
-	static async update(author_id, data) {
+	static async update(id, data) {
 		try {
-			const update = await database.author.findByPk(author_id);
+			const update = await database.Author.findByPk(id);
 			if (update) {
-				await database.author.update(data, {where: {author_id}});
+				await database.Author.update(data, {where: {id}});
 				return data;
 			} else return null;
 		} catch (error) {
@@ -91,14 +91,14 @@ class AuthorService {
 	}
 
 	/**
-	 * Requests the author with the given id from the database
+	 * Requests the Author with the given id from the database
 	 *
-	 * @param {String} author_id - author id
+	 * @param {String} id - Author id
 	 * @returns {Promise<*>}
 	 */
-	static async get(author_id) {
+	static async get(id) {
 		try {
-			return await database.author.findByPk(author_id, {});
+			return await database.Author.findByPk(id, {});
 		} catch (error) {
 			throw error;
 		}
@@ -107,14 +107,14 @@ class AuthorService {
 	/**
 	 * Removes the authors with the given id from the database
 	 *
-	 * @param {String} author_id - author id
+	 * @param {String} id - Author id
 	 * @returns {Promise<*>}
 	 */
-	static async remove(author_id) {
+	static async remove(id) {
 		try {
-			const remove = await database.author.findByPk(author_id);
+			const remove = await database.Author.findByPk(id);
 			if (remove) {
-				return await database.author.destroy({where: {author_id}});
+				return await database.Author.destroy({where: {id}});
 			} else return null;
 		} catch (error) {
 			throw error;

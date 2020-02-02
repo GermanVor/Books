@@ -40,7 +40,7 @@ class Author extends Component {
     let limit = this.state.limit;
     fetch('/api/author?limit='+limit+'&page=0')
     .then(response => response.json())
-    .then( res=>this.setState({ authors: res.data }) )
+    .then( res=>this.setState({ authors: res.data || [] }) )
 
     fetch('/api/author/info')
     .then(response => response.json())
@@ -90,8 +90,8 @@ class Author extends Component {
         <ul>{
           this.state.authors.map( (el, ind) => 
             <li key={'book-key-'+ind}  >
-              {el.name +' '+ el.description }
-              <button onClick={this.InfoPopUp} author_id = {el.author_id} >больше информации</button>
+              {el.name +' '+ el.description +'  |  ' + el.id + ' '}
+              <button onClick={this.InfoPopUp} author_id = {el.id} >больше информации</button>
             </li>
           )
         }</ul>
@@ -112,12 +112,27 @@ class Author extends Component {
 export default Author
 
 // fetch('/api/author', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=utf-8'
-    //   },
-    //   body: JSON.stringify({name: 'ziga', description: 99})
-    // })
-    // .then(response => response.json())
-    // .then(console.log)
-    //let setState = this.setState.bind(this);  
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({name: 'acfbbn', description: 'FAEqbz'})
+//     })
+
+// fetch('/api/book', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        title : 'Biba',
+//        rating: 4,
+//        genre: 'Ужас',
+//        description: 'Ужасный ужастик',
+//        authors: [
+//          {name: 'Артем', description: 'описание артема'},
+//          {name: 'Женя', description: 'описание жени'}
+//        ]
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)

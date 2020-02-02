@@ -86,19 +86,19 @@ class BookController {
 	 * @returns {Promise<*>}
 	 */
 	static async add(req, res) {
-		if (!req.body.title || !req.body.rating || !req.body.genre || !req.body.author_id) {
+		
+		if (!req.body.title || !req.body.genre || req.body.authors.length < 1  || !req.body.description) {
 			util.setError(400, 'Incomplete information');
 			return util.send(res);
 		} else if (!isInt(req.body.rating)) {
 			util.setError(400, 'Invalid rating value');
 			return util.send(res);
-		} else if (!isUUID(req.body.author_id)) {
-			util.setError(400, 'Invalid author UUID');
-			return util.send(res);
 		}
 
 		try {
+			
 			const book = await BookService.add(req.body);
+			
 			util.setSuccess(201, 'Book Added', book);
 			return util.send(res);
 		} catch (error) {

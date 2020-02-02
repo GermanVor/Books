@@ -9,7 +9,7 @@ class BookService {
 	 */
 	static async getAll() {
 		try {
-			return await database.book.findAll({include: [{all: true, nested: true}]});
+			return await database.Book.findAll({include: [{all: true, nested: true}]});
 		} catch (error) {
 			throw error;
 		}
@@ -20,11 +20,11 @@ class BookService {
 	 *
 	 * @returns {Promise<*>}
 	 */
-	static async getByAuthor(author_id) {
+	static async getByAuthor(id) {
 		try {
-			return await database.book.findAll({
-				where:{ 'author_id' : author_id },
-				//attributes: ['name', 'author_id']
+			return await database.Book.findAll({
+				where:{ 'id' : id },
+				//attributes: ['name', 'id']
 			});
 		} catch (error) {
 			throw error;
@@ -38,7 +38,7 @@ class BookService {
 	 */
 	static async getParty({limit, page}) {
 		try {
-			return await database.book.findAll({
+			return await database.Book.findAll({
 				limit,
 				Offset: page*limit
 			});
@@ -48,31 +48,52 @@ class BookService {
 	}
 
 	/**
-	 * Adds the book to the database.
+	 * Adds the Book to the database.
 	 *
-	 * @param {Object} data - book information
+	 * @param {Object} data - Book information
 	 * @returns {Promise<*>}
 	 */
 	static async add(data) {
 		try {
-			return await database.book.create(data);
+			let res = undefined;
+			
+			res = await database.Book.create(data)
+				.then( Book => {
+					data.authors.forEach( el => {
+							database.Author.findOne({
+								where: {
+									id: el.id || '1a1111d1-e1d1-1bda-1111-1111b1111111'
+								}
+							})
+						.then( author => {
+							if(!author){
+								database.Author.create(el)
+								.then( author => {
+									Book.addAuthor(author)
+								})
+							} else Book.addAuthor(author)
+						})
+					}) 
+				})
+
+			return res;
 		} catch (error) {
 			throw error;
 		}
 	}
 
 	/**
-	 * Updates the book with the given id with new information
+	 * Updates the Book with the given id with new information
 	 *
-	 * @param {String} book_id - book id
-	 * @param {Object} data - book information
+	 * @param {String} book_id - Book id
+	 * @param {Object} data - Book information
 	 * @returns {Promise<*>}
 	 */
 	static async update(book_id, data) {
 		try {
-			const update = await database.book.findByPk(book_id);
+			const update = await database.Book.findByPk(book_id);
 			if (update) {
-				await database.book.update(data, {where: {book_id}});
+				await database.Book.update(data, {where: {book_id}});
 				return data;
 			} else return null;
 		} catch (error) {
@@ -81,14 +102,14 @@ class BookService {
 	}
 
 	/**
-	 * Requests the book with the given id from the database
+	 * Requests the Book with the given id from the database
 	 *
-	 * @param {String} book_id - book id
+	 * @param {String} book_id - Book id
 	 * @returns {Promise<*>}
 	 */
 	static async get(book_id) {
 		try {
-			return await database.book.findByPk(book_id, {include: [{all: true, nested: true}]});
+			return await database.Book.findByPk(book_id, {include: [{all: true, nested: true}]});
 		} catch (error) {
 			throw error;
 		}
@@ -97,14 +118,14 @@ class BookService {
 	/**
 	 * Removes the books with the given id from the database
 	 *
-	 * @param {String} book_id - book id
+	 * @param {String} book_id - Book id
 	 * @returns {Promise<*>}
 	 */
 	static async remove(book_id) {
 		try {
-			const remove = await database.book.findByPk(book_id);
+			const remove = await database.Book.findByPk(book_id);
 			if (remove) {
-				return await database.book.destroy({where: {book_id}});
+				return await database.Book.destroy({where: {book_id}});
 			} else return null;
 		} catch (error) {
 			throw error;

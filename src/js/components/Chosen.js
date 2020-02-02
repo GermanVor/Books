@@ -23,6 +23,7 @@ class Chosen extends Component {
   }
   
   render(){
+    console.log( this.state.pool )
     return (
       <div className='search box Chosen'>
         <form >
