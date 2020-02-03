@@ -4,10 +4,10 @@ class Pagination extends Component {
   constructor(props){
     super(props);
     this.state = {
-      limit: 5 || this.props.limit,
+      limit: this.props.limit || 5,
       activPagin: undefined,
       PaginCount: [],
-      page: 0,
+      page: this.props.page || 0,
     }
     this.PaginLenght = this.PaginLenght.bind(this)
   }

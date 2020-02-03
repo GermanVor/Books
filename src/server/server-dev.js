@@ -37,8 +37,8 @@ app.get('/', (req, res, next) => {
 
 const PORT = process.env.PORT || 8080;
 
-app.use('/api/book', bookRoutes);
-app.use('/api/author', authorRoutes);
+app.use('/api/books', bookRoutes);
+app.use('/api/authors', authorRoutes);
 
 app.listen(PORT, () => {
     console.log(`App listening to ${PORT}....`)

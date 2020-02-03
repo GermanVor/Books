@@ -34,7 +34,7 @@ class AuthorService {
 		try {
 			return await database.Author.findAll({
 				where:{ 'name' : { [Op.iRegexp]: '^('+value+')' } },
-				attributes: ['name', 'id']
+				// attributes: ['name', 'id']
 			});
 		} catch (error) {
 			throw error;
@@ -59,13 +59,20 @@ class AuthorService {
 
 	/**
 	 * Adds the Author to the database.
-	 *
+	 * Если объект содержит books , то предполагается , что у эти книг только один автор
 	 * @param {Object} data - Author information
 	 * @returns {Promise<*>}
 	 */
 	static async add(data) {
 		try {
-			return await database.Author.create(data);
+			return await database.Author.create(data)
+				.then( Author =>{
+					if( Array.isArray(data.books) ) data.books.forEach( el => {
+						database.Book.create(el)
+						.then( book => Author.addBook(book) )
+					});
+					return Author;
+				})				
 		} catch (error) {
 			throw error;
 		}

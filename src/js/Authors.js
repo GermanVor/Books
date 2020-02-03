@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import Chosen from './components/Chosen'
+import Chosen from './components/authorChosen'
 import Pagination from './components/Pagination'
 
 import PopUp from './components/authorPopUp'
 
-class Author extends Component {
+class Authors extends Component {
   constructor(props){
     super(props);
     this.state = {
       authors: [],
       authorDBSize: 0,
       SeachValue: '',
-      limit: 5,
+      limit: 1,
+      page: 0,
       popup: ''
     }
     this.PaginClick = this.PaginClick.bind(this);
@@ -37,19 +38,19 @@ class Author extends Component {
   }
   componentDidMount(){
     
-    let limit = this.state.limit;
-    fetch('/api/author?limit='+limit+'&page=0')
+    let {limit, page}  = this.state;
+    fetch('/api/authors?limit='+limit+'&page='+page)
     .then(response => response.json())
     .then( res=>this.setState({ authors: res.data || [] }) )
 
-    fetch('/api/author/info')
+    fetch('/api/authors/info')
     .then(response => response.json())
     .then(res=>this.setState({ authorDBSize: res.data } ))
 
   }
 
   PaginClick(limit, ind){
-    fetch('/api/author?limit='+limit+'&page='+ind)
+    fetch('/api/authors?limit='+limit+'&page='+ind)
     .then(response => response.json())
     .then( res=>this.setState({ authors : res.data }) )
   } 
@@ -59,39 +60,39 @@ class Author extends Component {
 
     let author;
     let books;
-    await fetch('/api/author/'+id)
+    await fetch('/api/authors/'+id)
     .then(response => response.json())
     .then( res => {author = res.data})
     
-    await fetch('/api/book/authorbooks/'+id)
+    await fetch('/api/books/books-by-author-id/'+id)
     .then(response => response.json())
     .then( res => {books = res.data})
 
     this.setState({ popup: <PopUp
         author = { author }
-        del = { ()=> this.setState({popup: ''})}
         books = { books }
+        del = { ()=> this.setState({popup: ''})}
     />}) 
   }
   render(){
     return (
-      <div className="Author">
-        Author
-        <div className='AuthorMenu'>
+      <div className="Authors">
+        Authors
+        <div className='AuthorsMenu'>
           <div className='sortBox box'>
             <button onClick={this.sortAZ} >A...Z</button>
             <button onClick={this.sortZA} >Z...A</button>
           </div>
           
-            <Chosen onChange={value => console.log(value)} searchRef={'/api/author/searchInfo?value='}/>
+            <Chosen />
            
         </div>
         {this.state.popup}
         <ul>{
           this.state.authors.map( (el, ind) => 
-            <li key={'book-key-'+ind}  >
+            <li key={'author-key-'+ind}  >
               {el.name +' '+ el.description +'  |  ' + el.id + ' '}
-              <button onClick={this.InfoPopUp} author_id = {el.id} >больше информации</button>
+              <button onClick={this.InfoPopUp} author_id = {el.id} >больше информации об авторе</button>
             </li>
           )
         }</ul>
@@ -100,39 +101,70 @@ class Author extends Component {
           DBSize = {this.state.authorDBSize} 
           onClick = {this.PaginClick}
           limit = {this.state.limit}
+          page = {this.state.page}
         />: ''}
 
         <br/>
-        {/* <PopUp /> */}
       </div>
     )
   }
 }
 
-export default Author
-
-// fetch('/api/author', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json;charset=utf-8'
-//       },
-//       body: JSON.stringify({name: 'acfbbn', description: 'FAEqbz'})
-//     })
-
-// fetch('/api/book', {
+export default Authors
+//добавить автора
+// fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        title : 'Biba',
+//         name: 'Семен',
+//         description: 'фцаыаф 2314',
+//         books: [
+//           { 
+//             title : 'Омут',
+//             rating: 1,
+//             genre: 'Комедия',
+//             description: 'Комедия ', 
+//           },
+//           { 
+//             title : 'Омут 2',
+//             rating: 2,
+//             genre: 'Комедия',
+//             description: 'Комедия ', 
+//           }
+//         ]
+//       })
+// })
+// .then(response => response.json())
+// .then( console.log )
+
+
+//добавить книгу с авторами , если не передать id автора , то автор будет создан 
+// fetch('bookDBSize', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        title : 'dtyui',
 //        rating: 4,
 //        genre: 'Ужас',
 //        description: 'Ужасный ужастик',
 //        authors: [
-//          {name: 'Артем', description: 'описание артема'},
-//          {name: 'Женя', description: 'описание жени'}
+//          {name: 'Артем3', description: 'описание артема'},
+//          {name: 'Женя3', description: 'описание жени'},
 //        ]
 //       })
 //     }).then(response => response.json())
 //     .then(console.log)
+
+// //книги автора по id автора
+// fetch('bookDBSize/authors-book/asf')
+//     .then(response => response.json())
+//     .then( console.log )
+
+// //авторы книги по id книги 
+// fetch('bookDBSize/books-by-author-id/asg ')
+//     .then(response => response.json())
+//     .then( console.log )

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Author from './Author'
-import Book from './Book'
+import Authors from './Authors'
+import Books from './Books'
+import AuthorCard from '../js/components/AuthorCard'
 
 import { 
   HashRouter,
@@ -21,11 +22,12 @@ class Toggle extends  Component{
   render(){
     return (<div className='Toggle'>
        <HashRouter>
-        <Link to={'/authos' }>Авторы</Link>
+        <Link to={'/authors' }>Авторы</Link>
         <Link to={'/books' }>Книги</Link>
         <Switch  >
-            <Route path={'/authos' } render={() => <Author />} />
-            <Route path={'/books' } render={() => <Book />}/>
+            <Route path={'/authors' } render={() => <Authors />} />
+            <Route path={'/books' } render={() => <Books />}/>
+            <Route path={'/author' } render={() => <AuthorCard />}/>
         </Switch>
       </HashRouter>
     </div>)

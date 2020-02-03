@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
 
 class PopUP extends  Component{
   constructor(props){
@@ -13,19 +12,19 @@ class PopUP extends  Component{
 
   render(){
     console.log( this.props )
-    let {description, name} = this.props.author
+    let {title, genre, description} = this.props.book
     return (
       <div className="b-popup PopUp" >
           <div className="b-popup-content" onBlur={this.props.del} tabIndex="1"  ref={this.ref}>
             <h1 className='PopUpHead' >{name}</h1>
             <div className='info'>
-              {description}
+              {title + ' ' + genre + ' ' + description}
             </div>
             <div className='Books'>
               <ul>
-                {this.props.books.map( (el,ind) => 
-                  <li key={'PopUpBookKey-'+ind} book_id={el.id}>
-                    {el.title + ' всякая другая инфа о книге '}
+                {this.props.authors.map( (el,ind) => 
+                  <li key={'PopUpAuhorKey-'+ind} author_id={el.id}>
+                    {el.name + ' всякая другая инфа об авторе '}
                   </li>
                 )}
               </ul>

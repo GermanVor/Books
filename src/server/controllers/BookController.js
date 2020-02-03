@@ -1,6 +1,7 @@
 import BookService from '../services/BookService';
 import Util from '../utils/Utils';
-import {isUUID, isInt} from '../utils/validate';
+import {isUUID, isInt, isBook} from '../utils/validate';
+
 
 const util = new Util();
 
@@ -41,10 +42,10 @@ class BookController {
 				return util.send(res);
 			}
 			
-			const authors = await BookService.getParty({limit, page});
+			const books = await BookService.getParty({limit, page});
 
-			if (authors.length > 0)
-				util.setSuccess(200, 'Books Received', authors);
+			if (books.length > 0)
+				util.setSuccess(200, 'Books Received', books);
 			else util.setSuccess(200, 'No Books found');
 
 			return util.send(res);
@@ -69,8 +70,51 @@ class BookController {
 				return util.send(res);
 			}
 			
-			const books = await BookService.getByAuthor(id);
+			const books = await BookService.getByAuthor(id) || [];
 			util.setSuccess(200, 'Books Received', books);
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+	/**
+	 * get info of db 
+	 *
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getSearchInfo(req, res) {
+		try {
+			
+			const arr = req.query.value? await BookService.getSearchInfo(req.query.value) : [];
+			console.log( arr )
+			util.setSuccess(200, 'Books Received', arr);
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+	/**
+	 * get author books control - validate and catch error
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getAuthors(req, res) {
+		try {
+			const {id} = req.params;
+
+			if (!id || !isUUID(id)) {
+				util.setError(400, 'Invalid UUID');
+				return util.send(res);
+			}
+			
+			const authors = await BookService.getAuthors(id) || [];
+			util.setSuccess(200, 'Authors Received', authors);
 
 			return util.send(res);
 		} catch (error) {
@@ -86,15 +130,10 @@ class BookController {
 	 * @returns {Promise<*>}
 	 */
 	static async add(req, res) {
-		
-		if (!req.body.title || !req.body.genre || req.body.authors.length < 1  || !req.body.description) {
+		if( !isBook(req.body) ) {
 			util.setError(400, 'Incomplete information');
 			return util.send(res);
-		} else if (!isInt(req.body.rating)) {
-			util.setError(400, 'Invalid rating value');
-			return util.send(res);
 		}
-
 		try {
 			
 			const book = await BookService.add(req.body);
@@ -106,6 +145,27 @@ class BookController {
 			return util.send(res);
 		}
 	}
+
+		/**
+	 * get info of db 
+	 *
+	 * @param {Object} req - request
+	 * @param {Object} res - response
+	 * @returns {Promise<*>}
+	 */
+	static async getInfo(req, res) {
+		try {
+			const {count} = await BookService.getInfo();
+
+			util.setSuccess(200, 'Books Received',count);
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
 	/**
 	 * update book control - validate and catch error
 	 * @param {Object} req - request
@@ -113,6 +173,7 @@ class BookController {
 	 * @returns {Promise<*>}
 	 */
 	static async update(req, res) {
+		//надо будет подумать , что делать с авторами 
 		const data = req.body, {id} = req.params;
 		if (!id || !isUUID(id)) {
 			util.setError(400, 'Invalid UUID');

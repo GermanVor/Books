@@ -1,20 +1,23 @@
 import React, { Component } from "react"
 
-class Book extends Component {
+class AuthorCard extends Component {
   constructor(props){
     super(props);
-  }
-  componentDidMount(){
+    this.state = {
+    }
     
   }
+  componentDidMount(){
+   
+  }
+  
   render(){
     return (
-      <div className="Book">
-        Book
-        
+      <div className="AuthorCard">
+        апр
       </div>
     )
   }
 }
 
-export default Book
+export default AuthorCard

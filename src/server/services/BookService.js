@@ -1,10 +1,11 @@
 import database from '../src/models';
+import Sequelize from 'sequelize';
+const Op = Sequelize.Op
 
 class BookService {
 	
 	/**
 	 * Requests all available books from the database
-	 *
 	 * @returns {Promise<*>}
 	 */
 	static async getAll() {
@@ -16,15 +17,44 @@ class BookService {
 	}
 	
 	/**
-	 * Requests authors available books from the database
-	 *
+	 * return Arr books by author id
 	 * @returns {Promise<*>}
 	 */
 	static async getByAuthor(id) {
 		try {
+			return await database.Author.findOne({
+				where:{ 'id' : id }
+			})
+			.then( author => {
+				if(author) return author.getBooks()
+			})
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	
+	/**
+	 * return Arr author by books id
+	 * @returns {Promise<*>}
+	 */
+	static async getAuthors(id) {
+		try {
+			return await database.Book.findOne({
+				where:{ 'id' : id }
+			})
+			.then( book => {
+				if(book) return book.getAuthors()
+			})
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	static async getSearchInfo(value) {
+		try {
 			return await database.Book.findAll({
-				where:{ 'id' : id },
-				//attributes: ['name', 'id']
+				where:{ 'title' : { [Op.iRegexp]: '^('+value+')' } },
 			});
 		} catch (error) {
 			throw error;
@@ -32,15 +62,28 @@ class BookService {
 	}
 
 	/**
-	 * Requests party of available books from the database
+	 * Requests info database
 	 *
+	 * @returns {Promise<*>}
+	 */
+	static async getInfo() {
+		try {
+			return await database.Book.findAndCountAll({});
+		} catch (error) {
+			throw error;
+		}
+	}
+
+	/**
+	 * Requests party of available books from the database
 	 * @returns {Promise<*>}
 	 */
 	static async getParty({limit, page}) {
 		try {
+			console.log(limit, page)
 			return await database.Book.findAll({
 				limit,
-				Offset: page*limit
+				offset: page*limit
 			});
 		} catch (error) {
 			throw error;
@@ -49,22 +92,20 @@ class BookService {
 
 	/**
 	 * Adds the Book to the database.
-	 *
+	 * если не указан id автора , то автор будет создан автоматически 
 	 * @param {Object} data - Book information
 	 * @returns {Promise<*>}
 	 */
 	static async add(data) {
 		try {
-			let res = undefined;
-			
-			res = await database.Book.create(data)
+			return await database.Book.create(data)
 				.then( Book => {
 					data.authors.forEach( el => {
-							database.Author.findOne({
-								where: {
-									id: el.id || '1a1111d1-e1d1-1bda-1111-1111b1111111'
-								}
-							})
+						database.Author.findOne({
+							where: {
+								id: el.id || '1a1111d1-e1d1-1bda-1111-1111b1111111'
+							}
+						})
 						.then( author => {
 							if(!author){
 								database.Author.create(el)
@@ -72,8 +113,9 @@ class BookService {
 									Book.addAuthor(author)
 								})
 							} else Book.addAuthor(author)
-						})
-					}) 
+						});
+					});
+					return Book
 				})
 
 			return res;
@@ -117,7 +159,6 @@ class BookService {
 
 	/**
 	 * Removes the books with the given id from the database
-	 *
 	 * @param {String} book_id - Book id
 	 * @returns {Promise<*>}
 	 */

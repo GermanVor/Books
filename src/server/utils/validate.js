@@ -20,5 +20,9 @@ module.exports = {
 	 */
 	isInt: value => {
 		return !isNaN(value) && parseInt(Number(value)) === value;
+	},
+
+	isBook: a => {
+		return a.title && a.genre && a.description && a.authors.length >= 1 && a.rating >= 0;
 	}
 };
