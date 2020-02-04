@@ -4,47 +4,71 @@ class Pagination extends Component {
   constructor(props){
     super(props);
     this.state = {
-      limit: this.props.limit || 5,
-      activPagin: undefined,
       PaginCount: [],
-      page: this.props.page || 0,
     }
-    this.PaginLenght = this.PaginLenght.bind(this)
+    this.limit = this.props.limit || 5;
+    this.page = this.props.page || 0;
+
+    this.PaginLenght = this.PaginLenght.bind(this);
+    this.LimitMenuOnClick = this.LimitMenuOnClick.bind(this);
   }
-  componentDidMount(){
+  componentWillMount(){
     this.PaginLenght()
   }
   PaginLenght(){
-    let arr = [], a = Math.ceil(this.props.DBSize/this.state.limit);
+    let arr = [], a = Math.ceil(this.props.DBSize/this.limit);
     while(a--) arr.push('');
     this.setState({ PaginCount: arr });
   }
 
   PaginClick(event){
-    let ind = arguments[1]===0 ? 0 : arguments[1] || this.state.page;
-    let limit = this.state.limit;
-    // существует только потому что не стал писать отдельную функцию для div.LimitMenu button
+    let page = arguments[1]===0 ? 0 : arguments[1] || this.page;
+    let limit = this.limit; 
+    this.page = page;
+
     if( event ){
-      if( this.state.activPagin ) this.state.activPagin.classList.remove('activPagin');
-      this.setState({ activPagin: event.target });
+      let a = document.querySelector('.Pagination ul button.activPagin ');
+      if( a ) a.classList.remove('activPagin')
       event.target.classList.add('activPagin');
     }
     
-    this.props.onClick(limit, ind)
+    this.props.onClick(limit, page);
+    return false;
   } 
+  shouldComponentUpdate(nextProps, nextState){
+    return (nextProps.DBSize !== this.props.DBSize) || (this.state.PaginCount !== nextState.PaginCount)
+  }
+  LimitMenuOnClick(event, limit){
+    if(limit === this.limit) return
 
+    while(1){
+      if(this.page*limit < this.props.DBSize) break
+      else --this.page
+    }
+    
+    this.limit = limit;
+    this.props.onClick(limit, this.page);
+    this.PaginLenght()
+  }
   render(){
+    let page = this.page; 
+    let limit = this.limit;
+    
+    //потому что реакт слишком хорошо оптимизирован и может не перерисовать нужный элемент PaginCount
+    let a = document.querySelector('.Pagination ul button[page="'+ page +'"] ');
+    if( a ) a.classList.add('activPagin');
+
     return (
       <div className="Pagination">
         <div className='LimitMenu box'>
-          <button onClick={ ()=> this.setState({limit :3}, () => {this.PaginLenght(); this.PaginClick() } ) } >3</button>
-          <button onClick={ ()=> this.setState({limit :5}, () => {this.PaginLenght(); this.PaginClick() } ) } >5</button>
+          <button onClick={ () => this.LimitMenuOnClick(event, 3) } className={limit===3?'activPagin': ''}>3</button>
+          <button onClick={ () => this.LimitMenuOnClick(event, 5) } className={limit===5?'activPagin': ''}>5</button>
         </div>
 
         <ul className='hr'>{
           this.state.PaginCount.map( (el,ind) => 
-            <li key={'Author-ul-li-'+ind}>
-              <button page={ind} onClick={()=>this.PaginClick(event, ind)}>{ind}</button>
+            <li key={'Author-ul-li-'+ind} >
+              <button page={ind} onClick={()=>this.PaginClick(event, ind)} className={page===ind?'activPagin': ''}>{ind}</button>
             </li>
           )
         }</ul>

@@ -7,12 +7,20 @@ import PopUp from './components/authorPopUp'
 class Authors extends Component {
   constructor(props){
     super(props);
+    let obj = JSON.parse(sessionStorage.getItem('Author'))
+    let l = undefined, p = undefined;
+    if( obj ){
+      console.log(obj)
+      l = obj.limit;
+      p = obj.page;
+    }
+    this.limit = l || 3;
+    this.page = p || 0;
+
     this.state = {
       authors: [],
       authorDBSize: 0,
       SeachValue: '',
-      limit: 1,
-      page: 0,
       popup: ''
     }
     this.PaginClick = this.PaginClick.bind(this);
@@ -20,9 +28,7 @@ class Authors extends Component {
     this.sortZA = this.sortZA.bind(this);
     this.InfoPopUp = this.InfoPopUp.bind(this);
   }
-  /**
-	 * @returns Array
-	 */
+ 
   sort(arr, key, isIncrease = 1){
     return arr.sort( function (a, b) {
       if (a[key] > b[key]) return isIncrease;
@@ -36,10 +42,9 @@ class Authors extends Component {
   sortZA(){
     this.setState({ authors: this.sort(this.state.authors, 'name', -1) })
   }
-  componentDidMount(){
+  componentWillMount(){
     
-    let {limit, page}  = this.state;
-    fetch('/api/authors?limit='+limit+'&page='+page)
+    fetch('/api/authors?limit='+this.limit+'&page='+this.page)
     .then(response => response.json())
     .then( res=>this.setState({ authors: res.data || [] }) )
 
@@ -49,11 +54,6 @@ class Authors extends Component {
 
   }
 
-  PaginClick(limit, ind){
-    fetch('/api/authors?limit='+limit+'&page='+ind)
-    .then(response => response.json())
-    .then( res=>this.setState({ authors : res.data }) )
-  } 
   async InfoPopUp(event){
     let target = event.target;
     let id = target.getAttribute('author_id');
@@ -74,6 +74,17 @@ class Authors extends Component {
         del = { ()=> this.setState({popup: ''})}
     />}) 
   }
+  
+  PaginClick(limit, page){
+    sessionStorage.setItem('Author', JSON.stringify({ limit: limit, page: page}) ) 
+    this.limit = limit;
+    this.page = page;
+
+    fetch('/api/authors?limit='+limit+'&page='+page)
+    .then(response => response.json())
+    .then( res=>this.setState({ authors : res.data }) )
+  }
+
   render(){
     return (
       <div className="Authors">
@@ -83,9 +94,7 @@ class Authors extends Component {
             <button onClick={this.sortAZ} >A...Z</button>
             <button onClick={this.sortZA} >Z...A</button>
           </div>
-          
-            <Chosen />
-           
+          <Chosen />
         </div>
         {this.state.popup}
         <ul>{
@@ -100,8 +109,8 @@ class Authors extends Component {
         {this.state.authorDBSize ? <Pagination 
           DBSize = {this.state.authorDBSize} 
           onClick = {this.PaginClick}
-          limit = {this.state.limit}
-          page = {this.state.page}
+          limit = {this.limit}
+          page = {this.page}
         />: ''}
 
         <br/>
@@ -111,7 +120,7 @@ class Authors extends Component {
 }
 
 export default Authors
-//добавить автора
+// добавить автора
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {

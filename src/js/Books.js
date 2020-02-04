@@ -7,11 +7,20 @@ import PopUp from './components/bookPopUp'
 class Books extends Component {
   constructor(props){
     super(props);
+    let obj = JSON.parse(sessionStorage.getItem('Book'))
+    let l = undefined, p = undefined;
+    if( obj ){
+      console.log(obj)
+      l = obj.limit;
+      p = obj.page;
+    }
+    this.limit = l || 3;
+    this.page = p || 0;
+
     this.state = {
       books: [],
       bookDBSize: 0,
       SeachValue: '',
-      limit: 5,
       popup: ''
     }
     this.PaginClick = this.PaginClick.bind(this);
@@ -36,9 +45,7 @@ class Books extends Component {
     this.setState({ books: this.sort(this.state.books, 'title', -1) })
   }
   componentDidMount(){
-    
-    let limit = this.state.limit;
-    fetch('/api/books?limit='+limit+'&page=0')
+    fetch('/api/books?limit='+this.limit+'&page='+this.page)
     .then(response => response.json())
     .then( res=>this.setState({ books: res.data || [] }) )
 
@@ -48,9 +55,12 @@ class Books extends Component {
 
   }
 
-  PaginClick(limit, ind){
-    console.log( limit, ind )
-    fetch('/api/books?limit='+limit+'&page='+ind)
+  PaginClick(limit, page){
+    sessionStorage.setItem('Book', JSON.stringify({ limit: limit, page: page}) ) 
+    this.limit = limit;
+    this.page = page;
+
+    fetch('/api/books?limit='+limit+'&page='+page)
     .then(response => response.json())
     .then( res=>this.setState({ books : res.data }) )
   }
@@ -84,9 +94,7 @@ class Books extends Component {
             <button onClick={this.sortAZ} >A...Z</button>
             <button onClick={this.sortZA} >Z...A</button>
           </div>
-          
-            <Chosen />
-           
+          <Chosen />
         </div>
         {this.state.popup}
         <ul>{
@@ -101,7 +109,8 @@ class Books extends Component {
         {this.state.bookDBSize ? <Pagination 
           DBSize = {this.state.bookDBSize} 
           onClick = {this.PaginClick}
-          limit = {this.state.limit}
+          limit = {this.limit}
+          page = {this.page}
         />: ''}
 
         <br/>
