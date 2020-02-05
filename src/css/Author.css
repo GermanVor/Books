@@ -8,14 +8,33 @@ ul.hr li {
   border: 1px solid #000; 
   padding: 3px;  
 }
+.box button.btn {
+  padding: 2px 6px;
+  border-radius: 0;
+  vertical-align: unset;
+}
+.box button.btn:last-child {
+  border-radius: 0 .25rem .25rem  0 ;
+}
 .activPagin {
-  border: 1px solid rgb(226, 57, 57);
-} 
+  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */
+  background-color: rgba(56, 195, 216, 0.5);
+}
+.activButton {
+  transform: scale(1.1);
+}
+.LimitMenu {
+  margin: 10px 5px;
+}
+
 .left {
   float: left;
 }
 .right {
   float: right;
+}
+.inline-block {
+  display: inline-block;
 }
 .AuthorMenu div.box {
   position: relative;
@@ -47,4 +66,10 @@ ul.hr li {
   background-color: #c5c5c5;
   border-radius:5px;
   box-shadow: 0px 0px 10px #000;
+}
+#react-container {
+  margin: 5px 10px;
+}
+.Toggle .head button {
+  margin: 0px 5px 10px 0px;
 }

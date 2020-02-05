@@ -10,7 +10,6 @@ class Authors extends Component {
     let obj = JSON.parse(sessionStorage.getItem('Author'))
     let l = undefined, p = undefined;
     if( obj ){
-      console.log(obj)
       l = obj.limit;
       p = obj.page;
     }
@@ -88,14 +87,16 @@ class Authors extends Component {
   render(){
     return (
       <div className="Authors">
-        Authors
-        <div className='AuthorsMenu'>
-          <div className='sortBox box'>
-            <button onClick={this.sortAZ} >A...Z</button>
-            <button onClick={this.sortZA} >Z...A</button>
+        <h1>Authors</h1>
+        <div className='AuthorsMenu '>
+          <Chosen class='inline-block'/>
+          <div className='sortBox box inline-block'>
+            <button onClick={this.sortAZ} className='btn btn-info'>A...Z</button>
+            <button onClick={this.sortZA} className='btn btn-info'>Z...A</button>
           </div>
-          <Chosen />
+          
         </div>
+        
         {this.state.popup}
         <ul>{
           this.state.authors.map( (el, ind) => 

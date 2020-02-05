@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Authors from './Authors'
 import Books from './Books'
 import AuthorCard from '../js/components/AuthorCard'
+import BookCard from '../js/components/BookCard'
 
 import { 
   HashRouter,
@@ -22,14 +23,18 @@ class Toggle extends  Component{
   render(){
     return (<div className='Toggle'>
        <HashRouter>
-        <Link to={'/authors' }>Авторы</Link>
-        <Link to={'/books' }>Книги</Link>
+        <div className='head'>
+          <Link to={'/authors' }><button type="button" className="btn btn-danger" >Авторы</button></Link>
+          <Link to={'/books' }><button type="button" className="btn btn-warning" >Книги</button></Link>
+        </div>
         <Switch  >
-            <Route path={'/authors' } render={() => <Authors />} />
+            <Route exact path={'/authors' } render={() => <Authors />} />
             <Route path={'/books' } render={() => <Books />}/>
-            <Route path={'/author' } render={() => <AuthorCard />}/>
+            <Route path={'/author' } component={AuthorCard} />
+            <Route path={'/book' } component={BookCard} />
         </Switch>
       </HashRouter>
+
     </div>)
   }
 }

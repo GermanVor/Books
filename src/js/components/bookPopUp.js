@@ -1,37 +1,26 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class PopUP extends  Component{
-  constructor(props){
-      super(props);
-      this.ref = React.createRef();
-  }
-
-  componentDidMount() {
-    this.ref.current.focus();
-  }
-
-  render(){
-    console.log( this.props )
-    let {title, genre, description} = this.props.book
-    return (
-      <div className="b-popup PopUp" >
-          <div className="b-popup-content" onBlur={this.props.del} tabIndex="1"  ref={this.ref}>
-            <h1 className='PopUpHead' >{name}</h1>
-            <div className='info'>
-              {title + ' ' + genre + ' ' + description}
-            </div>
-            <div className='Books'>
-              <ul>
-                {this.props.authors.map( (el,ind) => 
-                  <li key={'PopUpAuhorKey-'+ind} author_id={el.id}>
-                    {el.name + ' всякая другая инфа об авторе '}
-                  </li>
-                )}
-              </ul>
-            </div>
+const PopUP = (props) =>{
+  let {title, genre, description} = props.book;
+  return (
+    <div className="b-popup PopUp" onClick={props.del} >
+        <div className="b-popup-content" onClick={ (event)=>event.stopPropagation() }>
+          <h1 className='PopUpHead' >{name}</h1>
+          <div className='info'>
+            {title + ' ' + genre + ' ' + description}
           </div>
-    </div>)
-  }
+          <div className='Books'   >
+            <ul>
+              {props.authors.map( (el,ind) => 
+                <li key={'PopUpAuhorKey-'+ind} author_id={el.id}>
+                  {el.name+' '}<Link to={{pathname: '/author', id: el.id }} > всякая другая инфа об авторе</Link> 
+                </li>
+              )}
+            </ul>
+          </div>
+        </div>
+  </div>)
 }
 
 export default PopUP

@@ -27,7 +27,7 @@ class Pagination extends Component {
     this.page = page;
 
     if( event ){
-      let a = document.querySelector('.Pagination ul button.activPagin ');
+      let a = document.querySelector('.Pagination div.btn-group button.activPagin ');
       if( a ) a.classList.remove('activPagin')
       event.target.classList.add('activPagin');
     }
@@ -55,23 +55,24 @@ class Pagination extends Component {
     let limit = this.limit;
     
     //потому что реакт слишком хорошо оптимизирован и может не перерисовать нужный элемент PaginCount
-    let a = document.querySelector('.Pagination ul button[page="'+ page +'"] ');
+    let a = document.querySelector('.Pagination div.btn-group button[page="'+ page +'"] ');
     if( a ) a.classList.add('activPagin');
 
     return (
       <div className="Pagination">
-        <div className='LimitMenu box'>
-          <button onClick={ () => this.LimitMenuOnClick(event, 3) } className={limit===3?'activPagin': ''}>3</button>
-          <button onClick={ () => this.LimitMenuOnClick(event, 5) } className={limit===5?'activPagin': ''}>5</button>
+        <div className='LimitMenu'>
+          <button onClick={ () => this.LimitMenuOnClick(event, 3) } className={'btn btn-info ' + (limit===3?'activPagin':'')}>3</button>
+          <button onClick={ () => this.LimitMenuOnClick(event, 5) } className={'btn btn-info ' + (limit===5?'activPagin':'')}>5</button>
         </div>
 
-        <ul className='hr'>{
+        <div className="btn-group mr-2" role="group" aria-label="First group">{
           this.state.PaginCount.map( (el,ind) => 
-            <li key={'Author-ul-li-'+ind} >
-              <button page={ind} onClick={()=>this.PaginClick(event, ind)} className={page===ind?'activPagin': ''}>{ind}</button>
-            </li>
+            <button key={'Author-ul-li-'+ind} type="button"
+              page={ind} onClick={()=>this.PaginClick(event, ind)} 
+              className={ 'btn btn-info ' + (page===ind?'activPagin': '')  }>{ind}
+            </button>
           )
-        }</ul>
+        }</div>
       </div>
     )
   }

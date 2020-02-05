@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { Link } from 'react-router-dom';
 
 class Chosen extends Component {
@@ -11,6 +10,8 @@ class Chosen extends Component {
     }
    
     this.handleChangeSearch = this.handleChangeSearch.bind(this);
+    this.Focus = this.Focus.bind(this);
+    this.Blur = this.Blur.bind(this);
   }
   componentDidMount(){}
 
@@ -23,19 +24,36 @@ class Chosen extends Component {
     .then( res=>this.setState({ pool: res.data }), () => this.setState({ pool: [] }) )
     
   }
-  
+  Blur(event){
+    let a = document.querySelector('.Chosen div.dropdown-menu.show');
+
+    if( a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu'))
+    return 
+    else if(a) a.classList.remove('show')
+  }
+  Focus(){
+    let a = document.querySelector('.Chosen div.dropdown-menu:not(.show)')
+    if( a && this.state.pool && this.state.pool.length )  a.classList.add('show')
+  }
   render(){
     
     return (
-      <div className='search box Chosen'>
+      <div className={'search box Chosen '+ this.props.class } >
         <form >
             <input type="text" value={this.state.SeachValue} onChange={this.handleChangeSearch} 
               autoComplete="off" name="contributor_text" placeholder="Начните вводить автора"
-              aria-autocomplete="list" aria-haspopup="false" aria-expanded="false"/>
+              aria-autocomplete="list" aria-haspopup="false" aria-expanded="false"
+              className="" onBlur={this.Blur} onFocus={this.Focus}/>
         </form>
-        <ul>
-          {this.state.pool.map( (a, ind) => <Link to={'/author'}><li author_id={a.id} key={'Chosen-'+ind}>{a.name}</li></Link>)}
-        </ul>
+
+        <div className="dropdown " >
+          <div className={"dropdown-menu "+ (this.state.pool && this.state.pool.length? 'show': '' ) } aria-labelledby="dropdownMenuButton">
+            {this.state.pool.map( (a, ind) => <Link to={{pathname: '/author', id: a.id }} className="dropdown-item" key={'Chosen-'+ind}>
+              {a.name}
+            </Link>)}
+          </div>
+        </div>
+
       </div>
     );
   }

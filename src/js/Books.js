@@ -10,7 +10,6 @@ class Books extends Component {
     let obj = JSON.parse(sessionStorage.getItem('Book'))
     let l = undefined, p = undefined;
     if( obj ){
-      console.log(obj)
       l = obj.limit;
       p = obj.page;
     }
@@ -24,25 +23,26 @@ class Books extends Component {
       popup: ''
     }
     this.PaginClick = this.PaginClick.bind(this);
-    this.sortAZ = this.sortAZ.bind(this);
-    this.sortZA = this.sortZA.bind(this);
     this.InfoPopUp = this.InfoPopUp.bind(this);
+    this.sortRating = this.sortRating.bind(this);
+    this.sortTitle = this.sortTitle.bind(this)
   }
   /**
 	 * @returns Array
 	 */
   sort(arr, key, isIncrease = 1){
+    console.log( arr)
     return arr.sort( function (a, b) {
       if (a[key] > b[key]) return isIncrease;
       if (a[key] < b[key]) return -isIncrease;
       return 0;
     } )
   }
-  sortAZ(){
-    this.setState({ books: this.sort(this.state.books, 'title') })
+  sortTitle(event, r){
+    this.setState({ books: this.sort(this.state.books, 'title',r) })
   }
-  sortZA(){
-    this.setState({ books: this.sort(this.state.books, 'title', -1) })
+  sortRating(event, r){
+    this.setState({ books: this.sort(this.state.books, 'rating',r) })
   }
   componentDidMount(){
     fetch('/api/books?limit='+this.limit+'&page='+this.page)
@@ -88,19 +88,21 @@ class Books extends Component {
   render(){
     return (
       <div className="Books">
-        Books
+        <h1>Books</h1>
         <div className='BooksMenu'>
-          <div className='sortBox box'>
-            <button onClick={this.sortAZ} >A...Z</button>
-            <button onClick={this.sortZA} >Z...A</button>
+          <Chosen class='inline-block'/>
+          <div className='sortBox box inline-block' >
+            <button onClick={()=>this.sortTitle(event,1)} className='btn btn-info'>A...Z</button>
+            <button onClick={()=>this.sortTitle(event,-1)} className='btn btn-info'>Z...A</button>
+            <button onClick={()=>this.sortRating(event,1)} className='btn btn-info'>Rating Up</button>
+            <button onClick={()=>this.sortRating(event,-1)} className='btn btn-info'>Rating Down</button>
           </div>
-          <Chosen />
         </div>
         {this.state.popup}
         <ul>{
           this.state.books.map( (el, ind) => 
             <li key={'book-key-'+ind}  >
-              {el.title +' '+ el.description +'  |  ' + el.id + ' '}
+              {el.title +' '+ el.description +' '+ el.rating +' |  ' + el.id + ' '}
               <button onClick={this.InfoPopUp} book_id = {el.id} >больше информации</button>
             </li>
           )
