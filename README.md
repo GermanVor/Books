@@ -1,5 +1,15 @@
-![alt text](srn/Снимок1.PNG "")
-![alt text](srn/Снимок2.PNG "")
-![alt text](srn/Снимок3.PNG "")
-![alt text](srn/Снимок4.PNG "")
-![alt text](srn/Снимок5.PNG "")
+# Вкладка Авторы
+![alt text](screenshots/Снимок1.PNG " ")
+
+# PopUp окно вкладки Авторы
+![alt text](screenshots/Снимок2.PNG " ")
+
+# Карточка Автора
+![alt text](screenshots/Снимок3.PNG " ")
+
+# Поисковая строка вкладки Авторы
+![alt text](screenshots/Снимок4.PNG " ")
+
+# Внешне вкладка Авторы и вкладка Книги идентичны, функционально - вкладка Книги чуть более разнообразна согласно ТЗ
+![alt text](screenshots/Снимок5.PNG " ")
+
