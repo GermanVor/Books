@@ -67,7 +67,7 @@ class AuthorController {
 	 */
 	static async getSearchInfo(req, res) {
 		try {
-			const arr = req.query.value? await AuthorService.getSearchInfo() : [];
+			const arr = req.query.value? await AuthorService.getSearchInfo(req.query.value) : [];
 			util.setSuccess(200, 'Authors Received', arr);
 			return util.send(res);
 		} catch (error) {

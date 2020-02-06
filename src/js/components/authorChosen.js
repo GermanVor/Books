@@ -36,7 +36,6 @@ class Chosen extends Component {
     if( a && this.state.pool && this.state.pool.length )  a.classList.add('show')
   }
   render(){
-    
     return (
       <div className={'search box Chosen '+ this.props.class } >
         <form >

@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c02a17f74a340c0e7c17";
+/******/ 	var hotCurrentHash = "1bc858ddcb472ae5150a";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -37354,21 +37354,7 @@ function (_Component) {
 
     if (obj) {
       l = obj.limit;
-
-      if (_this.props.location && _this.props.location.OrderId) {
-        console.log(_this.props.location, _this.props.location.OrderId);
-        p = 0;
-
-        while (1) {
-          if (l * (p + 1) >= _this.props.location.OrderId) break;else p++;
-        }
-      } else p = obj.page;
-    } else {
-      p = 0;
-
-      while (1) {
-        if (3 * (p + 1) >= _this.props.location.OrderId) break;else p++;
-      }
+      p = obj.page;
     }
 
     _this.limit = l || 3;
@@ -37407,13 +37393,33 @@ function (_Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
-      fetch('/api/authors?limit=' + this.limit + '&page=' + this.page).then(function (response) {
-        return response.json();
-      }).then(function (res) {
-        return _this2.setState({
-          authors: res.data || []
+      if (this.props.location && this.props.location.id) {
+        fetch('/api/authors/PagginInfo').then(function (response) {
+          return response.json();
+        }).then(function (arr) {
+          var order = arr.data.findIndex(function (el) {
+            return el.id === _this2.props.location.id;
+          }) + 1;
+          _this2.page = Math.floor(order / _this2.limit) + (order % _this2.limit ? 0 : -1);
+        }).then(function () {
+          return fetch('/api/authors?limit=' + _this2.limit + '&page=' + _this2.page).then(function (response) {
+            return response.json();
+          }).then(function (res) {
+            return _this2.setState({
+              authors: res.data || []
+            });
+          });
         });
-      });
+      } else {
+        fetch('/api/authors?limit=' + this.limit + '&page=' + this.page).then(function (response) {
+          return response.json();
+        }).then(function (res) {
+          return _this2.setState({
+            authors: res.data || []
+          });
+        });
+      }
+
       fetch('/api/authors/info').then(function (response) {
         return response.json();
       }).then(function (res) {
@@ -37436,7 +37442,7 @@ function (_Component) {
             switch (_context.prev = _context.next) {
               case 0:
                 target = event.target;
-                id = target.getAttribute('author_id');
+                id = target.getAttribute('authot_id');
                 _context.next = 4;
                 return fetch('/api/authors/' + id).then(function (response) {
                   return response.json();
@@ -37503,12 +37509,14 @@ function (_Component) {
     value: function render() {
       var _this5 = this;
 
-      if (this.props.location && this.props.location.OrderId) {
-        var a = document.querySelector('.Authors div[author-order-id="' + this.props.location.OrderId + '"]');
+      if (this.props.location && this.props.location.id) {
+        setTimeout(function () {
+          var a = document.querySelector('.Authors div[authot_id="' + _this5.props.location.id + '"]');
 
-        if (a) {
-          a.focus();
-        }
+          if (a) {
+            a.focus();
+          }
+        }, 0);
       }
 
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -37535,7 +37543,7 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
           key: 'author-key-' + ind,
           className: "jumbotron jumbotron-fluid",
-          "author-order-id": el.OrderId,
+          authot_id: el.id,
           tabIndex: "-1"
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
           className: "container"
@@ -37543,8 +37551,8 @@ function (_Component) {
           className: "display-4 inline-block"
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("em", null, el.name)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
           onClick: _this5.InfoPopUp,
-          author_id: el.id,
-          className: "btn btn-info"
+          className: "btn btn-info",
+          authot_id: el.id
         }, "\u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E\u0431 \u0430\u0432\u0442\u043E\u0440\u0435")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("hr", {
           className: "my-2"
         }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
@@ -37562,14 +37570,14 @@ function (_Component) {
   return Authors;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Authors); // добавить автора
+/* harmony default export */ __webpack_exports__["default"] = (Authors); //добавить автора
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'Юлия Агата',
+//         name: 'а',
 //         description: 'не любит редиску',
 // books: [
 //     { 
@@ -37577,7 +37585,14 @@ function (_Component) {
 //       rating: 2,
 //       genre: 'Ужас',
 //       description: 'было очень смешно, честно', 
-//     }]
+//     },
+//     { 
+//       title : 'Смородина красная 5',
+//       rating: 5,
+//       genre: 'Ужас',
+//       description: 'было очень смешно, честно', 
+//     }
+// ]
 //       })
 // })
 // .then(response => response.json())
@@ -37597,35 +37612,23 @@ function (_Component) {
 //     }
 // ]
 // добавить книгу с авторами , если не передать id автора , то автор будет создан 
-
-fetch('bookDBSize', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json;charset=utf-8'
-  },
-  body: JSON.stringify({
-    title: 'dtyui',
-    rating: 4,
-    genre: 'Ужас',
-    description: 'Ужасный ужастик',
-    authors: [{
-      name: 'Артем1',
-      description: 'описание артема'
-    }, {
-      name: 'Женя1',
-      description: 'описание жени'
-    }]
-  })
-}).then(function (response) {
-  return response.json();
-}).then(console.log); // //книги автора по id автора
-// fetch('bookDBSize/authors-book/asf')
-//     .then(response => response.json())
-//     .then( console.log )
-// //авторы книги по id книги 
-// fetch('bookDBSize/books-by-author-id/asg ')
-//     .then(response => response.json())
-//     .then( console.log )
+// fetch('/api/books/', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        title : 'dtyui',
+//        rating: 4,
+//        genre: 'Ужас',
+//        description: 'Ужасный ужастик',
+//        authors: [
+//          {name: 'Артем1', description: 'описание артема'},
+//          {name: 'Женя1', description: 'описание жени'},
+//        ]
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)
 
 /***/ }),
 
@@ -38501,8 +38504,7 @@ __webpack_require__.r(__webpack_exports__);
 var PopUP = function PopUP(props) {
   var _props$author = props.author,
       description = _props$author.description,
-      name = _props$author.name,
-      books = _props$author.books;
+      name = _props$author.name;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "b-popup PopUp",
     onClick: props.del
@@ -38713,7 +38715,7 @@ var PopUP = function PopUP(props) {
     }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: {
         pathname: '/authors',
-        OrderId: el.OrderId
+        id: el.id
       }
     }, " \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u0432\u043A\u043B\u0430\u0434\u043A\u0435 \u0430\u0432\u0442\u043E\u0440\u044B"));
   })))));

@@ -79,7 +79,30 @@ class BookController {
 			return util.send(res);
 		}
 	}
+
+	static async getTopByAuthor(req, res) {
+		try {
+			console.log( req.query )
+			const top = Number(req.query.top),
+						id = req.query.id
+						
+			if (!id || !isUUID(id) || !isInt(top)) {
+				util.setError(400, 'Invalid UUID');
+				return util.send(res);
+			}
+			console.log( 1 )
+			const books = await BookService.getTopByAuthor(top, id) || [];
+			util.setSuccess(200, 'Books Received', books);
+
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
+
 	/**
+	 * getTopByAuthor
 	 * get info of db 
 	 *
 	 * @param {Object} req - request

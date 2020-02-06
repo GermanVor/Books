@@ -1,1 +1,5 @@
- ![alt text](src/Гость.PNG "")
+![alt text](srn/Снимок1.PNG "")
+![alt text](srn/Снимок2.PNG "")
+![alt text](srn/Снимок3.PNG "")
+![alt text](srn/Снимок4.PNG "")
+![alt text](srn/Снимок5.PNG "")

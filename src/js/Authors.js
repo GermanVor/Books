@@ -36,7 +36,7 @@ class Authors extends Component {
   sortName(event, r){
     this.setState({ authors: this.sort(this.state.authors, 'name', r) })
   }
-  componentWillMount(){
+  componentDidMount(){
    
     if( this.props.location && this.props.location.id ){
       fetch('/api/authors/PagginInfo')
@@ -59,13 +59,16 @@ class Authors extends Component {
     fetch('/api/authors/info')
     .then(response => response.json())
     .then(res=>this.setState({ authorDBSize: res.data } ))
+
   }
   async InfoPopUp(event){
     let target = event.target;
-    let id = target.getAttribute('author_id');
+    let id = target.getAttribute('authot_id');
 
-    let author;
-    let books;
+    let author={};
+    let books=[];
+    let top = [];
+
     await fetch('/api/authors/'+id)
     .then(response => response.json())
     .then( res => {author = res.data})
@@ -74,11 +77,17 @@ class Authors extends Component {
     .then(response => response.json())
     .then( res => {books = res.data})
     
-    this.setState({ popup: <PopUp
-        author = { author }
-        books = { books }
-        del = { ()=> this.setState({popup: ''})}
-    />}) 
+    await fetch('/api/books/top-books-by-author-id?top='+5+'&id='+id)
+    .then(response => response.json())
+    .then( res => {top = res.data})
+    
+    if(Object.keys(author).length && books.length )
+      this.setState({ popup: <PopUp
+          author = { author }
+          books = { books }
+          top = { top }
+          del = { ()=> this.setState({popup: ''})}
+      />}) 
   }
   PaginClick(limit, page){
     sessionStorage.setItem('Author', JSON.stringify({ limit: limit, page: page}) ) 
@@ -90,15 +99,15 @@ class Authors extends Component {
     .then( res=>this.setState({ authors : res.data }) )
   }
   render(){ 
-    if( this.props.location && this.props.location.id ){
-      setTimeout( () => { 
-        let a = document.querySelector('.Authors div[author-id="'+this.props.location.id+'"]')
+    setTimeout( () => {
+      if( this.props.location && this.props.location.id ){
+        let a = document.querySelector('.Authors div[authot_id="'+this.props.location.id+'"]')
         if( a ){
           a.focus();
         }
-       } ,0)
-    }
-    return (
+      }
+    }, 0)
+    return(
       <div className="Authors">
         <h1>Authors</h1>
         <div className='AuthorsMenu '>
@@ -111,11 +120,11 @@ class Authors extends Component {
         {this.state.popup}
         <div className='AuthorsPool Pool'>{
           this.state.authors.map( (el, ind) => 
-            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" author-id={el.id} tabIndex="-1">
+            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" authot_id={el.id} tabIndex="0">
               <div className="container">
                 <div>
                   <h1 className="display-4 inline-block"><em>{el.name}</em></h1>
-                  <button onClick={this.InfoPopUp} className="btn btn-info">больше информации об авторе</button>
+                  <button onClick={this.InfoPopUp} className="btn btn-info" authot_id={el.id} >больше информации об авторе</button>
                 </div>
                 <hr className="my-2"></hr>
                 <p className="lead">{el.description}</p>
@@ -135,14 +144,14 @@ class Authors extends Component {
 }
 
 export default Authors
-// добавить автора
+//добавить автора
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'Юлия Агата',
+//         name: 'а',
 //         description: 'не любит редиску',
 // books: [
 //     { 
@@ -150,7 +159,14 @@ export default Authors
 //       rating: 2,
 //       genre: 'Ужас',
 //       description: 'было очень смешно, честно', 
-//     }]
+//     },
+//     { 
+//       title : 'Смородина красная 5',
+//       rating: 5,
+//       genre: 'Ужас',
+//       description: 'было очень смешно, честно', 
+//     }
+// ]
 //       })
 // })
 // .then(response => response.json())

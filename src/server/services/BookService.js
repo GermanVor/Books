@@ -34,12 +34,24 @@ class BookService {
 		}
 	}
 
+	static async getTopByAuthor(top, id) {
+		try {
+			return await database.Author.findOne({
+				where:{ 'id' : id }
+			})
+			.then( author => {
+				if(author) return author.getBooks({ order: [['rating', 'DESC']], limit: top })
+			})
+		} catch (error) {
+			throw error;
+		}
+	}
 	
 	/**
 	 * return Arr author by books id
 	 * @returns {Promise<*>}
 	 */
-	static async getAuthors(id) {
+	static async getAuthors(id){
 		try {
 			return await database.Book.findOne({
 				where:{ 'id' : id }
