@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 
+
 class AuthorCard extends Component {
   constructor(props){
     super(props)
@@ -9,7 +10,6 @@ class AuthorCard extends Component {
     }
   }
   componentDidMount () {
-   
     fetch('/api/authors/'+this.props.location.id)
     .then(response => response.json())
     .then( res=>this.setState({ author: res.data }) )
@@ -18,21 +18,28 @@ class AuthorCard extends Component {
     .then(response => response.json())
     .then( res =>this.setState({books: res.data}) )
   }
-    
   render(){
     let { author, books} = this.state;
-    console.log( { author, books} )
     return (
       <div className="AuthorCard">
         <div className='head'>
-          <h1>{author.name}</h1>
+          <h2 className='display-4'>{author.name}</h2>
           <br></br>
+          <hr className="my-2"></hr>
           <div className='description'><p>{author.description}</p></div>
         </div>
         <br/>
-        {books.map( el => {
-          <p>{el.title}</p>
-        }) }
+        <h2>{books.length===1?'Книга':'Книги'}</h2>
+        <hr className="my-2"></hr>
+        <div>
+          {books.map( (el,ind) => 
+            <div key={'AuthorCard-key-'+ind}>
+              <h2 className='inline-block'><em>{el.title+' : '}</em></h2>
+              <h2 className='inline-block'>{el.genre}</h2>
+              <p>{el.description}</p>
+            </div>
+          )}
+        </div>
       </div>
     )
   }

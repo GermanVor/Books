@@ -6,18 +6,22 @@ const PopUP = (props) =>{
   return (
     <div className="b-popup PopUp" onClick={props.del} >
         <div className="b-popup-content" onClick={ (event)=>event.stopPropagation() }>
-          <h1 className='PopUpHead' >{name}</h1>
+          <h1 className='PopUpHead' ><em>{title}</em></h1>
           <div className='info'>
-            {title + ' ' + genre + ' ' + description}
+            <p>{'Жанр : '+genre}</p>
+            <p>{'Описние : '+description}</p>
           </div>
           <div className='Books'   >
-            <ul>
+          <h1>{props.authors.length===1?'Автор':'Авторы'}</h1>
+            <div>
               {props.authors.map( (el,ind) => 
-                <li key={'PopUpAuhorKey-'+ind} author_id={el.id}>
-                  {el.name+' '}<Link to={{pathname: '/author', id: el.id }} > всякая другая инфа об авторе</Link> 
-                </li>
+                <div key={'PopUpAuhorKey-'+ind} author_id={el.id}>
+                  {el.name+' '}
+                  <Link to={{pathname: '/author', id: el.id }} > узнать больше</Link> 
+                  <Link to={{pathname: '/authors', id: el.id }} > перейти к вкладке авторы</Link>
+                </div>
               )}
-            </ul>
+            </div>
           </div>
         </div>
   </div>)

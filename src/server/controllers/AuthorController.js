@@ -48,6 +48,16 @@ class AuthorController {
 		}
 	}
 
+	static async getPagginInfo(req, res) {
+		try {
+			const arr = await AuthorService.getPagginInfo(req.query.value);
+			util.setSuccess(200, 'Authors Received', arr);
+			return util.send(res);
+		} catch (error) {
+			util.setError(400, error);
+			return util.send(res);
+		}
+	}
 	/**
 	 * get info of db 
 	 *
@@ -57,9 +67,7 @@ class AuthorController {
 	 */
 	static async getSearchInfo(req, res) {
 		try {
-			
-			const arr = req.query.value? await AuthorService.getSearchInfo(req.query.value) : [];
-			
+			const arr = req.query.value? await AuthorService.getSearchInfo() : [];
 			util.setSuccess(200, 'Authors Received', arr);
 			return util.send(res);
 		} catch (error) {

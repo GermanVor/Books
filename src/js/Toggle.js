@@ -28,8 +28,8 @@ class Toggle extends  Component{
           <Link to={'/books' }><button type="button" className="btn btn-warning" >Книги</button></Link>
         </div>
         <Switch  >
-            <Route exact path={'/authors' } render={() => <Authors />} />
-            <Route path={'/books' } render={() => <Books />}/>
+            <Route exact path={'/authors' }component={Authors} />
+            <Route path={'/books' } component={Books} />
             <Route path={'/author' } component={AuthorCard} />
             <Route path={'/book' } component={BookCard} />
         </Switch>

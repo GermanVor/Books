@@ -27,11 +27,7 @@ class Books extends Component {
     this.sortRating = this.sortRating.bind(this);
     this.sortTitle = this.sortTitle.bind(this)
   }
-  /**
-	 * @returns Array
-	 */
   sort(arr, key, isIncrease = 1){
-    console.log( arr)
     return arr.sort( function (a, b) {
       if (a[key] > b[key]) return isIncrease;
       if (a[key] < b[key]) return -isIncrease;
@@ -52,9 +48,7 @@ class Books extends Component {
     fetch('/api/books/info')
     .then(response => response.json())
     .then(res=>this.setState({ bookDBSize: res.data || [] } ))
-
   }
-
   PaginClick(limit, page){
     sessionStorage.setItem('Book', JSON.stringify({ limit: limit, page: page}) ) 
     this.limit = limit;
@@ -64,7 +58,6 @@ class Books extends Component {
     .then(response => response.json())
     .then( res=>this.setState({ books : res.data }) )
   }
-
   async InfoPopUp(event){
     let target = event.target;
     let id = target.getAttribute('book_id');
@@ -79,6 +72,7 @@ class Books extends Component {
     .then(response => response.json())
     .then( res => {authors = res.data})
 
+    
     this.setState({ popup: <PopUp
         book = { book }
         authors = { authors }
@@ -99,15 +93,21 @@ class Books extends Component {
           </div>
         </div>
         {this.state.popup}
-        <ul>{
+        <div className='BooksPool Pool'>{
           this.state.books.map( (el, ind) => 
-            <li key={'book-key-'+ind}  >
-              {el.title +' '+ el.description +' '+ el.rating +' |  ' + el.id + ' '}
-              <button onClick={this.InfoPopUp} book_id = {el.id} >больше информации</button>
-            </li>
+            <div  key={'book-key-'+ind} className="jumbotron jumbotron-fluid">
+              <div className="container">
+                <div>
+                  <h1 className="display-3 inline-block"><em>{el.title}</em></h1>
+                  <h2 className="inline-block">{'Рейтинг :'+el.rating}</h2>
+                  <button onClick={this.InfoPopUp} book_id = {el.id} className="btn btn-info">больше информации</button>
+                </div>
+                <hr className="my-2"></hr>
+                <p className="lead">{el.genre}</p>
+              </div>
+            </div>
           )
-        }</ul>
-        
+        }</div>
         {this.state.bookDBSize ? <Pagination 
           DBSize = {this.state.bookDBSize} 
           onClick = {this.PaginClick}

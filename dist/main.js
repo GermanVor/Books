@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "465baeaa79824de0d30f";
+/******/ 	var hotCurrentHash = "c02a17f74a340c0e7c17";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -2055,7 +2055,7 @@ ansiHTML.reset()
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.activPagin {\r\n  border: 1px solid rgb(226, 57, 57);\r\n} \r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #c5c5c5;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n", ""]);
+exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n \r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n  margin-bottom: 0;\r\n  \r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}", ""]);
 
 
 /***/ }),
@@ -37348,23 +37348,42 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, Authors);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Authors).call(this, props));
+    var obj = JSON.parse(sessionStorage.getItem('Author'));
+    var l = undefined,
+        p = undefined;
+
+    if (obj) {
+      l = obj.limit;
+
+      if (_this.props.location && _this.props.location.OrderId) {
+        console.log(_this.props.location, _this.props.location.OrderId);
+        p = 0;
+
+        while (1) {
+          if (l * (p + 1) >= _this.props.location.OrderId) break;else p++;
+        }
+      } else p = obj.page;
+    } else {
+      p = 0;
+
+      while (1) {
+        if (3 * (p + 1) >= _this.props.location.OrderId) break;else p++;
+      }
+    }
+
+    _this.limit = l || 3;
+    _this.page = p || 0;
     _this.state = {
       authors: [],
       authorDBSize: 0,
       SeachValue: '',
-      limit: 5,
       popup: ''
     };
     _this.PaginClick = _this.PaginClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
-    _this.sortAZ = _this.sortAZ.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
-    _this.sortZA = _this.sortZA.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
+    _this.sortName = _this.sortName.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
     _this.InfoPopUp = _this.InfoPopUp.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
     return _this;
   }
-  /**
-  * @returns Array
-  */
-
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(Authors, [{
     key: "sort",
@@ -37377,26 +37396,18 @@ function (_Component) {
       });
     }
   }, {
-    key: "sortAZ",
-    value: function sortAZ() {
+    key: "sortName",
+    value: function sortName(event, r) {
       this.setState({
-        authors: this.sort(this.state.authors, 'name')
+        authors: this.sort(this.state.authors, 'name', r)
       });
     }
   }, {
-    key: "sortZA",
-    value: function sortZA() {
-      this.setState({
-        authors: this.sort(this.state.authors, 'name', -1)
-      });
-    }
-  }, {
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "componentWillMount",
+    value: function componentWillMount() {
       var _this2 = this;
 
-      var limit = this.state.limit;
-      fetch('/api/authors?limit=' + limit + '&page=0').then(function (response) {
+      fetch('/api/authors?limit=' + this.limit + '&page=' + this.page).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
@@ -37412,25 +37423,12 @@ function (_Component) {
       });
     }
   }, {
-    key: "PaginClick",
-    value: function PaginClick(limit, ind) {
-      var _this3 = this;
-
-      fetch('/api/authors?limit=' + limit + '&page=' + ind).then(function (response) {
-        return response.json();
-      }).then(function (res) {
-        return _this3.setState({
-          authors: res.data
-        });
-      });
-    }
-  }, {
     key: "InfoPopUp",
     value: function () {
       var _InfoPopUp = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_1___default()(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
-        var _this4 = this;
+        var _this3 = this;
 
         var target, id, author, books;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -37448,7 +37446,7 @@ function (_Component) {
 
               case 4:
                 _context.next = 6;
-                return fetch('bookDBSize/books-by-author-id/' + id).then(function (response) {
+                return fetch('/api/books/books-by-author-id/' + id).then(function (response) {
                   return response.json();
                 }).then(function (res) {
                   books = res.data;
@@ -37460,7 +37458,7 @@ function (_Component) {
                     author: author,
                     books: books,
                     del: function del() {
-                      return _this4.setState({
+                      return _this3.setState({
                         popup: ''
                       });
                     }
@@ -37482,84 +37480,145 @@ function (_Component) {
       return InfoPopUp;
     }()
   }, {
+    key: "PaginClick",
+    value: function PaginClick(limit, page) {
+      var _this4 = this;
+
+      sessionStorage.setItem('Author', JSON.stringify({
+        limit: limit,
+        page: page
+      }));
+      this.limit = limit;
+      this.page = page;
+      fetch('/api/authors?limit=' + limit + '&page=' + page).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this4.setState({
+          authors: res.data
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this5 = this;
 
+      if (this.props.location && this.props.location.OrderId) {
+        var a = document.querySelector('.Authors div[author-order-id="' + this.props.location.OrderId + '"]');
+
+        if (a) {
+          a.focus();
+        }
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "Authors"
-      }, "Authors", react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "AuthorsMenu"
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "sortBox box"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "Authors"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "AuthorsMenu "
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_authorChosen__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        class: "inline-block"
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "sortBox box inline-block"
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
-        onClick: this.sortAZ
+        onClick: function onClick() {
+          return _this5.sortName(event, 1);
+        },
+        className: "btn btn-info"
       }, "A...Z"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
-        onClick: this.sortZA
-      }, "Z...A")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_authorChosen__WEBPACK_IMPORTED_MODULE_9__["default"], null)), this.state.popup, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("ul", null, this.state.authors.map(function (el, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", {
-          key: 'author-key-' + ind
-        }, el.name + ' ' + el.description + '  |  ' + el.id + ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this5.sortName(event, -1);
+        },
+        className: "btn btn-info"
+      }, "Z...A"))), this.state.popup, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "AuthorsPool Pool"
+      }, this.state.authors.map(function (el, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          key: 'author-key-' + ind,
+          className: "jumbotron jumbotron-fluid",
+          "author-order-id": el.OrderId,
+          tabIndex: "-1"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "container"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", {
+          className: "display-4 inline-block"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("em", null, el.name)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
           onClick: _this5.InfoPopUp,
-          author_id: el.id
-        }, "\u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438"));
+          author_id: el.id,
+          className: "btn btn-info"
+        }, "\u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438 \u043E\u0431 \u0430\u0432\u0442\u043E\u0440\u0435")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("hr", {
+          className: "my-2"
+        }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
+          className: "lead"
+        }, el.description)));
       })), this.state.authorDBSize ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Pagination__WEBPACK_IMPORTED_MODULE_10__["default"], {
         DBSize: this.state.authorDBSize,
         onClick: this.PaginClick,
-        limit: this.state.limit
-      }) : '', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", null));
+        limit: this.limit,
+        page: this.page
+      }) : '');
     }
   }]);
 
   return Authors;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Authors); //добавить автора
+/* harmony default export */ __webpack_exports__["default"] = (Authors); // добавить автора
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'Семен',
-//         description: 'фцаыаф 2314',
-//         books: [
-//           { 
-//             title : 'Омут',
-//             rating: 1,
-//             genre: 'Комедия',
-//             description: 'Комедия ', 
-//           },
-//           { 
-//             title : 'Омут 2',
-//             rating: 2,
-//             genre: 'Комедия',
-//             description: 'Комедия ', 
-//           }
-//         ]
+//         name: 'Юлия Агата',
+//         description: 'не любит редиску',
+// books: [
+//     { 
+//       title : 'Смородина красная',
+//       rating: 2,
+//       genre: 'Ужас',
+//       description: 'было очень смешно, честно', 
+//     }]
 //       })
 // })
 // .then(response => response.json())
 // .then( console.log )
-//добавить книгу с авторами , если не передать id автора , то автор будет создан 
-// fetch('bookDBSize', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json;charset=utf-8'
-//       },
-//       body: JSON.stringify({
-//        title : 'dtyui',
-//        rating: 4,
-//        genre: 'Ужас',
-//        description: 'Ужасный ужастик',
-//        authors: [
-//          {name: 'Артем3', description: 'описание артема'},
-//          {name: 'Женя3', description: 'описание жени'},
-//        ]
-//       })
-//     }).then(response => response.json())
-//     .then(console.log)
-// //книги автора по id автора
+// books: [
+//   { 
+//     title : 'Вепрь',
+//     rating: 1,
+//     genre: 'Комедия',
+//     description: 'было очень смешно, честно', 
+//   },
+//    { 
+//       title : 'Вепрь 3',
+//       rating: 2,
+//       genre: 'Драма',
+//       description: 'не так смешно, как первая часть. Куда делась вторая ?', 
+//     }
+// ]
+// добавить книгу с авторами , если не передать id автора , то автор будет создан 
+
+fetch('bookDBSize', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  },
+  body: JSON.stringify({
+    title: 'dtyui',
+    rating: 4,
+    genre: 'Ужас',
+    description: 'Ужасный ужастик',
+    authors: [{
+      name: 'Артем1',
+      description: 'описание артема'
+    }, {
+      name: 'Женя1',
+      description: 'описание жени'
+    }]
+  })
+}).then(function (response) {
+  return response.json();
+}).then(console.log); // //книги автора по id автора
 // fetch('bookDBSize/authors-book/asf')
 //     .then(response => response.json())
 //     .then( console.log )
@@ -37624,23 +37683,29 @@ function (_Component) {
     _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_2___default()(this, Books);
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5___default()(Books).call(this, props));
+    var obj = JSON.parse(sessionStorage.getItem('Book'));
+    var l = undefined,
+        p = undefined;
+
+    if (obj) {
+      l = obj.limit;
+      p = obj.page;
+    }
+
+    _this.limit = l || 3;
+    _this.page = p || 0;
     _this.state = {
       books: [],
       bookDBSize: 0,
       SeachValue: '',
-      limit: 5,
       popup: ''
     };
     _this.PaginClick = _this.PaginClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
-    _this.sortAZ = _this.sortAZ.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
-    _this.sortZA = _this.sortZA.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
     _this.InfoPopUp = _this.InfoPopUp.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
+    _this.sortRating = _this.sortRating.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
+    _this.sortTitle = _this.sortTitle.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6___default()(_this));
     return _this;
   }
-  /**
-  * @returns Array
-  */
-
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_3___default()(Books, [{
     key: "sort",
@@ -37653,17 +37718,17 @@ function (_Component) {
       });
     }
   }, {
-    key: "sortAZ",
-    value: function sortAZ() {
+    key: "sortTitle",
+    value: function sortTitle(event, r) {
       this.setState({
-        books: this.sort(this.state.books, 'title')
+        books: this.sort(this.state.books, 'title', r)
       });
     }
   }, {
-    key: "sortZA",
-    value: function sortZA() {
+    key: "sortRating",
+    value: function sortRating(event, r) {
       this.setState({
-        books: this.sort(this.state.books, 'title', -1)
+        books: this.sort(this.state.books, 'rating', r)
       });
     }
   }, {
@@ -37671,8 +37736,7 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      var limit = this.state.limit;
-      fetch('/api/books?limit=' + limit + '&page=0').then(function (response) {
+      fetch('/api/books?limit=' + this.limit + '&page=' + this.page).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
@@ -37689,11 +37753,16 @@ function (_Component) {
     }
   }, {
     key: "PaginClick",
-    value: function PaginClick(limit, ind) {
+    value: function PaginClick(limit, page) {
       var _this3 = this;
 
-      console.log(limit, ind);
-      fetch('/api/books?limit=' + limit + '&page=' + ind).then(function (response) {
+      sessionStorage.setItem('Book', JSON.stringify({
+        limit: limit,
+        page: page
+      }));
+      this.limit = limit;
+      this.page = page;
+      fetch('/api/books?limit=' + limit + '&page=' + page).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this3.setState({
@@ -37765,25 +37834,58 @@ function (_Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "Books"
-      }, "Books", react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "Books"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "BooksMenu"
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "sortBox box"
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_bookChosen__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        class: "inline-block"
+      }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "sortBox box inline-block"
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
-        onClick: this.sortAZ
+        onClick: function onClick() {
+          return _this5.sortTitle(event, 1);
+        },
+        className: "btn btn-info"
       }, "A...Z"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
-        onClick: this.sortZA
-      }, "Z...A")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_bookChosen__WEBPACK_IMPORTED_MODULE_9__["default"], null)), this.state.popup, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("ul", null, this.state.books.map(function (el, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("li", {
-          key: 'book-key-' + ind
-        }, el.title + ' ' + el.description + '  |  ' + el.id + ' ', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this5.sortTitle(event, -1);
+        },
+        className: "btn btn-info"
+      }, "Z...A"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this5.sortRating(event, 1);
+        },
+        className: "btn btn-info"
+      }, "Rating Up"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this5.sortRating(event, -1);
+        },
+        className: "btn btn-info"
+      }, "Rating Down"))), this.state.popup, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "BooksPool Pool"
+      }, this.state.books.map(function (el, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          key: 'book-key-' + ind,
+          className: "jumbotron jumbotron-fluid"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+          className: "container"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", {
+          className: "display-3 inline-block"
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("em", null, el.title)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+          className: "inline-block"
+        }, 'Рейтинг :' + el.rating), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
           onClick: _this5.InfoPopUp,
-          book_id: el.id
-        }, "\u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438"));
+          book_id: el.id,
+          className: "btn btn-info"
+        }, "\u0431\u043E\u043B\u044C\u0448\u0435 \u0438\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u0438")), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("hr", {
+          className: "my-2"
+        }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
+          className: "lead"
+        }, el.genre)));
       })), this.state.bookDBSize ? react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Pagination__WEBPACK_IMPORTED_MODULE_10__["default"], {
         DBSize: this.state.bookDBSize,
         onClick: this.PaginClick,
-        limit: this.state.limit
+        limit: this.limit,
+        page: this.page
       }) : '', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", null));
     }
   }]);
@@ -37818,7 +37920,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _Authors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Authors */ "./src/js/Authors.js");
 /* harmony import */ var _Books__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Books */ "./src/js/Books.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _js_components_AuthorCard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/components/AuthorCard */ "./src/js/components/AuthorCard.js");
+/* harmony import */ var _js_components_BookCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/components/BookCard */ "./src/js/components/BookCard.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
 
 
 
@@ -37849,20 +37955,31 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "Toggle"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
-        to: '/authos'
-      }, "\u0410\u0432\u0442\u043E\u0440\u044B"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "head"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
+        to: '/authors'
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-danger"
+      }, "\u0410\u0432\u0442\u043E\u0440\u044B")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
         to: '/books'
-      }, "\u041A\u043D\u0438\u0433\u0438"), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
-        path: '/authos',
-        render: function render() {
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Authors__WEBPACK_IMPORTED_MODULE_6__["default"], null);
-        }
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__["Route"], {
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-warning"
+      }, "\u041A\u043D\u0438\u0433\u0438"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
+        exact: true,
+        path: '/authors',
+        component: _Authors__WEBPACK_IMPORTED_MODULE_6__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
         path: '/books',
-        render: function render() {
-          return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(_Books__WEBPACK_IMPORTED_MODULE_7__["default"], null);
-        }
+        component: _Books__WEBPACK_IMPORTED_MODULE_7__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
+        path: '/author',
+        component: _js_components_AuthorCard__WEBPACK_IMPORTED_MODULE_8__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
+        path: '/book',
+        component: _js_components_BookCard__WEBPACK_IMPORTED_MODULE_9__["default"]
       }))));
     }
   }]);
@@ -37871,6 +37988,206 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Toggle);
+
+/***/ }),
+
+/***/ "./src/js/components/AuthorCard.js":
+/*!*****************************************!*\
+  !*** ./src/js/components/AuthorCard.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var AuthorCard =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(AuthorCard, _Component);
+
+  function AuthorCard(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, AuthorCard);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(AuthorCard).call(this, props));
+    _this.state = {
+      author: {},
+      books: []
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(AuthorCard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch('/api/authors/' + this.props.location.id).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this2.setState({
+          author: res.data
+        });
+      });
+      fetch('/api/books/books-by-author-id/' + this.props.location.id).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this2.setState({
+          books: res.data
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          author = _this$state.author,
+          books = _this$state.books;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "AuthorCard"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "head"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+        className: "display-4"
+      }, author.name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
+        className: "my-2"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "description"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, author.description))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", null, books.length === 1 ? 'Книга' : 'Книги'), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
+        className: "my-2"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, books.map(function (el, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+          key: 'AuthorCard-key-' + ind
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+          className: "inline-block"
+        }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("em", null, el.title + ' : ')), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+          className: "inline-block"
+        }, el.genre), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, el.description));
+      })));
+    }
+  }]);
+
+  return AuthorCard;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (AuthorCard);
+
+/***/ }),
+
+/***/ "./src/js/components/BookCard.js":
+/*!***************************************!*\
+  !*** ./src/js/components/BookCard.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+var BookCard =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(BookCard, _Component);
+
+  function BookCard(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, BookCard);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(BookCard).call(this, props));
+    _this.state = {
+      book: {},
+      authors: []
+    };
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(BookCard, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      fetch('/api/books/' + this.props.location.id).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this2.setState({
+          book: res.data
+        });
+      });
+      fetch('/api/books/authors-by-book-id/' + this.props.location.id).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this2.setState({
+          authors: res.data
+        });
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$state = this.state,
+          authors = _this$state.authors,
+          book = _this$state.book;
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "AuthorCard"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
+        className: "display-4"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("em", null, book.title)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+        className: "display-5"
+      }, book.genre), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
+        className: "my-2"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+        className: "description"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, book.description)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
+        className: "my-2"
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), authors.length === 1 ? 'Автор' : 'Авторы', react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, authors.map(function (el) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, el.name);
+      })));
+    }
+  }]);
+
+  return BookCard;
+}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (BookCard);
 
 /***/ }),
 
@@ -37917,25 +38234,25 @@ function (_Component) {
 
     _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Pagination).call(this, props));
     _this.state = {
-      limit: 5 || false,
-      activPagin: undefined,
-      PaginCount: [],
-      page: 0
+      PaginCount: []
     };
+    _this.limit = _this.props.limit || 5;
+    _this.page = _this.props.page || 0;
     _this.PaginLenght = _this.PaginLenght.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.LimitMenuOnClick = _this.LimitMenuOnClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
   }
 
   _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Pagination, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "componentWillMount",
+    value: function componentWillMount() {
       this.PaginLenght();
     }
   }, {
     key: "PaginLenght",
     value: function PaginLenght() {
       var arr = [],
-          a = Math.ceil(this.props.DBSize / this.state.limit);
+          a = Math.ceil(this.props.DBSize / this.limit);
 
       while (a--) {
         arr.push('');
@@ -37948,59 +38265,80 @@ function (_Component) {
   }, {
     key: "PaginClick",
     value: function PaginClick(event) {
-      var ind = arguments[1] === 0 ? 0 : arguments[1] || this.state.page;
-      var limit = this.state.limit; // существует только потому что не стал писать отдельную функцию для div.LimitMenu button
+      var page = arguments[1] === 0 ? 0 : arguments[1] || this.page;
+      var limit = this.limit;
+      this.page = page;
 
       if (event) {
-        if (this.state.activPagin) this.state.activPagin.classList.remove('activPagin');
-        this.setState({
-          activPagin: event.target
-        });
+        var a = document.querySelector('.Pagination div.btn-group button.activPagin ');
+        if (a) a.classList.remove('activPagin');
         event.target.classList.add('activPagin');
       }
 
-      this.props.onClick(limit, ind);
+      this.props.onClick(limit, page);
+      return false;
+    }
+  }, {
+    key: "shouldComponentUpdate",
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      return nextProps.DBSize !== this.props.DBSize || this.state.PaginCount !== nextState.PaginCount;
+    }
+  }, {
+    key: "LimitMenuOnClick",
+    value: function LimitMenuOnClick(event, limit) {
+      if (limit === this.limit) return;
+
+      while (1) {
+        if (this.page * limit < this.props.DBSize) break;else --this.page;
+      }
+
+      this.limit = limit;
+      this.props.onClick(limit, this.page);
+      this.PaginLenght();
     }
   }, {
     key: "render",
     value: function render() {
       var _this2 = this;
 
+      var page = this.page;
+      var limit = this.limit; //потому что реакт слишком хорошо оптимизирован и может не перерисовать нужный элемент PaginCount
+
+      var a = document.querySelector('.Pagination div.btn-group button[page="' + page + '"] ');
+      if (a) a.classList.add('activPagin');
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "Pagination"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "LimitMenu box"
+        className: "LimitMenu"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.setState({
-            limit: 3
-          }, function () {
-            _this2.PaginLenght();
-
-            _this2.PaginClick();
-          });
-        }
+          return _this2.LimitMenuOnClick(event, 3);
+        },
+        className: 'btn btn-info ' + (limit === 3 ? 'activPagin' : '')
       }, "3"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.setState({
-            limit: 5
-          }, function () {
-            _this2.PaginLenght();
-
-            _this2.PaginClick();
-          });
-        }
-      }, "5")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", {
-        className: "hr"
+          return _this2.LimitMenuOnClick(event, 5);
+        },
+        className: 'btn btn-info ' + (limit === 5 ? 'activPagin' : '')
+      }, "5"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        onClick: function onClick() {
+          return _this2.LimitMenuOnClick(event, 10);
+        },
+        className: 'btn btn-info ' + (limit === 10 ? 'activPagin' : '')
+      }, "10")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "btn-group mr-2",
+        role: "group",
+        "aria-label": "First group"
       }, this.state.PaginCount.map(function (el, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", {
-          key: 'Author-ul-li-' + ind
-        }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+          key: 'Author-ul-li-' + ind,
+          type: "button",
           page: ind,
           onClick: function onClick() {
             return _this2.PaginClick(event, ind);
-          }
-        }, ind));
+          },
+          className: 'btn btn-info ' + (page === ind ? 'activPagin' : '')
+        }, ind);
       })));
     }
   }]);
@@ -38035,6 +38373,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -38059,6 +38399,8 @@ function (_Component) {
       pool: []
     };
     _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Focus = _this.Focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Blur = _this.Blur.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
   }
 
@@ -38074,7 +38416,7 @@ function (_Component) {
       this.setState({
         SeachValue: value
       });
-      fetch('/api/author/searchInfo?value=' + value.trim()).then(function (response) {
+      fetch('/api/authors/searchInfo?value=' + value.trim()).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
@@ -38087,11 +38429,22 @@ function (_Component) {
       });
     }
   }, {
+    key: "Blur",
+    value: function Blur(event) {
+      var a = document.querySelector('.Chosen div.dropdown-menu.show');
+      if (a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu')) return;else if (a) a.classList.remove('show');
+    }
+  }, {
+    key: "Focus",
+    value: function Focus() {
+      var a = document.querySelector('.Chosen div.dropdown-menu:not(.show)');
+      if (a && this.state.pool && this.state.pool.length) a.classList.add('show');
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.state.pool);
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "search box Chosen"
+        className: 'search box Chosen ' + this.props.class
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
         type: "text",
         value: this.state.SeachValue,
@@ -38101,13 +38454,25 @@ function (_Component) {
         placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
         "aria-autocomplete": "list",
         "aria-haspopup": "false",
-        "aria-expanded": "false"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, this.state.pool.map(function (a, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", {
-          author_id: a.id,
+        "aria-expanded": "false",
+        className: "",
+        onBlur: this.Blur,
+        onFocus: this.Focus
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown "
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown-menu " + (this.state.pool && this.state.pool.length ? 'show' : ''),
+        "aria-labelledby": "dropdownMenuButton"
+      }, this.state.pool.map(function (a, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+          to: {
+            pathname: '/author',
+            id: a.id
+          },
+          className: "dropdown-item",
           key: 'Chosen-' + ind
         }, a.name);
-      })));
+      }))));
     }
   }]);
 
@@ -38127,79 +38492,43 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
-
-
-
-
-
-var PopUP =
-/*#__PURE__*/
-function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(PopUP, _Component);
-
-  function PopUP(props) {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PopUP);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PopUP).call(this, props));
-    _this.ref = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PopUP, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.ref.current.focus();
+var PopUP = function PopUP(props) {
+  var _props$author = props.author,
+      description = _props$author.description,
+      name = _props$author.name,
+      books = _props$author.books;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup PopUp",
+    onClick: props.del
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup-content",
+    onClick: function onClick(event) {
+      return event.stopPropagation();
     }
-  }, {
-    key: "render",
-    value: function render() {
-      console.log(this.props);
-      var _this$props$author = this.props.author,
-          description = _this$props$author.description,
-          name = _this$props$author.name;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "b-popup PopUp"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "b-popup-content",
-        onBlur: this.props.del,
-        tabIndex: "1",
-        ref: this.ref
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", {
-        className: "PopUpHead"
-      }, name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "info"
-      }, description), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "Books"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("ul", null, this.props.books.map(function (el, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
-          key: 'PopUpBookKey-' + ind,
-          book_id: el.id
-        }, el.title + ' всякая другая инфа о книге ');
-      })))));
-    }
-  }]);
-
-  return PopUP;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "PopUpHead"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "info"
+  }, description), props.books && props.books.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Books"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.books.length === 1 ? 'Книга' : 'Книги'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.books.map(function (el, ind) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: 'PopUpBookKey-' + ind,
+      book_id: el.id
+    }, el.title + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/book',
+        id: el.id
+      }
+    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 "));
+  }))) : ''));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (PopUP);
 
@@ -38228,6 +38557,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -38252,6 +38583,8 @@ function (_Component) {
       pool: []
     };
     _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Focus = _this.Focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Blur = _this.Blur.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     return _this;
   }
 
@@ -38267,7 +38600,7 @@ function (_Component) {
       this.setState({
         SeachValue: value
       });
-      fetch('/api/book/searchInfo?value=' + value.trim()).then(function (response) {
+      fetch('/api/books/searchInfo?value=' + value.trim()).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
@@ -38280,11 +38613,22 @@ function (_Component) {
       });
     }
   }, {
+    key: "Blur",
+    value: function Blur(event) {
+      var a = document.querySelector('.Chosen div.dropdown-menu.show');
+      if (a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu')) return;else if (a) a.classList.remove('show');
+    }
+  }, {
+    key: "Focus",
+    value: function Focus() {
+      var a = document.querySelector('.Chosen div.dropdown-menu:not(.show)');
+      if (a && this.state.pool && this.state.pool.length) a.classList.add('show');
+    }
+  }, {
     key: "render",
     value: function render() {
-      console.log(this.state.pool);
       return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "search box Chosen"
+        className: 'search box Chosen ' + this.props.class
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
         type: "text",
         value: this.state.SeachValue,
@@ -38294,13 +38638,25 @@ function (_Component) {
         placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
         "aria-autocomplete": "list",
         "aria-haspopup": "false",
-        "aria-expanded": "false"
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("ul", null, this.state.pool.map(function (a, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("li", {
-          author_id: a.id,
+        "aria-expanded": "false",
+        className: "",
+        onBlur: this.Blur,
+        onFocus: this.Focus
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown "
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown-menu " + (this.state.pool && this.state.pool.length ? 'show' : ''),
+        "aria-labelledby": "dropdownMenuButton"
+      }, this.state.pool.map(function (a, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+          to: {
+            pathname: '/book',
+            id: a.id
+          },
+          className: "dropdown-item",
           key: 'Chosen-' + ind
         }, a.title + ' ' + a.genre);
-      })));
+      }))));
     }
   }]);
 
@@ -38320,77 +38676,48 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
-
-
-
-
-var PopUP =
-/*#__PURE__*/
-function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(PopUP, _Component);
-
-  function PopUP(props) {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, PopUP);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(PopUP).call(this, props));
-    _this.ref = react__WEBPACK_IMPORTED_MODULE_5___default.a.createRef();
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(PopUP, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.ref.current.focus();
+var PopUP = function PopUP(props) {
+  var _props$book = props.book,
+      title = _props$book.title,
+      genre = _props$book.genre,
+      description = _props$book.description;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup PopUp",
+    onClick: props.del
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup-content",
+    onClick: function onClick(event) {
+      return event.stopPropagation();
     }
-  }, {
-    key: "render",
-    value: function render() {
-      console.log(this.props);
-      var _this$props$book = this.props.book,
-          title = _this$props$book.title,
-          genre = _this$props$book.genre,
-          description = _this$props$book.description;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "b-popup PopUp"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "b-popup-content",
-        onBlur: this.props.del,
-        tabIndex: "1",
-        ref: this.ref
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", {
-        className: "PopUpHead"
-      }, name), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "info"
-      }, title + ' ' + genre + ' ' + description), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "Books"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("ul", null, this.props.authors.map(function (el, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("li", {
-          key: 'PopUpAuhorKey-' + ind,
-          author_id: el.id
-        }, el.name + ' всякая другая инфа об авторе ');
-      })))));
-    }
-  }]);
-
-  return PopUP;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "PopUpHead"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "info"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Жанр : ' + genre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Описние : ' + description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Books"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.authors.length === 1 ? 'Автор' : 'Авторы'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.authors.map(function (el, ind) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: 'PopUpAuhorKey-' + ind,
+      author_id: el.id
+    }, el.name + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/author',
+        id: el.id
+      }
+    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/authors',
+        OrderId: el.OrderId
+      }
+    }, " \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u0432\u043A\u043B\u0430\u0434\u043A\u0435 \u0430\u0432\u0442\u043E\u0440\u044B"));
+  })))));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (PopUP);
 

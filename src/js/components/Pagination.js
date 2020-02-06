@@ -20,7 +20,6 @@ class Pagination extends Component {
     while(a--) arr.push('');
     this.setState({ PaginCount: arr });
   }
-
   PaginClick(event){
     let page = arguments[1]===0 ? 0 : arguments[1] || this.page;
     let limit = this.limit; 
@@ -31,7 +30,6 @@ class Pagination extends Component {
       if( a ) a.classList.remove('activPagin')
       event.target.classList.add('activPagin');
     }
-    
     this.props.onClick(limit, page);
     return false;
   } 
@@ -53,18 +51,16 @@ class Pagination extends Component {
   render(){
     let page = this.page; 
     let limit = this.limit;
-    
     //потому что реакт слишком хорошо оптимизирован и может не перерисовать нужный элемент PaginCount
     let a = document.querySelector('.Pagination div.btn-group button[page="'+ page +'"] ');
     if( a ) a.classList.add('activPagin');
-
     return (
       <div className="Pagination">
         <div className='LimitMenu'>
           <button onClick={ () => this.LimitMenuOnClick(event, 3) } className={'btn btn-info ' + (limit===3?'activPagin':'')}>3</button>
           <button onClick={ () => this.LimitMenuOnClick(event, 5) } className={'btn btn-info ' + (limit===5?'activPagin':'')}>5</button>
+          <button onClick={ () => this.LimitMenuOnClick(event, 10) } className={'btn btn-info ' + (limit===10?'activPagin':'')}>10</button>
         </div>
-
         <div className="btn-group mr-2" role="group" aria-label="First group">{
           this.state.PaginCount.map( (el,ind) => 
             <button key={'Author-ul-li-'+ind} type="button"

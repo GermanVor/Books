@@ -17,6 +17,13 @@ class AuthorService {
 		}
 	}
 
+	static async  getPagginInfo() {
+		try {
+			return await database.Author.findAll({attributes: ['id']});
+		} catch (error) {
+			throw error;
+		}
+	}
 	/**
 	 * Requests info database
 	 *
@@ -121,7 +128,8 @@ class AuthorService {
 		try {
 			const remove = await database.Author.findByPk(id);
 			if (remove) {
-				return await database.Author.destroy({where: {id}});
+				// return await database.Author.destroy({where: {id}});
+				return await database.Author.update({name: 'empty', description: 'empty' }, {where: {id}});
 			} else return null;
 		} catch (error) {
 			throw error;

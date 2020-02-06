@@ -9,7 +9,6 @@ class BookCard extends Component {
     }
   }
   componentDidMount () {
-   
     fetch('/api/books/'+this.props.location.id)
     .then(response => response.json())
     .then( res=>this.setState({ book: res.data }) )
@@ -18,20 +17,23 @@ class BookCard extends Component {
     .then(response => response.json())
     .then( res =>this.setState({authors: res.data}) )
   }
-    
   render(){
     let { authors, book} = this.state;
     return (
       <div className="AuthorCard">
-        <div className='head'>
-          <h1>{book.title}</h1>
-          <br></br>
-          <div className='description'><p>{book.description}</p></div>
-        </div>
+        <h2 className='display-4'><em>{book.title}</em></h2>
+        <h3 className='display-5'>{book.genre}</h3>
+        <br></br>
+        <hr className="my-2"></hr>
+        <div className='description'><p>{book.description}</p></div>
+        <hr className="my-2"></hr>
         <br/>
-        {authors.map( el => {
-          <p>{el.title}</p>
-        }) }
+        {authors.length===1?'Автор':'Авторы'}
+        <div>
+          {authors.map( el => 
+            <h1>{el.name}</h1>
+          )}
+        </div>
       </div>
     )
   }

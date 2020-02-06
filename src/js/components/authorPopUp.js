@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 const PopUP = (props) => {
-  let {description, name} = props.author;
+  let {description, name, books} = props.author;
   return (
     <div className="b-popup PopUp" onClick={props.del} >
         <div className="b-popup-content" onClick={ (event)=>event.stopPropagation() }>
-          <h1 className='PopUpHead' >{name}</h1>
+          <h1 className='PopUpHead' ><em>{name}</em></h1>
           <div className='info'>
             {description}
           </div>
-          <div className='Books'>
-            <ul>
+          {props.books && props.books.length ?<div className='Books'>
+          <h1>{props.books.length===1?'Книга':'Книги'}</h1>
+            <div>
               {props.books.map( (el,ind) =>
-                <li key={'PopUpBookKey-'+ind} book_id={el.id}>
-                  {el.title+' '}<Link to={{pathname: '/book', id: el.id }} >всякая другая инфа о книге</Link>
-                </li>
+                <div key={'PopUpBookKey-'+ind} book_id={el.id}>
+                  {el.title+' '}
+                  <Link to={{pathname: '/book', id: el.id }} > узнать больше </Link>
+                </div>
               )}
-            </ul>
-          </div>
+            </div>
+          </div>: ''}
         </div>
   </div>)
 }

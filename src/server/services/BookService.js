@@ -1,6 +1,7 @@
 import database from '../src/models';
 import Sequelize from 'sequelize';
-const Op = Sequelize.Op
+const Op = Sequelize.Op;
+
 
 class BookService {
 	
@@ -73,7 +74,7 @@ class BookService {
 			throw error;
 		}
 	}
-
+	
 	/**
 	 * Requests party of available books from the database
 	 * @returns {Promise<*>}

@@ -12,7 +12,7 @@ class Authors extends Component {
     if( obj ){
       l = obj.limit;
       p = obj.page;
-    }
+    } 
     this.limit = l || 3;
     this.page = p || 0;
 
@@ -23,11 +23,9 @@ class Authors extends Component {
       popup: ''
     }
     this.PaginClick = this.PaginClick.bind(this);
-    this.sortAZ = this.sortAZ.bind(this);
-    this.sortZA = this.sortZA.bind(this);
+    this.sortName = this.sortName.bind(this);
     this.InfoPopUp = this.InfoPopUp.bind(this);
   }
- 
   sort(arr, key, isIncrease = 1){
     return arr.sort( function (a, b) {
       if (a[key] > b[key]) return isIncrease;
@@ -35,24 +33,33 @@ class Authors extends Component {
       return 0;
     } )
   }
-  sortAZ(){
-    this.setState({ authors: this.sort(this.state.authors, 'name') })
-  }
-  sortZA(){
-    this.setState({ authors: this.sort(this.state.authors, 'name', -1) })
+  sortName(event, r){
+    this.setState({ authors: this.sort(this.state.authors, 'name', r) })
   }
   componentWillMount(){
-    
-    fetch('/api/authors?limit='+this.limit+'&page='+this.page)
-    .then(response => response.json())
-    .then( res=>this.setState({ authors: res.data || [] }) )
+   
+    if( this.props.location && this.props.location.id ){
+      fetch('/api/authors/PagginInfo')
+      .then(response => response.json())
+      .then( arr=>{
+        let order = arr.data.findIndex( el=> el.id === this.props.location.id) + 1;
+        this.page = Math.floor(order/this.limit) + (order%this.limit ? 0: -1);
+      })
+      .then( () => 
+        fetch('/api/authors?limit='+this.limit+'&page='+this.page)
+        .then(response => response.json())
+        .then( res=>this.setState({ authors: res.data || [] }) )
+      )
+    } else {
+      fetch('/api/authors?limit='+this.limit+'&page='+this.page)
+      .then(response => response.json())
+      .then( res=>this.setState({ authors: res.data || [] }) )
+    }
 
     fetch('/api/authors/info')
     .then(response => response.json())
     .then(res=>this.setState({ authorDBSize: res.data } ))
-
   }
-
   async InfoPopUp(event){
     let target = event.target;
     let id = target.getAttribute('author_id');
@@ -66,14 +73,13 @@ class Authors extends Component {
     await fetch('/api/books/books-by-author-id/'+id)
     .then(response => response.json())
     .then( res => {books = res.data})
-
+    
     this.setState({ popup: <PopUp
         author = { author }
         books = { books }
         del = { ()=> this.setState({popup: ''})}
     />}) 
   }
-  
   PaginClick(limit, page){
     sessionStorage.setItem('Author', JSON.stringify({ limit: limit, page: page}) ) 
     this.limit = limit;
@@ -83,38 +89,46 @@ class Authors extends Component {
     .then(response => response.json())
     .then( res=>this.setState({ authors : res.data }) )
   }
-
-  render(){
+  render(){ 
+    if( this.props.location && this.props.location.id ){
+      setTimeout( () => { 
+        let a = document.querySelector('.Authors div[author-id="'+this.props.location.id+'"]')
+        if( a ){
+          a.focus();
+        }
+       } ,0)
+    }
     return (
       <div className="Authors">
         <h1>Authors</h1>
         <div className='AuthorsMenu '>
           <Chosen class='inline-block'/>
           <div className='sortBox box inline-block'>
-            <button onClick={this.sortAZ} className='btn btn-info'>A...Z</button>
-            <button onClick={this.sortZA} className='btn btn-info'>Z...A</button>
+            <button onClick={()=>this.sortName(event,1)} className='btn btn-info'>A...Z</button>
+            <button onClick={()=>this.sortName(event,-1)} className='btn btn-info'>Z...A</button>
           </div>
-          
         </div>
-        
         {this.state.popup}
-        <ul>{
+        <div className='AuthorsPool Pool'>{
           this.state.authors.map( (el, ind) => 
-            <li key={'author-key-'+ind}  >
-              {el.name +' '+ el.description +'  |  ' + el.id + ' '}
-              <button onClick={this.InfoPopUp} author_id = {el.id} >больше информации об авторе</button>
-            </li>
+            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" author-id={el.id} tabIndex="-1">
+              <div className="container">
+                <div>
+                  <h1 className="display-4 inline-block"><em>{el.name}</em></h1>
+                  <button onClick={this.InfoPopUp} className="btn btn-info">больше информации об авторе</button>
+                </div>
+                <hr className="my-2"></hr>
+                <p className="lead">{el.description}</p>
+              </div>
+            </div>
           )
-        }</ul>
-        
+        }</div>
         {this.state.authorDBSize ? <Pagination 
           DBSize = {this.state.authorDBSize} 
           onClick = {this.PaginClick}
           limit = {this.limit}
           page = {this.page}
         />: ''}
-
-        <br/>
       </div>
     )
   }
@@ -128,30 +142,40 @@ export default Authors
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'Семен',
-//         description: 'фцаыаф 2314',
-//         books: [
-//           { 
-//             title : 'Омут',
-//             rating: 1,
-//             genre: 'Комедия',
-//             description: 'Комедия ', 
-//           },
-//           { 
-//             title : 'Омут 2',
-//             rating: 2,
-//             genre: 'Комедия',
-//             description: 'Комедия ', 
-//           }
-//         ]
+//         name: 'Юлия Агата',
+//         description: 'не любит редиску',
+// books: [
+//     { 
+//       title : 'Смородина красная',
+//       rating: 2,
+//       genre: 'Ужас',
+//       description: 'было очень смешно, честно', 
+//     }]
 //       })
 // })
 // .then(response => response.json())
 // .then( console.log )
 
+// books: [
+//   { 
+//     title : 'Вепрь',
+//     rating: 1,
+//     genre: 'Комедия',
+//     description: 'было очень смешно, честно', 
+//   },
+//    { 
+//       title : 'Вепрь 3',
+//       rating: 2,
+//       genre: 'Драма',
+//       description: 'не так смешно, как первая часть. Куда делась вторая ?', 
+//     }
+// ]
 
-//добавить книгу с авторами , если не передать id автора , то автор будет создан 
-// fetch('bookDBSize', {
+
+
+
+// добавить книгу с авторами , если не передать id автора , то автор будет создан 
+// fetch('/api/books/', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
@@ -162,19 +186,9 @@ export default Authors
 //        genre: 'Ужас',
 //        description: 'Ужасный ужастик',
 //        authors: [
-//          {name: 'Артем3', description: 'описание артема'},
-//          {name: 'Женя3', description: 'описание жени'},
+//          {name: 'Артем1', description: 'описание артема'},
+//          {name: 'Женя1', description: 'описание жени'},
 //        ]
 //       })
 //     }).then(response => response.json())
 //     .then(console.log)
-
-// //книги автора по id автора
-// fetch('bookDBSize/authors-book/asf')
-//     .then(response => response.json())
-//     .then( console.log )
-
-// //авторы книги по id книги 
-// fetch('bookDBSize/books-by-author-id/asg ')
-//     .then(response => response.json())
-//     .then( console.log )

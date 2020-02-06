@@ -45,7 +45,6 @@ class Chosen extends Component {
               aria-autocomplete="list" aria-haspopup="false" aria-expanded="false"
               className="" onBlur={this.Blur} onFocus={this.Focus}/>
         </form>
-
         <div className="dropdown " >
           <div className={"dropdown-menu "+ (this.state.pool && this.state.pool.length? 'show': '' ) } aria-labelledby="dropdownMenuButton">
             {this.state.pool.map( (a, ind) => <Link to={{pathname: '/book', id: a.id }} className="dropdown-item" key={'Chosen-'+ind}>
