@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PopUP = (props) =>{
@@ -19,6 +19,7 @@ const PopUP = (props) =>{
                   {el.name+' '}
                   <Link to={{pathname: '/author', id: el.id }} > узнать больше</Link> 
                   <Link to={{pathname: '/authors', id: el.id }} > перейти к вкладке авторы</Link>
+                  
                 </div>
               )}
             </div>

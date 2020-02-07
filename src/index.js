@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Toggle from './js/Toggle'
-import './css/Author.css'
+import './css/Main.css'
 
 ReactDOM.render(
   <Toggle />,

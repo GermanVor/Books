@@ -9,17 +9,23 @@ class BookCard extends Component {
     }
   }
   componentDidMount () {
-    fetch('/api/books/'+this.props.location.id)
+    let id = this.props.location.id
+    if( id ){
+      sessionStorage.setItem('BookCardId', JSON.stringify({ id: id}) ) 
+    } else id = JSON.parse(sessionStorage.getItem('BookCardId')).id
+
+    fetch('/api/books/'+id)
     .then(response => response.json())
     .then( res=>this.setState({ book: res.data }) )
     
-    fetch('/api/books/authors-by-book-id/'+this.props.location.id)
+    fetch('/api/books/authors-by-book-id/'+id)
     .then(response => response.json())
     .then( res =>this.setState({authors: res.data}) )
   }
   render(){
     let { authors, book} = this.state;
     return (
+      <blockquote className="blockquote text-center">
       <div className="AuthorCard">
         <h2 className='display-4'><em>{book.title}</em></h2>
         <h3 className='display-5'>{book.genre}</h3>
@@ -35,6 +41,7 @@ class BookCard extends Component {
           )}
         </div>
       </div>
+      </blockquote>
     )
   }
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Authors from './Authors'
 import Books from './Books'
-import AuthorCard from '../js/components/AuthorCard'
-import BookCard from '../js/components/BookCard'
+import AuthorCard from '../js/components/Authors/AuthorCard'
+import BookCard from '../js/components/Books/BookCard'
 
 import { 
   HashRouter,

@@ -128,8 +128,7 @@ class AuthorService {
 		try {
 			const remove = await database.Author.findByPk(id);
 			if (remove) {
-				// return await database.Author.destroy({where: {id}});
-				return await database.Author.update({name: 'empty', description: 'empty' }, {where: {id}});
+				return await database.Author.destroy({where: {id}});
 			} else return null;
 		} catch (error) {
 			throw error;

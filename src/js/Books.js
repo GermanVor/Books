@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Chosen from './components/bookChosen'
+import Chosen from './components/Books/bookChosen'
 import Pagination from './components/Pagination'
 
-import PopUp from './components/bookPopUp'
+import PopUp from './components/Books/bookPopUp'
 
 class Books extends Component {
   constructor(props){

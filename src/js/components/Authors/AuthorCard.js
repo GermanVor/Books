@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 
-
 class AuthorCard extends Component {
   constructor(props){
     super(props)
@@ -10,17 +9,23 @@ class AuthorCard extends Component {
     }
   }
   componentDidMount () {
-    fetch('/api/authors/'+this.props.location.id)
+    let id = this.props.location.id
+    if( id ){
+      sessionStorage.setItem('AuthorCardId', JSON.stringify({ id: id}) ) 
+    } else id = JSON.parse(sessionStorage.getItem('AuthorCardId')).id
+
+    fetch('/api/authors/'+id)
     .then(response => response.json())
     .then( res=>this.setState({ author: res.data }) )
     
-    fetch('/api/books/books-by-author-id/'+this.props.location.id)
+    fetch('/api/books/books-by-author-id/'+id)
     .then(response => response.json())
     .then( res =>this.setState({books: res.data}) )
   }
   render(){
     let { author, books} = this.state;
     return (
+      <blockquote className="blockquote text-center">
       <div className="AuthorCard">
         <div className='head'>
           <h2 className='display-4'>{author.name}</h2>
@@ -41,6 +46,7 @@ class AuthorCard extends Component {
           )}
         </div>
       </div>
+      </blockquote>
     )
   }
 }

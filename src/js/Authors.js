@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Chosen from './components/authorChosen'
+import Chosen from './components/Authors/authorChosen'
 import Pagination from './components/Pagination'
 
-import PopUp from './components/authorPopUp'
+import PopUp from './components/Authors/authorPopUp'
 
 class Authors extends Component {
   constructor(props){
@@ -120,7 +120,7 @@ class Authors extends Component {
         {this.state.popup}
         <div className='AuthorsPool Pool'>{
           this.state.authors.map( (el, ind) => 
-            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" authot_id={el.id} tabIndex="0">
+            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" authot_id={el.id} tabIndex="-1">
               <div className="container">
                 <div>
                   <h1 className="display-4 inline-block"><em>{el.name}</em></h1>

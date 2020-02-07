@@ -67,6 +67,10 @@ ul.hr li {
   border-radius:5px;
   box-shadow: 0px 0px 10px #000;
 }
+.PopUp a{
+  padding: .1rem 0.5rem;
+  text-decoration: none;
+}
 #react-container {
   margin: 5px 10px;
 }
@@ -80,13 +84,19 @@ ul.hr li {
   margin: 15px 0;
   padding: 10px 0 10px 0;
   font-size: 1rem;
- 
+  border-radius: 0 55px 55px 0  ;
 }
 .Pool .jumbotron h1,h2 {
   margin-right: 10px;
   margin-bottom: 0;
-  
 }
 .Pool button {
   margin-bottom: 5px;
+}
+
+.AuthorsPool hr {
+  border-top: 1px solid #c82333;
+}
+.BooksPool hr {
+  border-top: 1px solid #E0A800;
 }

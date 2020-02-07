@@ -2,16 +2,16 @@
 module.exports = {
   development: {
     database: 'book',
-    username: 'postgres',
-    password: '15zanuve',
+    username: '',
+    password: '',
     host: 'localhost',
     port: '5432',
     dialect: 'postgres'
   },
   test: {
     database: 'book',
-    username: 'postgres',
-    password: '15zanuve',
+    username: '',
+    password: '',
     host:  'localhost',
     port: '5432',
     dialect: 'postgres'
