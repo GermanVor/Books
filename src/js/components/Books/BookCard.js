@@ -28,7 +28,8 @@ class BookCard extends Component {
       <blockquote className="blockquote text-center">
       <div className="AuthorCard">
         <h2 className='display-4'><em>{book.title}</em></h2>
-        <h3 className='display-5'>{book.genre}</h3>
+        <h3 className='display-5'>{'Жанр : '+book.genre}</h3>
+        <h3 className='display-5'>{'Рейтиг : '+book.rating}</h3>
         <br></br>
         <hr className="my-2"></hr>
         <div className='description'><p>{book.description}</p></div>

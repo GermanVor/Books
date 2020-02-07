@@ -104,6 +104,10 @@ class Authors extends Component {
         let a = document.querySelector('.Authors div[authot_id="'+this.props.location.id+'"]')
         if( a ){
           a.focus();
+          a.classList.add('act')
+          a.onblur = function(){
+            a.classList.remove('act');
+          } 
         }
       }
     }, 0)
@@ -120,7 +124,7 @@ class Authors extends Component {
         {this.state.popup}
         <div className='AuthorsPool Pool'>{
           this.state.authors.map( (el, ind) => 
-            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" authot_id={el.id} tabIndex="-1">
+            <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" authot_id={el.id} tabIndex="-1" onFocus={ this.Focus  }>
               <div className="container">
                 <div>
                   <h1 className="display-4 inline-block"><em>{el.name}</em></h1>

@@ -100,3 +100,9 @@ ul.hr li {
 .BooksPool hr {
   border-top: 1px solid #E0A800;
 }
+/* .AuthorsPool .jumbotron:focus {
+  border: 2px solid  #c82333;
+} */
+.act {
+  border: 2px solid  #c82333;
+}
