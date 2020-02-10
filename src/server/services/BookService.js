@@ -113,25 +113,23 @@ class BookService {
 		try {
 			return await database.Book.create(data)
 				.then( Book => {
-					data.authors.forEach( el => {
-						database.Author.findOne({
-							where: {
-								id: el.id || '1a1111d1-e1d1-1bda-1111-1111b1111111'
-							}
-						})
-						.then( author => {
-							if(!author){
-								database.Author.create(el)
-								.then( author => {
-									Book.addAuthor(author)
-								})
-							} else Book.addAuthor(author)
-						});
+					if( Array.isArray(data.authors) ) data.authors.forEach( el => {
+						if( el.id ) {
+							database.Author.findOne({
+								where: {
+									id: el.id 
+								}
+							})
+							.then( author => {
+								if(author) Book.addAuthor(author)
+							})
+						} else {
+							database.Author.create(el)
+							.then( author => { if(author) Book.addAuthor(author) })
+						}
 					});
 					return Book
 				})
-
-			return res;
 		} catch (error) {
 			throw error;
 		}
@@ -146,9 +144,33 @@ class BookService {
 	 */
 	static async update(book_id, data) {
 		try {
-			const update = await database.Book.findByPk(book_id);
+			const update = await database.Book.findByPk(book_id)
 			if (update) {
-				await database.Book.update(data, {where: {book_id}});
+				
+				database.Enrolment.findAll({where: {BookId: book_id } })
+				.then( elements => {
+					elements.forEach( el => el.destroy() )
+				})
+
+				await database.Book.update(data, {where: {id: book_id}});
+
+				const Book = update;
+				if( Array.isArray(data.authors) ) data.authors.forEach( el => {
+					if( el.id ) {
+						database.Author.findOne({
+							where: {
+								id: el.id 
+							}
+						})
+						.then( author => {
+							if(author) Book.addAuthor(author)
+						})
+					} else {
+						database.Author.create(el)
+						.then( author => { if(author) Book.addAuthor(author) })
+					}
+				})
+
 				return data;
 			} else return null;
 		} catch (error) {

@@ -2,7 +2,6 @@ import BookService from '../services/BookService';
 import Util from '../utils/Utils';
 import {isUUID, isInt, isBook} from '../utils/validate';
 
-
 const util = new Util();
 
 class BookController {
@@ -153,10 +152,11 @@ class BookController {
 	 * @returns {Promise<*>}
 	 */
 	static async add(req, res) {
-		if( !isBook(req.body) ) {
+		if( !isBook(req.body) || !req.body.authors || req.body.authors.length < 1 ) {
 			util.setError(400, 'Incomplete information');
 			return util.send(res);
 		}
+	
 		try {
 			
 			const book = await BookService.add(req.body);
@@ -196,7 +196,6 @@ class BookController {
 	 * @returns {Promise<*>}
 	 */
 	static async update(req, res) {
-		//надо будет подумать , что делать с авторами 
 		const data = req.body, {id} = req.params;
 		if (!id || !isUUID(id)) {
 			util.setError(400, 'Invalid UUID');
@@ -204,10 +203,7 @@ class BookController {
 		} else if (data.rating && !isInt(data.rating)) {
 			util.setError(400, 'Invalid rating value');
 			return util.send(res);
-		}  if (data.author_id && !isUUID(data.author_id)) {
-			util.setError(400, 'Invalid author UUID');
-			return util.send(res);
-		}
+		} 
 
 		try {
 			const book = await BookService.update(id, data);

@@ -37,8 +37,8 @@ class BookCard extends Component {
         <br/>
         {authors.length===1?'Автор':'Авторы'}
         <div>
-          {authors.map( el => 
-            <h1>{el.name}</h1>
+          {authors.map( (el, ind) => 
+            <h1 key={ind}>{el.name}</h1>
           )}
         </div>
       </div>

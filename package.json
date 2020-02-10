@@ -8,9 +8,7 @@
     "coverage": "jest --coverage",
     "db": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "buildDev": "rmdir /Q /S dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
-    "buildProd": "rmdir /Q /S dist && webpack --mode production --config webpack.server.config.js && webpack --mode production --config webpack.prod.config.js",
-    "start": "npm run buildDev && node ./dist/server.js",
-    "server-test": "nyc --require @babel/register mocha ./src/server/test/test.js --timeout 20000 --exit"
+    "start": "npm run buildDev && node ./dist/server.js"
   },
   "repository": "https://github.com/bengrunfeld/rexpack",
   "keywords": [],

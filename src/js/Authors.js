@@ -81,11 +81,11 @@ class Authors extends Component {
     .then(response => response.json())
     .then( res => {top = res.data})
     
-    if(Object.keys(author).length && books.length )
+   
       this.setState({ popup: <PopUp
           author = { author }
-          books = { books }
-          top = { top }
+          books = { books || []}
+          top = { top || []}
           del = { ()=> this.setState({popup: ''})}
       />}) 
   }
@@ -148,67 +148,74 @@ class Authors extends Component {
 }
 
 export default Authors
-//добавить автора
+////добавить автора
+//если указать корректрыне данные книги , то она будет создана автоматически , если ввести корректный id книги , то автор станет ее соавтором 
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'а2',
-//         description: 'не любит редиску',
+//         name: 'Кирилл ',
+//         description: 'предпочитает писать ужастики',
 // books: [
 //     { 
-//       title : '2адададададдад',
+//       title : 'Адам 2.0 ',
 //       rating: 2,
 //       genre: 'Ужас',
 //       description: 'было очень смешно, честно', 
 //     },
-//     { 
-//       title : 'Смородина красная 2',
+//    { 
+//      title : 'Смородина красная 1',
 //       rating: 5,
 //       genre: 'Ужас',
-//       description: 'было очень смешно, честно', 
-//     }
+//      description: 'было смешно, честно', 
+//     },
+//  {id : ''}
 // ]
 //       })
 // })
 // .then(response => response.json())
 // .then( console.log )
 
-// books: [
-//   { 
-//     title : 'Вепрь',
-//     rating: 1,
-//     genre: 'Комедия',
-//     description: 'было очень смешно, честно', 
-//   },
-//    { 
-//       title : 'Вепрь 3',
-//       rating: 2,
-//       genre: 'Драма',
-//       description: 'не так смешно, как первая часть. Куда делась вторая ?', 
-//     }
-// ]
 
+// // добавить книгу с авторами , если передать корректные данные для автора , он будет создан автоматически, 
+// // если указать id автора , он добавится в соавторы книги 
 
-
-
-// добавить книгу с авторами , если не передать id автора , то автор будет создан 
 // fetch('/api/books/', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        title : 'xgf',
-//        rating: 1,
-//        genre: 'Ужас',
-//        description: 'Ужасный ужастик',
+//        title : 'Камыш 3',
+//        rating: 1 ,
+//        genre: 'Роман',
+//        description: 'Пробирает до слез',
 //        authors: [
-//          {name: 'Артем2', description: 'описание артема'},
-//          {name: 'Женя2', description: 'описание жени'},
-//           { id: '874827cf-dcc7-46f2-982d-5fbd0da12e92' }
+//         {name: 'Серегй ', description: 'описание Сергея'},
+//          {name: 'Константин ', description: 'описание Константина'},
+//          { id: '' }
+//        ]
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)
+
+////функция обновления книги 
+// fetch('/api/books/fedcddba-8fcb-4e7a-97a1-d1cdfe57e311', {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        title : 'Камыш 3.0',
+//        rating: 1 ,
+//        genre: 'Роман',
+//        description: 'Пробирает до слез',
+//        authors: [
+//         {name: 'Серегй 2.0', description: 'описание Сергея'},
+//          { id: '474f6a6a-04d2-4fee-9d5a-b487405b2477' },
+//          { id: 'fedcddba-8fcb-4e7a-97a1-d1cdfe57e311' }
 //        ]
 //       })
 //     }).then(response => response.json())

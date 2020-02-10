@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "f1092f1ed19b3d8f62ac";
+/******/ 	var hotCurrentHash = "c1df4921a9edf38635d6";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -37588,60 +37588,69 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Authors); //добавить автора
+// если указать корректрыне данные книги , то она будет создана автоматически , если ввести корректный id книги , то автор станет ее соавтором 
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'а',
-//         description: 'не любит редиску',
+//         name: 'Кирилл 3',
+//         description: 'предпочитает писать ужастики',
 // books: [
-//     { 
-//       title : 'ададададададададададададададададададдад',
-//       rating: 2,
-//       genre: 'Ужас',
-//       description: 'было очень смешно, честно', 
-//     },
-//     { 
-//       title : 'Смородина красная 5',
-//       rating: 5,
-//       genre: 'Ужас',
-//       description: 'было очень смешно, честно', 
-//     }
+//    // { 
+//    //   title : 'Адам 2.0 ',
+//    //   rating: 2,
+//    //   genre: 'Ужас',
+//    //   description: 'было очень смешно, честно', 
+//    // },
+//    // { 
+//    //   title : 'Смородина красная 1',
+//    //   rating: 5,
+//    //   genre: 'Ужас',
+//    //   description: 'было смешно, честно', 
+//    // }
+//  {id : ''}
 // ]
 //       })
 // })
 // .then(response => response.json())
 // .then( console.log )
-// books: [
-//   { 
-//     title : 'Вепрь',
-//     rating: 1,
-//     genre: 'Комедия',
-//     description: 'было очень смешно, честно', 
-//   },
-//    { 
-//       title : 'Вепрь 3',
-//       rating: 2,
-//       genre: 'Драма',
-//       description: 'не так смешно, как первая часть. Куда делась вторая ?', 
-//     }
-// ]
-// добавить книгу с авторами , если не передать id автора , то автор будет создан 
+// добавить книгу с авторами , если передать корректные данные для автора , он будет создан автоматически, 
+// если указать id автора , он добавится в соавторы книги 
 // fetch('/api/books/', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        title : 'dtyui',
-//        rating: 4,
-//        genre: 'Ужас',
-//        description: 'Ужасный ужастик',
+//        title : 'Камыш 3',
+//        rating: 1 ,
+//        genre: 'Роман',
+//        description: 'Пробирает до слез',
 //        authors: [
-//          {name: 'Артем1', description: 'описание артема'},
-//          {name: 'Женя1', description: 'описание жени'},
+//         {name: 'Серегй 2', description: 'описание Сергея'},
+//          {name: 'Константин 2', description: 'описание Константина'},
+//          { id: '' }
+//        ]
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)
+//функция обновления книги 
+// fetch('/api/books/fedcddba-8fcb-4e7a-97a1-d1cdfe57e311', {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        title : 'Камыш 3.0',
+//        rating: 1 ,
+//        genre: 'Роман',
+//        description: 'Пробирает до слез',
+//        authors: [
+//         {name: 'Серегй 2.0', description: 'описание Сергея'},
+//          { id: '474f6a6a-04d2-4fee-9d5a-b487405b2477' },
+//          { id: 'fedcddba-8fcb-4e7a-97a1-d1cdfe57e311' }
 //        ]
 //       })
 //     }).then(response => response.json())
@@ -38405,8 +38414,10 @@ function (_Component) {
         className: "description"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, book.description)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
         className: "my-2"
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), authors.length === 1 ? 'Автор' : 'Авторы', react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, authors.map(function (el) {
-        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, el.name);
+      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), authors.length === 1 ? 'Автор' : 'Авторы', react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, authors.map(function (el, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", {
+          key: ind
+        }, el.name);
       }))));
     }
   }]);
@@ -38515,7 +38526,7 @@ function (_Component) {
         onChange: this.handleChangeSearch,
         autoComplete: "off",
         name: "contributor_text",
-        placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
+        placeholder: "\u041D\u0430\u0437\u0432\u0430\u043D\u0438\u0435 \u043A\u043D\u0438\u0433\u0438",
         "aria-autocomplete": "list",
         "aria-haspopup": "false",
         "aria-expanded": "false",
