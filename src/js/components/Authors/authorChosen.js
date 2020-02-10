@@ -21,7 +21,7 @@ class Chosen extends Component {
     
     fetch('/api/authors/searchInfo?value=' + value.trim())
     .then(response => response.json())
-    .then( res=>this.setState({ pool: res.data }), () => this.setState({ pool: [] }) )
+    .then( res=>this.setState({ pool: res.data || [] }))
     
   }
   Blur(event){

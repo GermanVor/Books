@@ -47,7 +47,7 @@ class Books extends Component {
 
     fetch('/api/books/info')
     .then(response => response.json())
-    .then(res=>this.setState({ bookDBSize: res.data || [] } ))
+    .then(res=>this.setState({ bookDBSize: res.data } ))
   }
   PaginClick(limit, page){
     sessionStorage.setItem('Book', JSON.stringify({ limit: limit, page: page}) ) 
@@ -56,7 +56,7 @@ class Books extends Component {
 
     fetch('/api/books?limit='+limit+'&page='+page)
     .then(response => response.json())
-    .then( res=>this.setState({ books : res.data }) )
+    .then( res=>this.setState({ books : res.data || [] }) )
   }
   async InfoPopUp(event){
     let target = event.target;

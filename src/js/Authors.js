@@ -96,7 +96,7 @@ class Authors extends Component {
 
     fetch('/api/authors?limit='+limit+'&page='+page)
     .then(response => response.json())
-    .then( res=>this.setState({ authors : res.data }) )
+    .then( res=>this.setState({ authors : res.data || [] }) )
   }
   render(){ 
     setTimeout( () => {
@@ -155,17 +155,17 @@ export default Authors
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'а',
+//         name: 'а2',
 //         description: 'не любит редиску',
 // books: [
 //     { 
-//       title : 'Смородина красная',
+//       title : '2адададададдад',
 //       rating: 2,
 //       genre: 'Ужас',
 //       description: 'было очень смешно, честно', 
 //     },
 //     { 
-//       title : 'Смородина красная 5',
+//       title : 'Смородина красная 2',
 //       rating: 5,
 //       genre: 'Ужас',
 //       description: 'было очень смешно, честно', 
@@ -201,13 +201,14 @@ export default Authors
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        title : 'dtyui',
-//        rating: 4,
+//        title : 'xgf',
+//        rating: 1,
 //        genre: 'Ужас',
 //        description: 'Ужасный ужастик',
 //        authors: [
-//          {name: 'Артем1', description: 'описание артема'},
-//          {name: 'Женя1', description: 'описание жени'},
+//          {name: 'Артем2', description: 'описание артема'},
+//          {name: 'Женя2', description: 'описание жени'},
+//           { id: '874827cf-dcc7-46f2-982d-5fbd0da12e92' }
 //        ]
 //       })
 //     }).then(response => response.json())

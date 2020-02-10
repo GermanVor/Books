@@ -21,7 +21,7 @@ class Chosen extends Component {
     
     fetch('/api/books/searchInfo?value=' + value.trim())
     .then(response => response.json())
-    .then( res=>this.setState({ pool: res.data }), () => this.setState({ pool: [] }) )
+    .then( res=>this.setState({ pool: res.data || [] }))
     
   }
   Blur(event){
@@ -41,7 +41,7 @@ class Chosen extends Component {
       <div className={'search box Chosen '+ this.props.class }>
         <form >
             <input type="text" value={this.state.SeachValue} onChange={this.handleChangeSearch} 
-              autoComplete="off" name="contributor_text" placeholder="Начните вводить автора"
+              autoComplete="off" name="contributor_text" placeholder="Название книги"
               aria-autocomplete="list" aria-haspopup="false" aria-expanded="false"
               className="" onBlur={this.Blur} onFocus={this.Focus}/>
         </form>

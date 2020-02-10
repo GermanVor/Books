@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "1bc858ddcb472ae5150a";
+/******/ 	var hotCurrentHash = "f1092f1ed19b3d8f62ac";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -2046,16 +2046,16 @@ ansiHTML.reset()
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/css/Author.css":
-/*!******************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/css/Author.css ***!
-  \******************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/css/Main.css":
+/*!****************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/css/Main.css ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n \r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n  margin-bottom: 0;\r\n  \r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}", ""]);
+exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n.PopUp a{\r\n  padding: .1rem 0.5rem;\r\n  text-decoration: none;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n  border-radius: 0 55px 55px 0  ;\r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n  margin-bottom: 0;\r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.AuthorsPool hr {\r\n  border-top: 1px solid #c82333;\r\n}\r\n.BooksPool hr {\r\n  border-top: 1px solid #E0A800;\r\n}\r\n/* .AuthorsPool .jumbotron:focus {\r\n  border: 2px solid  #c82333;\r\n} */\r\n.act {\r\n  border: 2px solid  #c82333;\r\n}", ""]);
 
 
 /***/ }),
@@ -37212,15 +37212,15 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./src/css/Author.css":
-/*!****************************!*\
-  !*** ./src/css/Author.css ***!
-  \****************************/
+/***/ "./src/css/Main.css":
+/*!**************************!*\
+  !*** ./src/css/Main.css ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Author.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/Author.css");
+var content = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Main.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/Main.css");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -37239,8 +37239,8 @@ var update = __webpack_require__(/*! ../../node_modules/style-loader/lib/addStyl
 if(content.locals) module.exports = content.locals;
 
 if(true) {
-	module.hot.accept(/*! !../../node_modules/css-loader/dist/cjs.js!./Author.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/Author.css", function() {
-		var newContent = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Author.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/Author.css");
+	module.hot.accept(/*! !../../node_modules/css-loader/dist/cjs.js!./Main.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/Main.css", function() {
+		var newContent = __webpack_require__(/*! !../../node_modules/css-loader/dist/cjs.js!./Main.css */ "./node_modules/css-loader/dist/cjs.js!./src/css/Main.css");
 
 		if(typeof newContent === 'string') newContent = [[module.i, newContent, '']];
 
@@ -37281,8 +37281,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _js_Toggle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./js/Toggle */ "./src/js/Toggle.js");
-/* harmony import */ var _css_Author_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/Author.css */ "./src/css/Author.css");
-/* harmony import */ var _css_Author_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_Author_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _css_Main_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/Main.css */ "./src/css/Main.css");
+/* harmony import */ var _css_Main_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_Main_css__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
@@ -37321,9 +37321,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_authorChosen__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/authorChosen */ "./src/js/components/authorChosen.js");
+/* harmony import */ var _components_Authors_authorChosen__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Authors/authorChosen */ "./src/js/components/Authors/authorChosen.js");
 /* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Pagination */ "./src/js/components/Pagination.js");
-/* harmony import */ var _components_authorPopUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/authorPopUp */ "./src/js/components/authorPopUp.js");
+/* harmony import */ var _components_Authors_authorPopUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Authors/authorPopUp */ "./src/js/components/Authors/authorPopUp.js");
 
 
 
@@ -37389,8 +37389,8 @@ function (_Component) {
       });
     }
   }, {
-    key: "componentWillMount",
-    value: function componentWillMount() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this2 = this;
 
       if (this.props.location && this.props.location.id) {
@@ -37436,33 +37436,45 @@ function (_Component) {
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee(event) {
         var _this3 = this;
 
-        var target, id, author, books;
+        var target, id, author, books, top;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 target = event.target;
                 id = target.getAttribute('authot_id');
-                _context.next = 4;
+                author = {};
+                books = [];
+                top = [];
+                _context.next = 7;
                 return fetch('/api/authors/' + id).then(function (response) {
                   return response.json();
                 }).then(function (res) {
                   author = res.data;
                 });
 
-              case 4:
-                _context.next = 6;
+              case 7:
+                _context.next = 9;
                 return fetch('/api/books/books-by-author-id/' + id).then(function (response) {
                   return response.json();
                 }).then(function (res) {
                   books = res.data;
                 });
 
-              case 6:
-                this.setState({
-                  popup: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_authorPopUp__WEBPACK_IMPORTED_MODULE_11__["default"], {
+              case 9:
+                _context.next = 11;
+                return fetch('/api/books/top-books-by-author-id?top=' + 5 + '&id=' + id).then(function (response) {
+                  return response.json();
+                }).then(function (res) {
+                  top = res.data;
+                });
+
+              case 11:
+                if (Object.keys(author).length && books.length) this.setState({
+                  popup: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Authors_authorPopUp__WEBPACK_IMPORTED_MODULE_11__["default"], {
                     author: author,
                     books: books,
+                    top: top,
                     del: function del() {
                       return _this3.setState({
                         popup: ''
@@ -37471,7 +37483,7 @@ function (_Component) {
                   })
                 });
 
-              case 7:
+              case 12:
               case "end":
                 return _context.stop();
             }
@@ -37500,7 +37512,7 @@ function (_Component) {
         return response.json();
       }).then(function (res) {
         return _this4.setState({
-          authors: res.data
+          authors: res.data || []
         });
       });
     }
@@ -37509,21 +37521,25 @@ function (_Component) {
     value: function render() {
       var _this5 = this;
 
-      if (this.props.location && this.props.location.id) {
-        setTimeout(function () {
+      setTimeout(function () {
+        if (_this5.props.location && _this5.props.location.id) {
           var a = document.querySelector('.Authors div[authot_id="' + _this5.props.location.id + '"]');
 
           if (a) {
             a.focus();
-          }
-        }, 0);
-      }
+            a.classList.add('act');
 
+            a.onblur = function () {
+              a.classList.remove('act');
+            };
+          }
+        }
+      }, 0);
       return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "Authors"
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "Authors"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "AuthorsMenu "
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_authorChosen__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Authors_authorChosen__WEBPACK_IMPORTED_MODULE_9__["default"], {
         class: "inline-block"
       }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "sortBox box inline-block"
@@ -37544,7 +37560,8 @@ function (_Component) {
           key: 'author-key-' + ind,
           className: "jumbotron jumbotron-fluid",
           authot_id: el.id,
-          tabIndex: "-1"
+          tabIndex: "-1",
+          onFocus: _this5.Focus
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
           className: "container"
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", {
@@ -37581,7 +37598,7 @@ function (_Component) {
 //         description: 'не любит редиску',
 // books: [
 //     { 
-//       title : 'Смородина красная',
+//       title : 'ададададададададададададададададададдад',
 //       rating: 2,
 //       genre: 'Ужас',
 //       description: 'было очень смешно, честно', 
@@ -37659,9 +37676,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_bookChosen__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/bookChosen */ "./src/js/components/bookChosen.js");
+/* harmony import */ var _components_Books_bookChosen__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Books/bookChosen */ "./src/js/components/Books/bookChosen.js");
 /* harmony import */ var _components_Pagination__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/Pagination */ "./src/js/components/Pagination.js");
-/* harmony import */ var _components_bookPopUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/bookPopUp */ "./src/js/components/bookPopUp.js");
+/* harmony import */ var _components_Books_bookPopUp__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/Books/bookPopUp */ "./src/js/components/Books/bookPopUp.js");
 
 
 
@@ -37750,7 +37767,7 @@ function (_Component) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
-          bookDBSize: res.data || []
+          bookDBSize: res.data
         });
       });
     }
@@ -37769,7 +37786,7 @@ function (_Component) {
         return response.json();
       }).then(function (res) {
         return _this3.setState({
-          books: res.data
+          books: res.data || []
         });
       });
     }
@@ -37805,7 +37822,7 @@ function (_Component) {
 
               case 6:
                 this.setState({
-                  popup: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_bookPopUp__WEBPACK_IMPORTED_MODULE_11__["default"], {
+                  popup: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Books_bookPopUp__WEBPACK_IMPORTED_MODULE_11__["default"], {
                     book: book,
                     authors: authors,
                     del: function del() {
@@ -37839,7 +37856,7 @@ function (_Component) {
         className: "Books"
       }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", null, "Books"), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "BooksMenu"
-      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_bookChosen__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Books_bookChosen__WEBPACK_IMPORTED_MODULE_9__["default"], {
         class: "inline-block"
       }), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "sortBox box inline-block"
@@ -37923,8 +37940,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _Authors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Authors */ "./src/js/Authors.js");
 /* harmony import */ var _Books__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Books */ "./src/js/Books.js");
-/* harmony import */ var _js_components_AuthorCard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/components/AuthorCard */ "./src/js/components/AuthorCard.js");
-/* harmony import */ var _js_components_BookCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/components/BookCard */ "./src/js/components/BookCard.js");
+/* harmony import */ var _js_components_Authors_AuthorCard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/components/Authors/AuthorCard */ "./src/js/components/Authors/AuthorCard.js");
+/* harmony import */ var _js_components_Books_BookCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/components/Books/BookCard */ "./src/js/components/Books/BookCard.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
@@ -37979,10 +37996,10 @@ function (_Component) {
         component: _Books__WEBPACK_IMPORTED_MODULE_7__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
         path: '/author',
-        component: _js_components_AuthorCard__WEBPACK_IMPORTED_MODULE_8__["default"]
+        component: _js_components_Authors_AuthorCard__WEBPACK_IMPORTED_MODULE_8__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
         path: '/book',
-        component: _js_components_BookCard__WEBPACK_IMPORTED_MODULE_9__["default"]
+        component: _js_components_Books_BookCard__WEBPACK_IMPORTED_MODULE_9__["default"]
       }))));
     }
   }]);
@@ -37994,10 +38011,10 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./src/js/components/AuthorCard.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/AuthorCard.js ***!
-  \*****************************************/
+/***/ "./src/js/components/Authors/AuthorCard.js":
+/*!*************************************************!*\
+  !*** ./src/js/components/Authors/AuthorCard.js ***!
+  \*************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38045,14 +38062,22 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch('/api/authors/' + this.props.location.id).then(function (response) {
+      var id = this.props.location.id;
+
+      if (id) {
+        sessionStorage.setItem('AuthorCardId', JSON.stringify({
+          id: id
+        }));
+      } else id = JSON.parse(sessionStorage.getItem('AuthorCardId')).id;
+
+      fetch('/api/authors/' + id).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
           author: res.data
         });
       });
-      fetch('/api/books/books-by-author-id/' + this.props.location.id).then(function (response) {
+      fetch('/api/books/books-by-author-id/' + id).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
@@ -38066,7 +38091,9 @@ function (_Component) {
       var _this$state = this.state,
           author = _this$state.author,
           books = _this$state.books;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("blockquote", {
+        className: "blockquote text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "AuthorCard"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "head"
@@ -38086,7 +38113,7 @@ function (_Component) {
         }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("em", null, el.title + ' : ')), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
           className: "inline-block"
         }, el.genre), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("p", null, el.description));
-      })));
+      }))));
     }
   }]);
 
@@ -38097,10 +38124,195 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./src/js/components/BookCard.js":
-/*!***************************************!*\
-  !*** ./src/js/components/BookCard.js ***!
-  \***************************************/
+/***/ "./src/js/components/Authors/authorChosen.js":
+/*!***************************************************!*\
+  !*** ./src/js/components/Authors/authorChosen.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+
+var Chosen =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Chosen, _Component);
+
+  function Chosen(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Chosen);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Chosen).call(this, props));
+    _this.state = {
+      SeachValue: '',
+      pool: []
+    };
+    _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Focus = _this.Focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Blur = _this.Blur.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Chosen, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "handleChangeSearch",
+    value: function handleChangeSearch(event) {
+      var _this2 = this;
+
+      var value = event.target.value;
+      this.setState({
+        SeachValue: value
+      });
+      fetch('/api/authors/searchInfo?value=' + value.trim()).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this2.setState({
+          pool: res.data || []
+        });
+      });
+    }
+  }, {
+    key: "Blur",
+    value: function Blur(event) {
+      var a = document.querySelector('.Chosen div.dropdown-menu.show');
+      if (a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu')) return;else if (a) a.classList.remove('show');
+    }
+  }, {
+    key: "Focus",
+    value: function Focus() {
+      var a = document.querySelector('.Chosen div.dropdown-menu:not(.show)');
+      if (a && this.state.pool && this.state.pool.length) a.classList.add('show');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: 'search box Chosen ' + this.props.class
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
+        type: "text",
+        value: this.state.SeachValue,
+        onChange: this.handleChangeSearch,
+        autoComplete: "off",
+        name: "contributor_text",
+        placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
+        "aria-autocomplete": "list",
+        "aria-haspopup": "false",
+        "aria-expanded": "false",
+        className: "",
+        onBlur: this.Blur,
+        onFocus: this.Focus
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown "
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown-menu " + (this.state.pool && this.state.pool.length ? 'show' : ''),
+        "aria-labelledby": "dropdownMenuButton"
+      }, this.state.pool.map(function (a, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+          to: {
+            pathname: '/author',
+            id: a.id
+          },
+          className: "dropdown-item",
+          key: 'Chosen-' + ind
+        }, a.name);
+      }))));
+    }
+  }]);
+
+  return Chosen;
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Chosen);
+
+/***/ }),
+
+/***/ "./src/js/components/Authors/authorPopUp.js":
+/*!**************************************************!*\
+  !*** ./src/js/components/Authors/authorPopUp.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var PopUP = function PopUP(props) {
+  var name = props.author.name;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup PopUp",
+    onClick: props.del
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup-content",
+    onClick: function onClick(event) {
+      return event.stopPropagation();
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "PopUpHead"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, name)), props.books.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Books"
+  }, props.top && props.top.length < props.books.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, 'Лушчая пятерка книг'), props.top.map(function (el, ind) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: 'PopUpTopBookKey-' + ind,
+      book_id: el.id
+    }, el.title + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/book',
+        id: el.id
+      }
+    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 "));
+  })) : '', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, props.books.length === 1 ? 'Произведение' : 'Произведения:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.books.map(function (el, ind) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: 'PopUpBookKey-' + ind,
+      book_id: el.id
+    }, el.title + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/book',
+        id: el.id
+      }
+    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 "));
+  }))) : ''));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PopUP);
+
+/***/ }),
+
+/***/ "./src/js/components/Books/BookCard.js":
+/*!*********************************************!*\
+  !*** ./src/js/components/Books/BookCard.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -38148,14 +38360,22 @@ function (_Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch('/api/books/' + this.props.location.id).then(function (response) {
+      var id = this.props.location.id;
+
+      if (id) {
+        sessionStorage.setItem('BookCardId', JSON.stringify({
+          id: id
+        }));
+      } else id = JSON.parse(sessionStorage.getItem('BookCardId')).id;
+
+      fetch('/api/books/' + id).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
           book: res.data
         });
       });
-      fetch('/api/books/authors-by-book-id/' + this.props.location.id).then(function (response) {
+      fetch('/api/books/authors-by-book-id/' + id).then(function (response) {
         return response.json();
       }).then(function (res) {
         return _this2.setState({
@@ -38169,13 +38389,17 @@ function (_Component) {
       var _this$state = this.state,
           authors = _this$state.authors,
           book = _this$state.book;
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("blockquote", {
+        className: "blockquote text-center"
+      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "AuthorCard"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h2", {
         className: "display-4"
       }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("em", null, book.title)), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
         className: "display-5"
-      }, book.genre), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
+      }, 'Жанр : ' + book.genre), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h3", {
+        className: "display-5"
+      }, 'Рейтиг : ' + book.rating), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("hr", {
         className: "my-2"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
         className: "description"
@@ -38183,7 +38407,7 @@ function (_Component) {
         className: "my-2"
       }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("br", null), authors.length === 1 ? 'Автор' : 'Авторы', react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", null, authors.map(function (el) {
         return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("h1", null, el.name);
-      })));
+      }))));
     }
   }]);
 
@@ -38191,6 +38415,192 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (BookCard);
+
+/***/ }),
+
+/***/ "./src/js/components/Books/bookChosen.js":
+/*!***********************************************!*\
+  !*** ./src/js/components/Books/bookChosen.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
+/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
+/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
+/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+
+
+var Chosen =
+/*#__PURE__*/
+function (_Component) {
+  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Chosen, _Component);
+
+  function Chosen(props) {
+    var _this;
+
+    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Chosen);
+
+    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Chosen).call(this, props));
+    _this.state = {
+      SeachValue: '',
+      pool: []
+    };
+    _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Focus = _this.Focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    _this.Blur = _this.Blur.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
+    return _this;
+  }
+
+  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Chosen, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {}
+  }, {
+    key: "handleChangeSearch",
+    value: function handleChangeSearch(event) {
+      var _this2 = this;
+
+      var value = event.target.value;
+      this.setState({
+        SeachValue: value
+      });
+      fetch('/api/books/searchInfo?value=' + value.trim()).then(function (response) {
+        return response.json();
+      }).then(function (res) {
+        return _this2.setState({
+          pool: res.data || []
+        });
+      });
+    }
+  }, {
+    key: "Blur",
+    value: function Blur(event) {
+      var a = document.querySelector('.Chosen div.dropdown-menu.show');
+      if (a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu')) return;else if (a) a.classList.remove('show');
+    }
+  }, {
+    key: "Focus",
+    value: function Focus() {
+      var a = document.querySelector('.Chosen div.dropdown-menu:not(.show)');
+      if (a && this.state.pool && this.state.pool.length) a.classList.add('show');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: 'search box Chosen ' + this.props.class
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
+        type: "text",
+        value: this.state.SeachValue,
+        onChange: this.handleChangeSearch,
+        autoComplete: "off",
+        name: "contributor_text",
+        placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
+        "aria-autocomplete": "list",
+        "aria-haspopup": "false",
+        "aria-expanded": "false",
+        className: "",
+        onBlur: this.Blur,
+        onFocus: this.Focus
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown "
+      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "dropdown-menu " + (this.state.pool && this.state.pool.length ? 'show' : ''),
+        "aria-labelledby": "dropdownMenuButton"
+      }, this.state.pool.map(function (a, ind) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
+          to: {
+            pathname: '/book',
+            id: a.id
+          },
+          className: "dropdown-item",
+          key: 'Chosen-' + ind
+        }, a.title + ' ' + a.genre);
+      }))));
+    }
+  }]);
+
+  return Chosen;
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Chosen);
+
+/***/ }),
+
+/***/ "./src/js/components/Books/bookPopUp.js":
+/*!**********************************************!*\
+  !*** ./src/js/components/Books/bookPopUp.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var PopUP = function PopUP(props) {
+  var _props$book = props.book,
+      title = _props$book.title,
+      genre = _props$book.genre,
+      description = _props$book.description,
+      rating = _props$book.rating;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup PopUp",
+    onClick: props.del
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "b-popup-content",
+    onClick: function onClick(event) {
+      return event.stopPropagation();
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "PopUpHead"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "info"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Жанр : ' + genre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Рейтинг : ' + rating)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Books"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, props.authors.length === 1 ? 'Автор' : 'Авторы:'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.authors.map(function (el, ind) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: 'PopUpAuhorKey-' + ind,
+      author_id: el.id
+    }, el.name + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/author',
+        id: el.id
+      }
+    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      to: {
+        pathname: '/authors',
+        id: el.id
+      }
+    }, " \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u0432\u043A\u043B\u0430\u0434\u043A\u0435 \u0430\u0432\u0442\u043E\u0440\u044B"));
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PopUP);
 
 /***/ }),
 
@@ -38350,378 +38760,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Pagination);
-
-/***/ }),
-
-/***/ "./src/js/components/authorChosen.js":
-/*!*******************************************!*\
-  !*** ./src/js/components/authorChosen.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-
-
-
-
-
-var Chosen =
-/*#__PURE__*/
-function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Chosen, _Component);
-
-  function Chosen(props) {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Chosen);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Chosen).call(this, props));
-    _this.state = {
-      SeachValue: '',
-      pool: []
-    };
-    _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.Focus = _this.Focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.Blur = _this.Blur.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Chosen, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "handleChangeSearch",
-    value: function handleChangeSearch(event) {
-      var _this2 = this;
-
-      var value = event.target.value;
-      this.setState({
-        SeachValue: value
-      });
-      fetch('/api/authors/searchInfo?value=' + value.trim()).then(function (response) {
-        return response.json();
-      }).then(function (res) {
-        return _this2.setState({
-          pool: res.data
-        });
-      }, function () {
-        return _this2.setState({
-          pool: []
-        });
-      });
-    }
-  }, {
-    key: "Blur",
-    value: function Blur(event) {
-      var a = document.querySelector('.Chosen div.dropdown-menu.show');
-      if (a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu')) return;else if (a) a.classList.remove('show');
-    }
-  }, {
-    key: "Focus",
-    value: function Focus() {
-      var a = document.querySelector('.Chosen div.dropdown-menu:not(.show)');
-      if (a && this.state.pool && this.state.pool.length) a.classList.add('show');
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: 'search box Chosen ' + this.props.class
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
-        type: "text",
-        value: this.state.SeachValue,
-        onChange: this.handleChangeSearch,
-        autoComplete: "off",
-        name: "contributor_text",
-        placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
-        "aria-autocomplete": "list",
-        "aria-haspopup": "false",
-        "aria-expanded": "false",
-        className: "",
-        onBlur: this.Blur,
-        onFocus: this.Focus
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "dropdown "
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "dropdown-menu " + (this.state.pool && this.state.pool.length ? 'show' : ''),
-        "aria-labelledby": "dropdownMenuButton"
-      }, this.state.pool.map(function (a, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-          to: {
-            pathname: '/author',
-            id: a.id
-          },
-          className: "dropdown-item",
-          key: 'Chosen-' + ind
-        }, a.name);
-      }))));
-    }
-  }]);
-
-  return Chosen;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Chosen);
-
-/***/ }),
-
-/***/ "./src/js/components/authorPopUp.js":
-/*!******************************************!*\
-  !*** ./src/js/components/authorPopUp.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-var PopUP = function PopUP(props) {
-  var _props$author = props.author,
-      description = _props$author.description,
-      name = _props$author.name;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "b-popup PopUp",
-    onClick: props.del
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "b-popup-content",
-    onClick: function onClick(event) {
-      return event.stopPropagation();
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "PopUpHead"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "info"
-  }, description), props.books && props.books.length ? react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Books"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.books.length === 1 ? 'Книга' : 'Книги'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.books.map(function (el, ind) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: 'PopUpBookKey-' + ind,
-      book_id: el.id
-    }, el.title + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: {
-        pathname: '/book',
-        id: el.id
-      }
-    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 "));
-  }))) : ''));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (PopUP);
-
-/***/ }),
-
-/***/ "./src/js/components/bookChosen.js":
-/*!*****************************************!*\
-  !*** ./src/js/components/bookChosen.js ***!
-  \*****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/assertThisInitialized */ "./node_modules/@babel/runtime/helpers/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-
-
-
-
-
-var Chosen =
-/*#__PURE__*/
-function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_5___default()(Chosen, _Component);
-
-  function Chosen(props) {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Chosen);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Chosen).call(this, props));
-    _this.state = {
-      SeachValue: '',
-      pool: []
-    };
-    _this.handleChangeSearch = _this.handleChangeSearch.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.Focus = _this.Focus.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    _this.Blur = _this.Blur.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Chosen, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {}
-  }, {
-    key: "handleChangeSearch",
-    value: function handleChangeSearch(event) {
-      var _this2 = this;
-
-      var value = event.target.value;
-      this.setState({
-        SeachValue: value
-      });
-      fetch('/api/books/searchInfo?value=' + value.trim()).then(function (response) {
-        return response.json();
-      }).then(function (res) {
-        return _this2.setState({
-          pool: res.data
-        });
-      }, function () {
-        return _this2.setState({
-          pool: []
-        });
-      });
-    }
-  }, {
-    key: "Blur",
-    value: function Blur(event) {
-      var a = document.querySelector('.Chosen div.dropdown-menu.show');
-      if (a && event.nativeEvent && event.nativeEvent.relatedTarget && event.nativeEvent.relatedTarget.offsetParent.classList.contains('dropdown-menu')) return;else if (a) a.classList.remove('show');
-    }
-  }, {
-    key: "Focus",
-    value: function Focus() {
-      var a = document.querySelector('.Chosen div.dropdown-menu:not(.show)');
-      if (a && this.state.pool && this.state.pool.length) a.classList.add('show');
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: 'search box Chosen ' + this.props.class
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
-        type: "text",
-        value: this.state.SeachValue,
-        onChange: this.handleChangeSearch,
-        autoComplete: "off",
-        name: "contributor_text",
-        placeholder: "\u041D\u0430\u0447\u043D\u0438\u0442\u0435 \u0432\u0432\u043E\u0434\u0438\u0442\u044C \u0430\u0432\u0442\u043E\u0440\u0430",
-        "aria-autocomplete": "list",
-        "aria-haspopup": "false",
-        "aria-expanded": "false",
-        className: "",
-        onBlur: this.Blur,
-        onFocus: this.Focus
-      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "dropdown "
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "dropdown-menu " + (this.state.pool && this.state.pool.length ? 'show' : ''),
-        "aria-labelledby": "dropdownMenuButton"
-      }, this.state.pool.map(function (a, ind) {
-        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__["Link"], {
-          to: {
-            pathname: '/book',
-            id: a.id
-          },
-          className: "dropdown-item",
-          key: 'Chosen-' + ind
-        }, a.title + ' ' + a.genre);
-      }))));
-    }
-  }]);
-
-  return Chosen;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Chosen);
-
-/***/ }),
-
-/***/ "./src/js/components/bookPopUp.js":
-/*!****************************************!*\
-  !*** ./src/js/components/bookPopUp.js ***!
-  \****************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-var PopUP = function PopUP(props) {
-  var _props$book = props.book,
-      title = _props$book.title,
-      genre = _props$book.genre,
-      description = _props$book.description;
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "b-popup PopUp",
-    onClick: props.del
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "b-popup-content",
-    onClick: function onClick(event) {
-      return event.stopPropagation();
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "PopUpHead"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("em", null, title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "info"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Жанр : ' + genre), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, 'Описние : ' + description)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "Books"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, props.authors.length === 1 ? 'Автор' : 'Авторы'), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.authors.map(function (el, ind) {
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      key: 'PopUpAuhorKey-' + ind,
-      author_id: el.id
-    }, el.name + ' ', react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: {
-        pathname: '/author',
-        id: el.id
-      }
-    }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-      to: {
-        pathname: '/authors',
-        id: el.id
-      }
-    }, " \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u0432\u043A\u043B\u0430\u0434\u043A\u0435 \u0430\u0432\u0442\u043E\u0440\u044B"));
-  })))));
-};
-
-/* harmony default export */ __webpack_exports__["default"] = (PopUP);
 
 /***/ }),
 
