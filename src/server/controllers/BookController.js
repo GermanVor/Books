@@ -206,10 +206,10 @@ class BookController {
 		} 
 
 		try {
-			const book = await BookService.update(id, data);
+			const Book = await BookService.update(id, data);
 			if (!book)
 				util.setError(404, `Book with the id ${id} cannot be found`);
-			else util.setSuccess(200, 'Book updated', book);
+			else util.setSuccess(200, 'Book updated', Book );
 			return util.send(res);
 		} catch (error) {
 			util.setError(404, error);

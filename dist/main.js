@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c1df4921a9edf38635d6";
+/******/ 	var hotCurrentHash = "577e23ffb4309dfeac45";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -37470,11 +37470,11 @@ function (_Component) {
                 });
 
               case 11:
-                if (Object.keys(author).length && books.length) this.setState({
+                this.setState({
                   popup: react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Authors_authorPopUp__WEBPACK_IMPORTED_MODULE_11__["default"], {
                     author: author,
-                    books: books,
-                    top: top,
+                    books: books || [],
+                    top: top || [],
                     del: function del() {
                       return _this3.setState({
                         popup: ''
@@ -37587,72 +37587,110 @@ function (_Component) {
   return Authors;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Authors); //добавить автора
-// если указать корректрыне данные книги , то она будет создана автоматически , если ввести корректный id книги , то автор станет ее соавтором 
+/* harmony default export */ __webpack_exports__["default"] = (Authors); ////добавить автора
+/////если указать корректрыне данные книги , то она будет создана автоматически , если ввести корректный id книги , то автор станет ее соавтором 
 // fetch('/api/authors', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//         name: 'Кирилл 3',
+//         name: 'Кирилл ',
 //         description: 'предпочитает писать ужастики',
 // books: [
-//    // { 
-//    //   title : 'Адам 2.0 ',
-//    //   rating: 2,
-//    //   genre: 'Ужас',
-//    //   description: 'было очень смешно, честно', 
-//    // },
-//    // { 
-//    //   title : 'Смородина красная 1',
-//    //   rating: 5,
-//    //   genre: 'Ужас',
-//    //   description: 'было смешно, честно', 
-//    // }
-//  {id : ''}
+//     { 
+//       title : 'Адам 2.0 ',
+//       rating: 2,
+//       genre: 'Ужас',
+//       description: 'было очень смешно, честно', 
+//     },
+//    { 
+//      title : 'Смородина красная 1',
+//       rating: 5,
+//       genre: 'Ужас',
+//      description: 'было смешно, честно', 
+//     },
+//  {id : 'b40456d3-dfce-4641-a8ea-c3117a92b9a8'}
 // ]
 //       })
 // })
 // .then(response => response.json())
 // .then( console.log )
-// добавить книгу с авторами , если передать корректные данные для автора , он будет создан автоматически, 
-// если указать id автора , он добавится в соавторы книги 
+//////////// добавить книгу с авторами , если передать корректные данные для автора , он будет создан автоматически, 
+/////////// если указать id автора , он добавится в соавторы книги 
 // fetch('/api/books/', {
 //       method: 'POST',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        title : 'Камыш 3',
+//        title : 'Камыш 1',
 //        rating: 1 ,
 //        genre: 'Роман',
 //        description: 'Пробирает до слез',
 //        authors: [
-//         {name: 'Серегй 2', description: 'описание Сергея'},
-//          {name: 'Константин 2', description: 'описание Константина'},
-//          { id: '' }
+//         //{name: 'Серегй ', description: 'описание Сергея'},
+//         // {name: 'Константин ', description: 'описание Константина'},
+//          { id: '881bf9ce-1b70-41f3-91a7-823b9cfe1fef' }
 //        ]
 //       })
 //     }).then(response => response.json())
 //     .then(console.log)
-//функция обновления книги 
-// fetch('/api/books/fedcddba-8fcb-4e7a-97a1-d1cdfe57e311', {
+///////////функция обновления книги 
+// fetch('/api/books/a5ac72af-3906-4791-8c6b-a0c86d4bb12a', {
 //       method: 'PUT',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        title : 'Камыш 3.0',
-//        rating: 1 ,
-//        genre: 'Роман',
-//        description: 'Пробирает до слез',
+//        title : 'Камыш 1.0',
+//        //rating: 1 ,
+//        //genre: 'Роман',
+//        //description: 'Пробирает до слез',
 //        authors: [
+// //////// если указать просто автора, то он будет создан в базе данных и станет соавтором этой книги 
 //         {name: 'Серегй 2.0', description: 'описание Сергея'},
-//          { id: '474f6a6a-04d2-4fee-9d5a-b487405b2477' },
-//          { id: 'fedcddba-8fcb-4e7a-97a1-d1cdfe57e311' }
+// ///////// если не указать isDel: true, то автор станет соавтором этой книги, если указать , то автор перестанет быть соавтором этой книги
+//          { id: '881bf9ce-1b70-41f3-91a7-823b9cfe1fef', isDel: true },
+//          { id: 'c7daf858-5278-4f5d-aaa7-ff5b707849b0' }
 //        ]
 //       })
+//     }).then(response => response.json())
+//     .then(console.log)
+///////////функция обновления автора 
+// fetch('/api/books/c7daf858-5278-4f5d-aaa7-ff5b707849b0', {
+//       method: 'PUT',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       },
+//       body: JSON.stringify({
+//        name : 'Сергей ',
+//        description: 'Измененный Виктор',
+//        books: [
+//////      если заполнить правильно поля книги, то она будет создана , а автор станет ее соавтором 
+//          { title : 'Камыш 7.0', rating: 1, genre: 'Роман', description: 'Пробирает до слез'},
+/////////// если не указать isDel: true, то автор станет соавтором книги, если указать , то автор перестанет быть соавтором книги
+//          { id: 'b40456d3-dfce-4641-a8ea-c3117a92b9a8', isDel: true },
+//          { id: '22a73a28-e71c-474a-8cc7-1e11591f248a' }
+//          { id: '99a73a28-e71c-474a-8cc7-1e11591f248a' }
+//        ]
+//       })
+//     }).then(response => response.json())
+//     .then(console.log)
+////удалить книгу
+// fetch('/api/books/65db4016-35ce-42c2-8a60-6d0d98eca593', {
+//       method: 'DELETE',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       }
+//     }).then(response => response.json())
+//     .then(console.log)
+////удалить автора
+// fetch('/api/authors/28c11908-d0a2-4047-a159-85777d2f67ad', {
+//       method: 'DELETE',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       }
 //     }).then(response => response.json())
 //     .then(console.log)
 

@@ -146,11 +146,6 @@ class BookService {
 		try {
 			const update = await database.Book.findByPk(book_id)
 			if (update) {
-				
-				database.Enrolment.findAll({where: {BookId: book_id } })
-				.then( elements => {
-					elements.forEach( el => el.destroy() )
-				})
 
 				await database.Book.update(data, {where: {id: book_id}});
 
@@ -163,7 +158,10 @@ class BookService {
 							}
 						})
 						.then( author => {
-							if(author) Book.addAuthor(author)
+							if(author){
+								if( el.isDel) database.Enrolment.destroy({ where: { AuthorId: el.id, BookId: book_id } })
+								else Book.addAuthor(author)
+							}
 						})
 					} else {
 						database.Author.create(el)
@@ -171,7 +169,7 @@ class BookService {
 					}
 				})
 
-				return data;
+				return Book;
 			} else return null;
 		} catch (error) {
 			throw error;
@@ -199,10 +197,20 @@ class BookService {
 	 */
 	static async remove(book_id) {
 		try {
-			const remove = await database.Book.findByPk(book_id);
+			const remove = await database.Book.findByPk(book_id)
+				.then( book => {
+					if(book){
+						database.Enrolment.findAll({where: {BookId: book_id } })
+						.then( elements => {
+							elements.forEach( el => el.destroy() )
+						})
+					}
+					return book
+				});
 			if (remove) {
-				return await database.Book.destroy({where: {book_id}});
+				return await remove.destroy();
 			} else return null;
+
 		} catch (error) {
 			throw error;
 		}

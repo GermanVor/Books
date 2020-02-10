@@ -105,8 +105,27 @@ class AuthorService {
 		try {
 			const update = await database.Author.findByPk(id);
 			if (update) {
-				await database.Author.update(data, {where: {id}});
-				return data;
+				await database.Author.update(data, { where: {id} });
+
+				const Author = update;
+				if( Array.isArray(data.books) ) data.books.forEach( el => {
+					if(el.id){
+						database.Book.findOne({where: {
+							id: el.id 
+						}})
+						.then( book => {
+							if( book ){
+								if( el.isDel ) database.Enrolment.destroy({ where: { AuthorId: id, BookId: el.id } })
+								else  Author.addBook(book)
+							} 
+						})
+					} else { 
+						database.Book.create(el)
+						.then( book => { if(book) Author.addBook(book) })
+					}
+				});
+
+				return Author;
 			} else return null;
 		} catch (error) {
 			throw error;
@@ -135,9 +154,18 @@ class AuthorService {
 	 */
 	static async remove(id) {
 		try {
-			const remove = await database.Author.findByPk(id);
+			const remove = await database.Author.findByPk(id)
+				.then( author => {
+					if(author) {
+						database.Enrolment.findAll({where: {AuthorId: id } })
+						.then( elements => {
+							elements.forEach( el => el.destroy() )
+						})
+					}	
+					return author
+				})
 			if (remove) {
-				return await database.Author.destroy({where: {id}});
+				return await remove.destroy();
 			} else return null;
 		} catch (error) {
 			throw error;
