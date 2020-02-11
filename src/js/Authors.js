@@ -193,8 +193,8 @@ export default Authors
 //        genre: 'Роман',
 //        description: 'Пробирает до слез',
 //        authors: [
-//         //{name: 'Серегй ', description: 'описание Сергея'},
-//         // {name: 'Константин ', description: 'описание Константина'},
+//         {name: 'Серегй ', description: 'описание Сергея'},
+//          {name: 'Константин ', description: 'описание Константина'},
 //          { id: '881bf9ce-1b70-41f3-91a7-823b9cfe1fef' }
 //        ]
 //       })
@@ -265,18 +265,18 @@ export default Authors
 //     }).then(response => response.json())
 //     .then(console.log)
 
-fetch('/api/books/authors-by-book-id/8c05349b-c52d-4292-b094-664099f0d787', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      }
-    }).then(response => response.json())
-    .then(console.log)
+// fetch('/api/books/authors-by-book-id/8c05349b-c52d-4292-b094-664099f0d787', {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       }
+//     }).then(response => response.json())
+//     .then(console.log)
 
-    fetch('/api/books/books-by-author-id/83832a35-827a-49e9-a85a-ddce27ddb4b0', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8'
-      }
-    }).then(response => response.json())
-    .then(console.log)
+//     fetch('/api/books/books-by-author-id/83832a35-827a-49e9-a85a-ddce27ddb4b0', {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       }
+//     }).then(response => response.json())
+//     .then(console.log)

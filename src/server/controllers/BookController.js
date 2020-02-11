@@ -152,13 +152,12 @@ class BookController {
 	 * @returns {Promise<*>}
 	 */
 	static async add(req, res) {
-		if( !isBook(req.body) || !req.body.authors || req.body.authors.length < 1 ) {
+		if( !isBook(req.body) ) {
 			util.setError(400, 'Incomplete information');
 			return util.send(res);
 		}
 	
 		try {
-			
 			const book = await BookService.add(req.body);
 			
 			util.setSuccess(201, 'Book Added', book);
@@ -197,17 +196,17 @@ class BookController {
 	 */
 	static async update(req, res) {
 		const data = req.body, {id} = req.params;
-		if (!id || !isUUID(id)) {
+		if(!id || !isUUID(id)) {
 			util.setError(400, 'Invalid UUID');
 			return util.send(res);
-		} else if (data.rating && !isInt(data.rating)) {
+		} else if(data.rating && !isInt(data.rating)) {
 			util.setError(400, 'Invalid rating value');
 			return util.send(res);
 		} 
 
 		try {
 			const Book = await BookService.update(id, data);
-			if (!book)
+			if (!Book)
 				util.setError(404, `Book with the id ${id} cannot be found`);
 			else util.setSuccess(200, 'Book updated', Book );
 			return util.send(res);

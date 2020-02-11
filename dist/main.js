@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "cb5a982f827d786352e8";
+/******/ 	var hotCurrentHash = "4c2285cd6fe0a0c80c53";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -37629,8 +37629,8 @@ function (_Component) {
 //        genre: 'Роман',
 //        description: 'Пробирает до слез',
 //        authors: [
-//         //{name: 'Серегй ', description: 'описание Сергея'},
-//         // {name: 'Константин ', description: 'описание Константина'},
+//         {name: 'Серегй ', description: 'описание Сергея'},
+//          {name: 'Константин ', description: 'описание Константина'},
 //          { id: '881bf9ce-1b70-41f3-91a7-823b9cfe1fef' }
 //        ]
 //       })
@@ -37693,23 +37693,20 @@ function (_Component) {
 //       }
 //     }).then(response => response.json())
 //     .then(console.log)
-
-fetch('/api/books/authors-by-book-id/8c05349b-c52d-4292-b094-664099f0d787', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json;charset=utf-8'
-  }
-}).then(function (response) {
-  return response.json();
-}).then(console.log);
-fetch('/api/books/books-by-author-id/83832a35-827a-49e9-a85a-ddce27ddb4b0', {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json;charset=utf-8'
-  }
-}).then(function (response) {
-  return response.json();
-}).then(console.log);
+// fetch('/api/books/authors-by-book-id/8c05349b-c52d-4292-b094-664099f0d787', {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       }
+//     }).then(response => response.json())
+//     .then(console.log)
+//     fetch('/api/books/books-by-author-id/83832a35-827a-49e9-a85a-ddce27ddb4b0', {
+//       method: 'GET',
+//       headers: {
+//         'Content-Type': 'application/json;charset=utf-8'
+//       }
+//     }).then(response => response.json())
+//     .then(console.log)
 
 /***/ }),
 

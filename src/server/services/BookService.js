@@ -114,7 +114,7 @@ class BookService {
 			return await database.Book.create(data)
 				.then( Book => {
 					if( Array.isArray(data.authors) ) data.authors.forEach( el => {
-						if( el.id.trim() ) {
+						if( el.id ) {
 							database.Author.findOne({
 								where: {
 									id: el.id.trim()
@@ -146,31 +146,31 @@ class BookService {
 	 */
 	static async update(book_id, data) {
 		try {
-			const update = await database.Book.findByPk(book_id)
+			let update = await database.Book.findByPk(book_id)
 			if (update) {
-
 				await database.Book.update(data, {where: {id: book_id}});
 
-				const Book = update;
-				if( Array.isArray(data.authors) ) data.authors.forEach( el => {
-					if( el.id ) {
-						database.Author.findOne({
-							where: {
-								id: el.id 
-							}
-						})
-						.then( author => {
-							if(author){
-								if( el.isDel) database.Enrolment.destroy({ where: { AuthorId: el.id, BookId: book_id } })
-								else Book.addAuthor(author)
-							}
-						})
-					} else {
-						database.Author.create(el)
-						.then( author => { if(author) Book.addAuthor(author) })
-					}
-				})
-
+				const Book = await database.Book.findByPk(book_id)
+				if( Array.isArray(data.authors) ){ 
+					data.authors.forEach( el => {
+						if( el.id ) {
+							database.Author.findOne({
+								where: {
+									id: el.id 
+								}
+							})
+							.then( author => {
+								if(author){
+									if( el.isDel) database.Enrolment.destroy({ where: { AuthorId: el.id, BookId: book_id } })
+									else Book.addAuthor(author)
+								}
+							})
+						} else {
+							database.Author.create(el)
+							.then( author => { if(author) Book.addAuthor(author) })
+						}
+					})
+				}
 				return Book;
 			} else return null;
 		} catch (error) {
