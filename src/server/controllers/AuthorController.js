@@ -144,9 +144,9 @@ class AuthorController {
 		}
 
 		try {
-			const Author= await AuthorService.update(id, data);
+			const Author = await AuthorService.update(id, data);
 
-			if (!author)
+			if (!Author)
 				util.setError(404, `Author with the id ${id} cannot be found`);
 			else util.setSuccess(200, 'Author updated',  Author);
 

@@ -114,18 +114,20 @@ class BookService {
 			return await database.Book.create(data)
 				.then( Book => {
 					if( Array.isArray(data.authors) ) data.authors.forEach( el => {
-						if( el.id ) {
+						if( el.id.trim() ) {
 							database.Author.findOne({
 								where: {
-									id: el.id 
+									id: el.id.trim()
 								}
 							})
 							.then( author => {
 								if(author) Book.addAuthor(author)
 							})
 						} else {
-							database.Author.create(el)
-							.then( author => { if(author) Book.addAuthor(author) })
+							if (el.name && el.description){
+								database.Author.create(el)
+								.then( author => { if(author) Book.addAuthor(author) })
+							}
 						}
 					});
 					return Book

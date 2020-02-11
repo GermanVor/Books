@@ -3,7 +3,6 @@ import Sequelize from 'sequelize';
 const Op = Sequelize.Op
 
 class AuthorService {
-
 	/**
 	 * Requests all available authors from the database
 	 *
@@ -106,26 +105,26 @@ class AuthorService {
 			const update = await database.Author.findByPk(id);
 			if (update) {
 				await database.Author.update(data, { where: {id} });
-
-				const Author = update;
-				if( Array.isArray(data.books) ) data.books.forEach( el => {
-					if(el.id){
-						database.Book.findOne({where: {
-							id: el.id 
-						}})
-						.then( book => {
-							if( book ){
-								if( el.isDel ) database.Enrolment.destroy({ where: { AuthorId: id, BookId: el.id } })
-								else  Author.addBook(book)
-							} 
-						})
-					} else { 
-						database.Book.create(el)
-						.then( book => { if(book) Author.addBook(book) })
-					}
-				});
-
-				return Author;
+				return await database.Author.findByPk(id)
+					.then( Author => {
+						if( Array.isArray(data.books) ) data.books.forEach( el => {
+							if(el.id){
+								database.Book.findOne({where: {
+									id: el.id 
+								}})
+								.then( book => {
+									if( book ){
+										if( el.isDel ) database.Enrolment.destroy({ where: { AuthorId: id, BookId: el.id } })
+										else  Author.addBook(book)
+									} 
+								})
+							} else { 
+								database.Book.create(el)
+								.then( book => { if(book) Author.addBook(book) })
+							}
+						});
+						return Author 
+					})
 			} else return null;
 		} catch (error) {
 			throw error;

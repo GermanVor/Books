@@ -8,7 +8,7 @@ class AuthorCard extends Component {
       books: []
     }
   }
-  componentDidMount () {
+  componentDidMount(){
     let id = this.props.location.id
     if( id ){
       sessionStorage.setItem('AuthorCardId', JSON.stringify({ id: id}) ) 
@@ -16,7 +16,7 @@ class AuthorCard extends Component {
 
     fetch('/api/authors/'+id)
     .then(response => response.json())
-    .then( res=>this.setState({ author: res.data }) )
+    .then( res=>this.setState({ author: res.data }))
     
     fetch('/api/books/books-by-author-id/'+id)
     .then(response => response.json())
@@ -24,6 +24,7 @@ class AuthorCard extends Component {
   }
   render(){
     let { author, books} = this.state;
+    
     return (
       <blockquote className="blockquote text-center">
       <div className="AuthorCard">

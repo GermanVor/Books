@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "577e23ffb4309dfeac45";
+/******/ 	var hotCurrentHash = "cb5a982f827d786352e8";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -37658,27 +37658,27 @@ function (_Component) {
 //     }).then(response => response.json())
 //     .then(console.log)
 ///////////функция обновления автора 
-// fetch('/api/books/c7daf858-5278-4f5d-aaa7-ff5b707849b0', {
+// fetch('/api/authors/cdebdd16-a00a-405d-89df-f23b3272bfe4', {
 //       method: 'PUT',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        name : 'Сергей ',
+//        name : 'Сергей 2',
 //        description: 'Измененный Виктор',
 //        books: [
-//////      если заполнить правильно поля книги, то она будет создана , а автор станет ее соавтором 
+// ////      если заполнить правильно поля книги, то она будет создана , а автор станет ее соавтором 
 //          { title : 'Камыш 7.0', rating: 1, genre: 'Роман', description: 'Пробирает до слез'},
-/////////// если не указать isDel: true, то автор станет соавтором книги, если указать , то автор перестанет быть соавтором книги
+// ///////// если не указать isDel: true, то автор станет соавтором книги, если указать , то автор перестанет быть соавтором книги
 //          { id: 'b40456d3-dfce-4641-a8ea-c3117a92b9a8', isDel: true },
-//          { id: '22a73a28-e71c-474a-8cc7-1e11591f248a' }
+//          { id: '22a73a28-e71c-474a-8cc7-1e11591f248a' },
 //          { id: '99a73a28-e71c-474a-8cc7-1e11591f248a' }
 //        ]
 //       })
 //     }).then(response => response.json())
 //     .then(console.log)
 ////удалить книгу
-// fetch('/api/books/65db4016-35ce-42c2-8a60-6d0d98eca593', {
+// fetch('/api/books/b40456d3-dfce-4641-a8ea-c3117a92b9a8', {
 //       method: 'DELETE',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
@@ -37693,6 +37693,23 @@ function (_Component) {
 //       }
 //     }).then(response => response.json())
 //     .then(console.log)
+
+fetch('/api/books/authors-by-book-id/8c05349b-c52d-4292-b094-664099f0d787', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  }
+}).then(function (response) {
+  return response.json();
+}).then(console.log);
+fetch('/api/books/books-by-author-id/83832a35-827a-49e9-a85a-ddce27ddb4b0', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8'
+  }
+}).then(function (response) {
+  return response.json();
+}).then(console.log);
 
 /***/ }),
 

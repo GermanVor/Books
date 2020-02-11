@@ -225,13 +225,13 @@ export default Authors
 
 
 ///////////функция обновления автора 
-// fetch('/api/authors/c7daf858-5278-4f5d-aaa7-ff5b707849b0', {
+// fetch('/api/authors/cdebdd16-a00a-405d-89df-f23b3272bfe4', {
 //       method: 'PUT',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
 //       },
 //       body: JSON.stringify({
-//        name : 'Сергей ',
+//        name : 'Сергей 2',
 //        description: 'Измененный Виктор',
 //        books: [
 // ////      если заполнить правильно поля книги, то она будет создана , а автор станет ее соавтором 
@@ -248,7 +248,7 @@ export default Authors
 
 
 ////удалить книгу
-// fetch('/api/books/65db4016-35ce-42c2-8a60-6d0d98eca593', {
+// fetch('/api/books/b40456d3-dfce-4641-a8ea-c3117a92b9a8', {
 //       method: 'DELETE',
 //       headers: {
 //         'Content-Type': 'application/json;charset=utf-8'
@@ -264,3 +264,19 @@ export default Authors
 //       }
 //     }).then(response => response.json())
 //     .then(console.log)
+
+fetch('/api/books/authors-by-book-id/8c05349b-c52d-4292-b094-664099f0d787', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      }
+    }).then(response => response.json())
+    .then(console.log)
+
+    fetch('/api/books/books-by-author-id/83832a35-827a-49e9-a85a-ddce27ddb4b0', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      }
+    }).then(response => response.json())
+    .then(console.log)
