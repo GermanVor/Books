@@ -70,6 +70,7 @@ const uuid = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
 				.then((res) => {
 					book_id = res.body.data.id
 				});
+			
 		});
 	})
 

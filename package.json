@@ -8,6 +8,7 @@
     "coverage": "jest --coverage",
     "db": "sequelize db:migrate:undo:all && sequelize db:migrate",
     "buildDev": "rmdir /Q /S dist && webpack --mode development --config webpack.server.config.js && webpack --mode development --config webpack.dev.config.js",
+    "LinuxStart": "rm -R dist && webpack —mode development —config webpack.server.config.js && webpack —mode development —config webpack.dev.config.js && node ./dist/server.js",
     "start": "npm run buildDev && node ./dist/server.js",
     "test": "nyc --require @babel/register mocha ./src/server/test/test.js --timeout 20000 --exit"
   },
