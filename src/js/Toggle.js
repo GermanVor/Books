@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Authors from './Authors'
 import Books from './Books'
 import AuthorCard from '../js/components/Authors/AuthorCard'
@@ -11,16 +11,7 @@ import {
   Link
 } from 'react-router-dom';
 
-class Toggle extends  Component{
-  constructor(props){
-      super(props);
-      this.state = {
-        
-      }
-     
-  }
-  
-  render(){
+const Toggle = ()=>{
     return (<div className='Toggle'>
        <HashRouter>
         <div className='head'>
@@ -34,9 +25,7 @@ class Toggle extends  Component{
             <Route path={'/book' } component={BookCard} />
         </Switch>
       </HashRouter>
-
     </div>)
-  }
 }
 
 export default Toggle

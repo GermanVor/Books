@@ -127,7 +127,7 @@ class Authors extends Component {
             <div key={'author-key-'+ind} className="jumbotron jumbotron-fluid" authot_id={el.id} tabIndex="-1" onFocus={ this.Focus  }>
               <div className="container">
                 <div>
-                  <h1 className="display-4 inline-block"><em>{el.name}</em></h1>
+                  <h1 className="display-4 inline-block"><em>{el.name}</em></h1><br/>
                   <button onClick={this.InfoPopUp} className="btn btn-info" authot_id={el.id} >больше информации об авторе</button>
                 </div>
                 <hr className="my-2"></hr>

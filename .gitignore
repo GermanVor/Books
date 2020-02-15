@@ -4,3 +4,5 @@ package-lock.json
 Coverage
 coverage
 dist
+__mocks__
+.nyc_output

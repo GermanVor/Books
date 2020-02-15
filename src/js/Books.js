@@ -99,7 +99,7 @@ class Books extends Component {
               <div className="container">
                 <div>
                   <h1 className="display-3 inline-block"><em>{el.title}</em></h1>
-                  <h2 className="inline-block">{'Рейтинг :'+el.rating}</h2>
+                  <h2 className="inline-block">{'Рейтинг :'+el.rating}</h2><br/>
                   <button onClick={this.InfoPopUp} book_id = {el.id} className="btn btn-info">больше информации</button>
                 </div>
                 <hr className="my-2"></hr>

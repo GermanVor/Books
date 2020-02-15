@@ -71,6 +71,24 @@ const uuid = () => 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
 					book_id = res.body.data.id
 				});
 			
+			author = {
+				name: 'Chuck Palahniuk',
+				description: 'He is an American novelist and freelance journalist',
+				books: [
+					{title: 'Fight Club', genre: 'Novel', rating: 5,
+					description: 'It follows the experiences of an unnamed protagonist struggling with'+
+					' insomnia. Inspired by his doctors exasperated remark that insomnia is not suffering,'+
+					' the protagonist finds relief by impersonating a seriously ill person in several support groups.'},
+					{id: book_id}
+				]
+			};
+			await	chai.request(app)
+				.post('/api/authors')
+				.set('Accept', 'application/json')
+				.send(author)
+				.then((res) => {
+					author_id = res.body.data.id;
+				});
 		});
 	})
 

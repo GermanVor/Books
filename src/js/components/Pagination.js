@@ -36,9 +36,8 @@ class Pagination extends Component {
   shouldComponentUpdate(nextProps, nextState){
     return (nextProps.DBSize !== this.props.DBSize) || (this.state.PaginCount !== nextState.PaginCount)
   }
-  LimitMenuOnClick(event, limit){
+  LimitMenuOnClick(limit){
     if(limit === this.limit) return
-
     while(1){
       if(this.page*limit < this.props.DBSize) break
       else --this.page
@@ -57,9 +56,12 @@ class Pagination extends Component {
     return (
       <div className="Pagination">
         <div className='LimitMenu'>
-          <button onClick={ () => this.LimitMenuOnClick(event, 3) } className={'btn btn-info ' + (limit===3?'activPagin':'')}>3</button>
-          <button onClick={ () => this.LimitMenuOnClick(event, 5) } className={'btn btn-info ' + (limit===5?'activPagin':'')}>5</button>
-          <button onClick={ () => this.LimitMenuOnClick(event, 10) } className={'btn btn-info ' + (limit===10?'activPagin':'')}>10</button>
+          <button onClick={ () => this.LimitMenuOnClick(3) } 
+            className={'btn btn-info ' + (limit===3?'activPagin':'')} limit='3'>3</button>
+          <button onClick={ () => this.LimitMenuOnClick(5) } 
+            className={'btn btn-info ' + (limit===5?'activPagin':'')} limit='5'>5</button>
+          <button onClick={ () => this.LimitMenuOnClick(10) } 
+            className={'btn btn-info ' + (limit===10?'activPagin':'')} limit='10'>10</button>
         </div>
         <div className="btn-group mr-2" role="group" aria-label="First group">{
           this.state.PaginCount.map( (el,ind) => 

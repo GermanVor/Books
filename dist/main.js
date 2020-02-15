@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "4c2285cd6fe0a0c80c53";
+/******/ 	var hotCurrentHash = "f9dcba8c4f2693f839b2";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -2055,7 +2055,7 @@ ansiHTML.reset()
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n.PopUp a{\r\n  padding: .1rem 0.5rem;\r\n  text-decoration: none;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n  border-radius: 0 55px 55px 0  ;\r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n  margin-bottom: 0;\r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.AuthorsPool hr {\r\n  border-top: 1px solid #c82333;\r\n}\r\n.BooksPool hr {\r\n  border-top: 1px solid #E0A800;\r\n}\r\n/* .AuthorsPool .jumbotron:focus {\r\n  border: 2px solid  #c82333;\r\n} */\r\n.act {\r\n  border: 2px solid  #c82333;\r\n}", ""]);
+exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n.PopUp a{\r\n  padding: .1rem 0.5rem;\r\n  text-decoration: none;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n  border-radius: 0 55px 55px 0  ;\r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.AuthorsPool hr {\r\n  border-top: 1px solid #c82333;\r\n}\r\n.BooksPool hr {\r\n  border-top: 1px solid #E0A800;\r\n}\r\n/* .AuthorsPool .jumbotron:focus {\r\n  border: 2px solid  #c82333;\r\n} */\r\n.act {\r\n  border: 2px solid  #c82333;\r\n}", ""]);
 
 
 /***/ }),
@@ -37566,7 +37566,7 @@ function (_Component) {
           className: "container"
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", {
           className: "display-4 inline-block"
-        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("em", null, el.name)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("em", null, el.name)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
           onClick: _this5.InfoPopUp,
           className: "btn btn-info",
           authot_id: el.id
@@ -37953,7 +37953,7 @@ function (_Component) {
           className: "display-3 inline-block"
         }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("em", null, el.title)), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
           className: "inline-block"
-        }, 'Рейтинг :' + el.rating), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        }, 'Рейтинг :' + el.rating), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
           onClick: _this5.InfoPopUp,
           book_id: el.id,
           className: "btn btn-info"
@@ -37987,23 +37987,13 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/classCallCheck */ "./node_modules/@babel/runtime/helpers/classCallCheck.js");
-/* harmony import */ var _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/createClass */ "./node_modules/@babel/runtime/helpers/createClass.js");
-/* harmony import */ var _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/possibleConstructorReturn */ "./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/getPrototypeOf */ "./node_modules/@babel/runtime/helpers/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime/helpers/inherits */ "./node_modules/@babel/runtime/helpers/inherits.js");
-/* harmony import */ var _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _Authors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Authors */ "./src/js/Authors.js");
-/* harmony import */ var _Books__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Books */ "./src/js/Books.js");
-/* harmony import */ var _js_components_Authors_AuthorCard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../js/components/Authors/AuthorCard */ "./src/js/components/Authors/AuthorCard.js");
-/* harmony import */ var _js_components_Books_BookCard__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../js/components/Books/BookCard */ "./src/js/components/Books/BookCard.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Authors__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Authors */ "./src/js/Authors.js");
+/* harmony import */ var _Books__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Books */ "./src/js/Books.js");
+/* harmony import */ var _js_components_Authors_AuthorCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../js/components/Authors/AuthorCard */ "./src/js/components/Authors/AuthorCard.js");
+/* harmony import */ var _js_components_Books_BookCard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../js/components/Books/BookCard */ "./src/js/components/Books/BookCard.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -38011,62 +38001,36 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-
-
-var Toggle =
-/*#__PURE__*/
-function (_Component) {
-  _babel_runtime_helpers_inherits__WEBPACK_IMPORTED_MODULE_4___default()(Toggle, _Component);
-
-  function Toggle(props) {
-    var _this;
-
-    _babel_runtime_helpers_classCallCheck__WEBPACK_IMPORTED_MODULE_0___default()(this, Toggle);
-
-    _this = _babel_runtime_helpers_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_2___default()(this, _babel_runtime_helpers_getPrototypeOf__WEBPACK_IMPORTED_MODULE_3___default()(Toggle).call(this, props));
-    _this.state = {};
-    return _this;
-  }
-
-  _babel_runtime_helpers_createClass__WEBPACK_IMPORTED_MODULE_1___default()(Toggle, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "Toggle"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
-        className: "head"
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
-        to: '/authors'
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-danger"
-      }, "\u0410\u0432\u0442\u043E\u0440\u044B")), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Link"], {
-        to: '/books'
-      }, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("button", {
-        type: "button",
-        className: "btn btn-warning"
-      }, "\u041A\u043D\u0438\u0433\u0438"))), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
-        exact: true,
-        path: '/authors',
-        component: _Authors__WEBPACK_IMPORTED_MODULE_6__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
-        path: '/books',
-        component: _Books__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
-        path: '/author',
-        component: _js_components_Authors_AuthorCard__WEBPACK_IMPORTED_MODULE_8__["default"]
-      }), react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_10__["Route"], {
-        path: '/book',
-        component: _js_components_Books_BookCard__WEBPACK_IMPORTED_MODULE_9__["default"]
-      }))));
-    }
-  }]);
-
-  return Toggle;
-}(react__WEBPACK_IMPORTED_MODULE_5__["Component"]);
+var Toggle = function Toggle() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "Toggle"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "head"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+    to: '/authors'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-danger"
+  }, "\u0410\u0432\u0442\u043E\u0440\u044B")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
+    to: '/books'
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn btn-warning"
+  }, "\u041A\u043D\u0438\u0433\u0438"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+    exact: true,
+    path: '/authors',
+    component: _Authors__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+    path: '/books',
+    component: _Books__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+    path: '/author',
+    component: _js_components_Authors_AuthorCard__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
+    path: '/book',
+    component: _js_components_Books_BookCard__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }))));
+};
 
 /* harmony default export */ __webpack_exports__["default"] = (Toggle);
 

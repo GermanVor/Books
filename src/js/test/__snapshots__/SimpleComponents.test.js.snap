@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paggination />  render correctly Paggination component  1`] = `
+<div
+  className="Pagination"
+>
+  <div
+    className="LimitMenu"
+  >
+    <button
+      className="btn btn-info "
+      limit="3"
+      onClick={[Function]}
+    >
+      3
+    </button>
+    <button
+      className="btn btn-info activPagin"
+      limit="5"
+      onClick={[Function]}
+    >
+      5
+    </button>
+    <button
+      className="btn btn-info "
+      limit="10"
+      onClick={[Function]}
+    >
+      10
+    </button>
+  </div>
+  <div
+    aria-label="First group"
+    className="btn-group mr-2"
+    role="group"
+  >
+    <button
+      className="btn btn-info activPagin"
+      onClick={[Function]}
+      page={0}
+      type="button"
+    >
+      0
+    </button>
+    <button
+      className="btn btn-info "
+      onClick={[Function]}
+      page={1}
+      type="button"
+    >
+      1
+    </button>
+  </div>
+</div>
+`;
