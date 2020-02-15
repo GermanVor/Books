@@ -17,7 +17,6 @@ ul.hr li {
   border-radius: 0 .25rem .25rem  0 ;
 }
 .activPagin {
-  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */
   background-color: rgba(56, 195, 216, 0.5);
 }
 .activButton {
@@ -26,7 +25,6 @@ ul.hr li {
 .LimitMenu {
   margin: 10px 5px;
 }
-
 .left {
   float: left;
 }
@@ -84,7 +82,7 @@ ul.hr li {
   margin: 15px 0;
   padding: 10px 0 10px 0;
   font-size: 1rem;
-  border-radius: 0 55px 55px 0  ;
+  border-radius: 0 55px 55px 0;
 }
 .Pool .jumbotron h1,h2 {
   margin-right: 10px;

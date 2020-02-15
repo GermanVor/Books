@@ -5,7 +5,7 @@ import renderer from 'react-test-renderer';
 
 describe('<Paggination /> ', () => {
   it("render correctly Paggination component ", () => {
-    const Pag = renderer.create(<Paggination DBSize={7} />).toJSON();
+    const Pag = renderer.create(<Paggination DBSize={7} LimitMenuArr = {[3,5]} />).toJSON();
     expect(Pag).toMatchSnapshot();
   });
 
@@ -16,34 +16,48 @@ describe('<Paggination /> ', () => {
       onClick = { ()=>true }
       limit = { limit }
       page = { page }
+      LimitMenuArr = { [3,5] }
     />);
     expect(Pag.prop("DBSize")).toBe(DBSize);
     expect(Pag.prop("limit")).toBe(limit);
     expect(Pag.prop("page")).toBe(page);
     expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/limit));
     expect(Pag.find(".btn-group button[page="+page+"].activPagin")).toHaveLength(1);
-    expect(Pag.find(".LimitMenu button[limit='"+limit+"'].activPagin")).toHaveLength(1);
+    expect(Pag.find(".LimitMenu button[limit="+limit+"].activPagin")).toHaveLength(1);
+
+
   });
 
   it("check the resize operation ", () => {
-    const DBSize = 100, limit = 5, page = 10;
+    const DBSize = 100, limit = 5, page = 10, LimitMenuArr = [3,5,10];
     const Pag = mount(<Paggination  
       DBSize = { DBSize } 
       onClick = { ()=>true }
       limit = { limit }
       page = { page }
+      LimitMenuArr = { LimitMenuArr }
     />);
     expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/limit));
-
-    Pag.find('.LimitMenu button[limit="'+3+'"]').simulate('click');
-    expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/3));
-
-    Pag.find('.LimitMenu button[limit="'+5+'"]').simulate('click');
-    expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/5));
- 
-    Pag.find('.LimitMenu button[limit="'+10+'"]').simulate('click');
-    expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/10));
     
+    LimitMenuArr.forEach( el => {
+      Pag.find('.LimitMenu button[limit='+el+']').simulate('click');
+      expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/el));
+    })
+  });
+
+
+  it("check the incorrect limit and page props ", () => {
+    const DBSize = 100, limit = -5, LimitMenuArr = [3,5,10];
+    const Pag = mount(<Paggination  
+      DBSize = { DBSize } 
+      onClick = { ()=>true }
+      limit = { limit }
+      LimitMenuArr = { LimitMenuArr }
+    />);
+   
+    expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/LimitMenuArr[0]));
+    expect(Pag.find(".btn-group button[page="+0+"].activPagin")).toHaveLength(1);
+    expect(Pag.find(".LimitMenu button[limit="+LimitMenuArr[0]+"].activPagin")).toHaveLength(1);  
   });
 
 });

@@ -8,25 +8,18 @@ exports[`<Paggination />  render correctly Paggination component  1`] = `
     className="LimitMenu"
   >
     <button
-      className="btn btn-info "
-      limit="3"
+      className="btn btn-info activPagin"
+      limit={3}
       onClick={[Function]}
     >
       3
     </button>
     <button
-      className="btn btn-info activPagin"
-      limit="5"
+      className="btn btn-info "
+      limit={5}
       onClick={[Function]}
     >
       5
-    </button>
-    <button
-      className="btn btn-info "
-      limit="10"
-      onClick={[Function]}
-    >
-      10
     </button>
   </div>
   <div
@@ -49,6 +42,14 @@ exports[`<Paggination />  render correctly Paggination component  1`] = `
       type="button"
     >
       1
+    </button>
+    <button
+      className="btn btn-info "
+      onClick={[Function]}
+      page={2}
+      type="button"
+    >
+      2
     </button>
   </div>
 </div>

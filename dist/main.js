@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "f9dcba8c4f2693f839b2";
+/******/ 	var hotCurrentHash = "c452de57d4744b7d3ad2";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -38725,7 +38725,7 @@ function (_Component) {
     }
   }, {
     key: "LimitMenuOnClick",
-    value: function LimitMenuOnClick(event, limit) {
+    value: function LimitMenuOnClick(limit) {
       if (limit === this.limit) return;
 
       while (1) {
@@ -38752,19 +38752,22 @@ function (_Component) {
         className: "LimitMenu"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.LimitMenuOnClick(event, 3);
+          return _this2.LimitMenuOnClick(3);
         },
-        className: 'btn btn-info ' + (limit === 3 ? 'activPagin' : '')
+        className: 'btn btn-info ' + (limit === 3 ? 'activPagin' : ''),
+        limit: "3"
       }, "3"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.LimitMenuOnClick(event, 5);
+          return _this2.LimitMenuOnClick(5);
         },
-        className: 'btn btn-info ' + (limit === 5 ? 'activPagin' : '')
+        className: 'btn btn-info ' + (limit === 5 ? 'activPagin' : ''),
+        limit: "5"
       }, "5"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
         onClick: function onClick() {
-          return _this2.LimitMenuOnClick(event, 10);
+          return _this2.LimitMenuOnClick(10);
         },
-        className: 'btn btn-info ' + (limit === 10 ? 'activPagin' : '')
+        className: 'btn btn-info ' + (limit === 10 ? 'activPagin' : ''),
+        limit: "10"
       }, "10")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "btn-group mr-2",
         role: "group",

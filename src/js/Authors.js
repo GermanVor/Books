@@ -141,6 +141,7 @@ class Authors extends Component {
           onClick = {this.PaginClick}
           limit = {this.limit}
           page = {this.page}
+          LimitMenuArr = {[3,5,10]}
         />: ''}
       </div>
     )

@@ -18,8 +18,7 @@ const PopUP = (props) =>{
                 <div key={'PopUpAuhorKey-'+ind} author_id={el.id}>
                   {el.name+' '}
                   <Link to={{pathname: '/author', id: el.id }} > узнать больше</Link> 
-                  <Link to={{pathname: '/authors', id: el.id }} > перейти к вкладке авторы</Link>
-                  
+                  <Link to={{pathname: '/', id: el.id }} > перейти к вкладке авторы</Link>
                 </div>
               )}
             </div>

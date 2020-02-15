@@ -113,9 +113,8 @@ class Books extends Component {
           onClick = {this.PaginClick}
           limit = {this.limit}
           page = {this.page}
+          LimitMenuArr = {[2,3,5]}
         />: ''}
-
-        <br/>
       </div>
     )
   }

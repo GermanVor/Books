@@ -15,11 +15,11 @@ const Toggle = ()=>{
     return (<div className='Toggle'>
        <HashRouter>
         <div className='head'>
-          <Link to={'/authors' }><button type="button" className="btn btn-danger" >Авторы</button></Link>
+          <Link to={'/' }><button type="button" className="btn btn-danger" >Авторы</button></Link>
           <Link to={'/books' }><button type="button" className="btn btn-warning" >Книги</button></Link>
         </div>
         <Switch  >
-            <Route exact path={'/authors' }component={Authors} />
+            <Route exact path={'/' }component={Authors} />
             <Route path={'/books' } component={Books} />
             <Route path={'/author' } component={AuthorCard} />
             <Route path={'/book' } component={BookCard} />

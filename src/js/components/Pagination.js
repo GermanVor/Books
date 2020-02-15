@@ -6,7 +6,8 @@ class Pagination extends Component {
     this.state = {
       PaginCount: [],
     }
-    this.limit = this.props.limit || 5;
+    
+    this.limit = this.props.LimitMenuArr.find(a=>a===this.props.limit)? this.props.limit : this.props.LimitMenuArr[0];
     this.page = this.props.page || 0;
 
     this.PaginLenght = this.PaginLenght.bind(this);
@@ -56,12 +57,11 @@ class Pagination extends Component {
     return (
       <div className="Pagination">
         <div className='LimitMenu'>
-          <button onClick={ () => this.LimitMenuOnClick(3) } 
-            className={'btn btn-info ' + (limit===3?'activPagin':'')} limit='3'>3</button>
-          <button onClick={ () => this.LimitMenuOnClick(5) } 
-            className={'btn btn-info ' + (limit===5?'activPagin':'')} limit='5'>5</button>
-          <button onClick={ () => this.LimitMenuOnClick(10) } 
-            className={'btn btn-info ' + (limit===10?'activPagin':'')} limit='10'>10</button>
+          {this.props.LimitMenuArr.sort((a,b)=>a-b).map( el => 
+            <button onClick={ () => this.LimitMenuOnClick(el) } key={'LimitMenu-'+el}
+              className={'btn btn-info ' + (limit===el?'activPagin':'')} limit={el}>{el}
+            </button>
+          )}
         </div>
         <div className="btn-group mr-2" role="group" aria-label="First group">{
           this.state.PaginCount.map( (el,ind) => 
