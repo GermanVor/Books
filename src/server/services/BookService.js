@@ -93,7 +93,6 @@ class BookService {
 	 */
 	static async getParty({limit, page}) {
 		try {
-			console.log(limit, page)
 			return await database.Book.findAll({
 				limit,
 				offset: page*limit

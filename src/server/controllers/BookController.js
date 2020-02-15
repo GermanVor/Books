@@ -81,7 +81,6 @@ class BookController {
 
 	static async getTopByAuthor(req, res) {
 		try {
-			console.log( req.query )
 			const top = Number(req.query.top),
 						id = req.query.id
 						
@@ -89,7 +88,6 @@ class BookController {
 				util.setError(400, 'Invalid UUID');
 				return util.send(res);
 			}
-			console.log( 1 )
 			const books = await BookService.getTopByAuthor(top, id) || [];
 			util.setSuccess(200, 'Books Received', books);
 
@@ -110,9 +108,7 @@ class BookController {
 	 */
 	static async getSearchInfo(req, res) {
 		try {
-			
 			const arr = req.query.value? await BookService.getSearchInfo(req.query.value) : [];
-			console.log( arr )
 			util.setSuccess(200, 'Books Received', arr);
 			return util.send(res);
 		} catch (error) {
