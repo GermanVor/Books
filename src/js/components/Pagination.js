@@ -7,7 +7,8 @@ class Pagination extends Component {
       PaginCount: [],
     }
     
-    this.limit = this.props.LimitMenuArr.find(a=>a===this.props.limit)? this.props.limit : this.props.LimitMenuArr[0];
+    let LimitMenuArr = this.props.LimitMenuArr.sort((a,b)=>a-b);
+    this.limit = LimitMenuArr.find(a=>a===this.props.limit)? this.props.limit : LimitMenuArr[0];
     this.page = this.props.page || 0;
 
     this.PaginLenght = this.PaginLenght.bind(this);

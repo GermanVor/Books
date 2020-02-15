@@ -47,7 +47,7 @@ describe('<Paggination /> ', () => {
 
 
   it("check the incorrect limit and page props ", () => {
-    const DBSize = 100, limit = -5, LimitMenuArr = [3,5,10];
+    const DBSize = 100, limit = -5, LimitMenuArr = [5,3,10];
     const Pag = mount(<Paggination  
       DBSize = { DBSize } 
       onClick = { ()=>true }
@@ -55,9 +55,9 @@ describe('<Paggination /> ', () => {
       LimitMenuArr = { LimitMenuArr }
     />);
    
-    expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil(DBSize/LimitMenuArr[0]));
+    expect(Pag.find(".btn-group button")).toHaveLength(Math.ceil( DBSize/LimitMenuArr.sort((a,b)=>a-b)[0]) );
     expect(Pag.find(".btn-group button[page="+0+"].activPagin")).toHaveLength(1);
-    expect(Pag.find(".LimitMenu button[limit="+LimitMenuArr[0]+"].activPagin")).toHaveLength(1);  
+    expect(Pag.find(".LimitMenu button[limit="+LimitMenuArr.sort((a,b)=>a-b)[0]+"].activPagin")).toHaveLength(1);  
   });
 
 });
