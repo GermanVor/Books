@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "c452de57d4744b7d3ad2";
+/******/ 	var hotCurrentHash = "75aff9cec65c0bdb9d56";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -2055,7 +2055,7 @@ ansiHTML.reset()
 
 exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  /* box-shadow: 0 0 0 0.2rem rgba(130,138,145,.7) */\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n.PopUp a{\r\n  padding: .1rem 0.5rem;\r\n  text-decoration: none;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n  border-radius: 0 55px 55px 0  ;\r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.AuthorsPool hr {\r\n  border-top: 1px solid #c82333;\r\n}\r\n.BooksPool hr {\r\n  border-top: 1px solid #E0A800;\r\n}\r\n/* .AuthorsPool .jumbotron:focus {\r\n  border: 2px solid  #c82333;\r\n} */\r\n.act {\r\n  border: 2px solid  #c82333;\r\n}", ""]);
+exports.push([module.i, "ul.hr {\r\n  margin: 0;  \r\n  padding: 4px;  \r\n}\r\nul.hr li {\r\n  display: inline; \r\n  margin-right: 5px;  \r\n  border: 1px solid #000; \r\n  padding: 3px;  \r\n}\r\n.box button.btn {\r\n  padding: 2px 6px;\r\n  border-radius: 0;\r\n  vertical-align: unset;\r\n}\r\n.box button.btn:last-child {\r\n  border-radius: 0 .25rem .25rem  0 ;\r\n}\r\n.activPagin {\r\n  background-color: rgba(56, 195, 216, 0.5);\r\n}\r\n.activButton {\r\n  transform: scale(1.1);\r\n}\r\n.LimitMenu {\r\n  margin: 10px 5px;\r\n}\r\n.left {\r\n  float: left;\r\n}\r\n.right {\r\n  float: right;\r\n}\r\n.inline-block {\r\n  display: inline-block;\r\n}\r\n.AuthorMenu div.box {\r\n  position: relative;\r\n  margin: 5px 10px;\r\n}\r\n\r\n.b-container{\r\n  width:200px;\r\n  height:150px;\r\n  background-color: #ccc;\r\n  margin:0px auto;\r\n  padding:10px;\r\n  font-size:30px;\r\n  color: #fff;\r\n}\r\n.b-popup{\r\n  width:100vw;\r\n  min-height:100%;\r\n  background-color: rgba(0,0,0,0.5);\r\n  overflow:hidden;\r\n  position:fixed;\r\n  top:0px;\r\n}\r\n.b-popup .b-popup-content{\r\n  width:50%;\r\n  height:auto;\r\n  margin:40px auto 40px auto;\r\n  padding:10px;\r\n  background-color: #E9ECEF;\r\n  border-radius:5px;\r\n  box-shadow: 0px 0px 10px #000;\r\n}\r\n.PopUp a{\r\n  padding: .1rem 0.5rem;\r\n  text-decoration: none;\r\n}\r\n#react-container {\r\n  margin: 5px 10px;\r\n}\r\n.Toggle .head button {\r\n  margin: 0px 5px 10px 0px;\r\n}\r\n.Pool {\r\n  margin: 5px 0;\r\n}\r\n.Pool .jumbotron {\r\n  margin: 15px 0;\r\n  padding: 10px 0 10px 0;\r\n  font-size: 1rem;\r\n  border-radius: 0 55px 55px 0;\r\n}\r\n.Pool .jumbotron h1,h2 {\r\n  margin-right: 10px;\r\n}\r\n.Pool button {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.AuthorsPool hr {\r\n  border-top: 1px solid #c82333;\r\n}\r\n.BooksPool hr {\r\n  border-top: 1px solid #E0A800;\r\n}\r\n/* .AuthorsPool .jumbotron:focus {\r\n  border: 2px solid  #c82333;\r\n} */\r\n.act {\r\n  border: 2px solid  #c82333;\r\n}", ""]);
 
 
 /***/ }),
@@ -37579,7 +37579,8 @@ function (_Component) {
         DBSize: this.state.authorDBSize,
         onClick: this.PaginClick,
         limit: this.limit,
-        page: this.page
+        page: this.page,
+        LimitMenuArr: [3, 5, 10]
       }) : '');
     }
   }]);
@@ -37966,8 +37967,9 @@ function (_Component) {
         DBSize: this.state.bookDBSize,
         onClick: this.PaginClick,
         limit: this.limit,
-        page: this.page
-      }) : '', react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", null));
+        page: this.page,
+        LimitMenuArr: [2, 3, 5]
+      }) : '');
     }
   }]);
 
@@ -38007,7 +38009,7 @@ var Toggle = function Toggle() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["HashRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "head"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Link"], {
-    to: '/authors'
+    to: '/'
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     type: "button",
     className: "btn btn-danger"
@@ -38018,7 +38020,7 @@ var Toggle = function Toggle() {
     className: "btn btn-warning"
   }, "\u041A\u043D\u0438\u0433\u0438"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
     exact: true,
-    path: '/authors',
+    path: '/',
     component: _Authors__WEBPACK_IMPORTED_MODULE_1__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["Route"], {
     path: '/books',
@@ -38620,7 +38622,7 @@ var PopUP = function PopUP(props) {
       }
     }, " \u0443\u0437\u043D\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       to: {
-        pathname: '/authors',
+        pathname: '/',
         id: el.id
       }
     }, " \u043F\u0435\u0440\u0435\u0439\u0442\u0438 \u043A \u0432\u043A\u043B\u0430\u0434\u043A\u0435 \u0430\u0432\u0442\u043E\u0440\u044B"));
@@ -38676,7 +38678,14 @@ function (_Component) {
     _this.state = {
       PaginCount: []
     };
-    _this.limit = _this.props.limit || 5;
+
+    var LimitMenuArr = _this.props.LimitMenuArr.sort(function (a, b) {
+      return a - b;
+    });
+
+    _this.limit = LimitMenuArr.find(function (a) {
+      return a === _this.props.limit;
+    }) ? _this.props.limit : LimitMenuArr[0];
     _this.page = _this.props.page || 0;
     _this.PaginLenght = _this.PaginLenght.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
     _this.LimitMenuOnClick = _this.LimitMenuOnClick.bind(_babel_runtime_helpers_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4___default()(_this));
@@ -38750,25 +38759,18 @@ function (_Component) {
         className: "Pagination"
       }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "LimitMenu"
-      }, react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.LimitMenuOnClick(3);
-        },
-        className: 'btn btn-info ' + (limit === 3 ? 'activPagin' : ''),
-        limit: "3"
-      }, "3"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.LimitMenuOnClick(5);
-        },
-        className: 'btn btn-info ' + (limit === 5 ? 'activPagin' : ''),
-        limit: "5"
-      }, "5"), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        onClick: function onClick() {
-          return _this2.LimitMenuOnClick(10);
-        },
-        className: 'btn btn-info ' + (limit === 10 ? 'activPagin' : ''),
-        limit: "10"
-      }, "10")), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, this.props.LimitMenuArr.sort(function (a, b) {
+        return a - b;
+      }).map(function (el) {
+        return react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+          onClick: function onClick() {
+            return _this2.LimitMenuOnClick(el);
+          },
+          key: 'LimitMenu-' + el,
+          className: 'btn btn-info ' + (limit === el ? 'activPagin' : ''),
+          limit: el
+        }, el);
+      })), react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "btn-group mr-2",
         role: "group",
         "aria-label": "First group"
