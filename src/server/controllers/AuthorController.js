@@ -108,7 +108,6 @@ class AuthorController {
 
 	/**
 	 * add author control - validate and catch error
-	 *
 	 * @param {Object} req - request
 	 * @param {Object} res - response
 	 * @returns {Promise<*>}
